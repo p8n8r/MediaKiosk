@@ -20,9 +20,21 @@ namespace MediaKiosk
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal LogInPage loginPage;
+        internal PurposePage purposePage;
+        internal BrowsePage browsePage;
+        internal DonatePage donatePage;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.loginPage = new LogInPage(this);
+            this.purposePage = new PurposePage(this);
+            this.browsePage = new BrowsePage(this);
+            this.donatePage = new DonatePage(this);
+
+            this.mainFrame.Navigate(this.loginPage);
         }
     }
 }
