@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaKiosk.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,20 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk
+namespace MediaKiosk.Views
 {
     /// <summary>
-    /// Interaction logic for BrowsePage.xaml
+    /// Interaction logic for SplashScreen.xaml
     /// </summary>
-    public partial class BrowsePage : Page
+    public partial class LogInPage : Page
     {
-        private MainWindow mainWindow;
-
-        public BrowsePage(MainWindow mainWindow)
+        public LogInPage(MainWindow mainWindow)
         {
             InitializeComponent();
 
-            this.mainWindow = mainWindow;
+            this.DataContext = new LogInPageViewModel(mainWindow);
         }
     }
 }
