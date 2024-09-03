@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    internal class ModelBase : INotifyPropertyChanged
+    internal class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -24,6 +24,7 @@ namespace MediaKiosk.Views
         internal PurposePage purposePage;
         internal BrowsePage browsePage;
         internal DonatePage donatePage;
+        internal BrowseBooksPage browseBooksPage;
 
         public MainWindow()
         {
@@ -35,6 +36,9 @@ namespace MediaKiosk.Views
             this.donatePage = new DonatePage(this);
 
             this.mainFrame.Navigate(this.loginPage);
+
+            this.browseBooksPage = new BrowseBooksPage(this);
+            this.browsePage.mediaTableFrame.Navigate(this.browseBooksPage);
         }
     }
 }
