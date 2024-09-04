@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Views;
+﻿using MediaKiosk.Models;
+using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class LogInPageViewModel
+    internal class LogInPageViewModel : ViewModelBase
     {
         private MainWindow mainWindow;
         public RelayCommand loginCmd => new RelayCommand(execute => LogIn(), canExecute => CanLogIn());

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class DonatePageViewModel : ViewModelBase
+    internal class ReturnsPageViewModel : ViewModelBase
     {
         private MainWindow mainWindow;
 
-        public DonatePageViewModel(MainWindow mainWindow)
+        public ReturnsPageViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
         }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MediaKiosk.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="350" d:DesignWidth="800"
       Title="BooksTable" Background="White">
 
     <Grid>
@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
+        <DataGrid Name="browseBooksDataGrid" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
             CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*"/>
@@ -25,7 +25,7 @@
                 <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+        <StackPanel Grid.Column="1">
             <Label Content="Title"/>
             <TextBox Text="{Binding SelectedBook.Title, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Author"/>

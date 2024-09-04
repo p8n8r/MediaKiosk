@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Views;
+﻿using MediaKiosk.Models;
+using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,11 @@ using System.Windows;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class PurposePageViewModel
+    internal class PurposePageViewModel : ViewModelBase
     {
         private MainWindow mainWindow;
         public RelayCommand browseCmd => new RelayCommand(execute => Browse());
+        public RelayCommand returnCmd => new RelayCommand(execute => Return());
         public RelayCommand donateCmd => new RelayCommand(execute => Donate());
 
         public PurposePageViewModel(MainWindow mainWindow)
@@ -22,6 +24,11 @@ namespace MediaKiosk.ViewModels
         private void Browse()
         {
             this.mainWindow.mainFrame.Navigate(this.mainWindow.browsePage);
+        }
+
+        private void Return()
+        {
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.returnsPage);
         }
 
         private void Donate()

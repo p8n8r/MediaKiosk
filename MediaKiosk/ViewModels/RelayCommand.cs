@@ -12,7 +12,11 @@ namespace MediaKiosk.ViewModels
         private Action<object> execute;
         private Func<object, bool> canExecute;
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
@@ -22,12 +26,12 @@ namespace MediaKiosk.ViewModels
 
         public bool CanExecute(object parameter = null)
         {
-            return parameter == null || canExecute(parameter);
+            return canExecute == null || this.canExecute(parameter);
         }
 
         public void Execute(object parameter = null)
         {
-            execute(parameter);
+            this.execute(parameter);
         }
     }
 }

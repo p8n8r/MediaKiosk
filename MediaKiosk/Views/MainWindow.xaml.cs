@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaKiosk.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MediaKiosk.Views
         internal LogInPage loginPage;
         internal PurposePage purposePage;
         internal BrowsePage browsePage;
+        internal ReturnsPage returnsPage;
         internal DonatePage donatePage;
         internal BrowseBooksPage browseBooksPage;
 
@@ -30,14 +32,16 @@ namespace MediaKiosk.Views
         {
             InitializeComponent();
 
+            //Construct pages and viewmodels
+            this.browseBooksPage = new BrowseBooksPage(this);
             this.loginPage = new LogInPage(this);
             this.purposePage = new PurposePage(this);
-            this.browsePage = new BrowsePage(this);
+            this.browsePage = new BrowsePage(this); //Depends on subpages
+            this.returnsPage = new ReturnsPage(this);
             this.donatePage = new DonatePage(this);
 
+            //Set initial navigation pages
             this.mainFrame.Navigate(this.loginPage);
-
-            this.browseBooksPage = new BrowseBooksPage(this);
             this.browsePage.mediaTableFrame.Navigate(this.browseBooksPage);
         }
     }
