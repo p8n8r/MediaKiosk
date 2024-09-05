@@ -21,7 +21,7 @@
             </Grid.RowDefinitions>
             <Label Content="What would you like to do?" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button Content="Browse" Command="{Binding browseCmd}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"/>
-            <Button Content="Return" Command="{Binding returnCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"/>
+            <Button Content="Returns" Command="{Binding returnsCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"/>
             <Button Content="Donate" Command="{Binding donateCmd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"/>
         </Grid>
     </Grid>

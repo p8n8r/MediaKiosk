@@ -20,7 +20,7 @@
             CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*"/>
-                <DataGridTextColumn Header="Author" Binding="{Binding Artist}" Width="3*"/>
+                <DataGridTextColumn Header="Artist" Binding="{Binding Artist}" Width="3*"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="3*"/>
                 <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*"/>
             </DataGrid.Columns>
