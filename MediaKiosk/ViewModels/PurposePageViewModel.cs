@@ -13,7 +13,7 @@ namespace MediaKiosk.ViewModels
     {
         private MainWindow mainWindow;
         public RelayCommand browseCmd => new RelayCommand(execute => Browse());
-        public RelayCommand returnCmd => new RelayCommand(execute => Return());
+        public RelayCommand returnsCmd => new RelayCommand(execute => Returns());
         public RelayCommand donateCmd => new RelayCommand(execute => Donate());
 
         public PurposePageViewModel(MainWindow mainWindow)
@@ -26,7 +26,7 @@ namespace MediaKiosk.ViewModels
             this.mainWindow.mainFrame.Navigate(this.mainWindow.browsePage);
         }
 
-        private void Return()
+        private void Returns()
         {
             this.mainWindow.mainFrame.Navigate(this.mainWindow.returnsPage);
         }

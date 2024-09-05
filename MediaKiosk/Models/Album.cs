@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    internal class Book : Media
+    internal class Album : Media
     {
-        public Book() { }
+        public Album() { }
 
         public string Title { get; set; }
-        public string Author { get; set; }
-        public string Category { get; set; }
-        public DateTime PublicationDate { get; set; }
-        //public string Publisher { get; set; }
+        public string Artist { get; set; }
+        public decimal Length { get; set; } //Minutes
+        public string Genre { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public string Description { get; set; }
     }
 }
