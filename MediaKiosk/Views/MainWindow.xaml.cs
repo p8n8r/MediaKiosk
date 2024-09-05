@@ -28,6 +28,7 @@ namespace MediaKiosk.Views
         internal DonatePage donatePage;
         internal BrowseBooksPage browseBooksPage;
         internal BrowseAlbumsPage browseAlbumsPage;
+        internal BrowseMoviesPage browseMoviesPage;
 
         public MainWindow()
         {
@@ -36,6 +37,7 @@ namespace MediaKiosk.Views
             //Construct pages and viewmodels
             this.browseBooksPage = new BrowseBooksPage(this);
             this.browseAlbumsPage = new BrowseAlbumsPage(this);
+            this.browseMoviesPage = new BrowseMoviesPage(this);
             this.loginPage = new LogInPage(this);
             this.purposePage = new PurposePage(this);
             this.browsePage = new BrowsePage(this); //Depends on subpages

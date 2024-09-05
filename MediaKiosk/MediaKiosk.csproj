@@ -60,6 +60,7 @@
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="ViewModels\BrowseAlbumsPageViewModel.cs" />
+    <Compile Include="ViewModels\BrowseMoviesPageViewModel.cs" />
     <Compile Include="ViewModels\ReturnsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\BrowseBooksPageViewModel.cs" />
@@ -73,6 +74,9 @@
     </Compile>
     <Compile Include="Views\BrowseBooksPage.xaml.cs">
       <DependentUpon>BrowseBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BrowseMoviesPage.xaml.cs">
+      <DependentUpon>BrowseMoviesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BrowsePage.xaml.cs">
       <DependentUpon>BrowsePage.xaml</DependentUpon>
@@ -94,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BrowseBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BrowseMoviesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,12 +17,12 @@ namespace MediaKiosk.ViewModels
 
         public Album SelectedAlbum
         {
-            get { return selectedAlbum; }
+            get { return this.selectedAlbum; }
             set { this.selectedAlbum = value; OnPropertyChanged(); }
         }
         public ObservableCollection<Album> Albums
         {
-            get { return albums; }
+            get { return this.albums; }
             set { this.albums = value; OnPropertyChanged(); }
         }
 

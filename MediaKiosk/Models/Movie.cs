@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    internal class Movie
+    internal class Movie : Media
     {
         public Movie() { }
 
