@@ -61,6 +61,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="ViewModels\BrowseAlbumsPageViewModel.cs" />
     <Compile Include="ViewModels\BrowseMoviesPageViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ReturnsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\BrowseBooksPageViewModel.cs" />
@@ -69,6 +70,12 @@
     <Compile Include="ViewModels\LogInPageViewModel.cs" />
     <Compile Include="ViewModels\PurposePageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\AlbumDetailsPage.xaml.cs">
+      <DependentUpon>AlbumDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookDetailsPage.xaml.cs">
+      <DependentUpon>BookDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BrowseAlbumsPage.xaml.cs">
       <DependentUpon>BrowseAlbumsPage.xaml</DependentUpon>
     </Compile>
@@ -84,6 +91,9 @@
     <Compile Include="Views\DonatePage.xaml.cs">
       <DependentUpon>DonatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MovieDetailsPage.xaml.cs">
+      <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurposePage.xaml.cs">
       <DependentUpon>PurposePage.xaml</DependentUpon>
     </Compile>
@@ -93,6 +103,14 @@
     <Compile Include="Views\ReturnsPage.xaml.cs">
       <DependentUpon>ReturnsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AlbumDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BookDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BrowseAlbumsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +143,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MovieDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PurposePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +178,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Datasets\Books.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

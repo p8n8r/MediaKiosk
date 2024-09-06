@@ -12,9 +12,9 @@ namespace MediaKiosk.Models
 
         public string Title { get; set; }
         public string Artist { get; set; }
-        public decimal Length { get; set; } //Minutes
         public string Genre { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public string Description { get; set; }
+        public int ReleaseYear { get; set; }
+        //public decimal Length { get; set; } //Minutes
+        //public string Description { get; set; }
     }
 }
