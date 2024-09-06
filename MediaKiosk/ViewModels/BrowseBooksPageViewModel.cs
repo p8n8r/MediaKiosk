@@ -37,7 +37,7 @@ namespace MediaKiosk.ViewModels
             this.mainWindow = mainWindow;
             this.mainWindowViewModel = this.mainWindow.DataContext as MainWindowViewModel;
 
-            ReloadBooks(BOOKS_FILE_PATH);
+            //ReloadBooks(BOOKS_FILE_PATH);
         }
 
         private void FillWithBooks()
@@ -68,66 +68,66 @@ namespace MediaKiosk.ViewModels
             };
         }
 
-        private void ReloadBooks(string filePath)
-        {
-            if (File.Exists(filePath))
-            {
-                try
-                {
-                    StreamReader reader = new StreamReader(filePath);
-                    string[] values;
-                    bool hasFoundHeaders = false;
-                    List<Book> books = new List<Book>();
+        //private void ReloadBooks(string filePath)
+        //{
+        //    if (File.Exists(filePath))
+        //    {
+        //        try
+        //        {
+        //            StreamReader reader = new StreamReader(filePath);
+        //            string[] values;
+        //            bool hasFoundHeaders = false;
+        //            List<Book> books = new List<Book>();
 
-                    while (!reader.EndOfStream)
-                    {
-                        values = reader.ReadLine().Split(',');
+        //            while (!reader.EndOfStream)
+        //            {
+        //                values = reader.ReadLine().Split(',');
 
-                        if (values.Length == NUM_COLUMNS_CSV)
-                        {
-                            if (!hasFoundHeaders)
-                            {
-                                hasFoundHeaders = true;
-                                continue;
-                            }
+        //                if (values.Length == NUM_COLUMNS_CSV)
+        //                {
+        //                    if (!hasFoundHeaders)
+        //                    {
+        //                        hasFoundHeaders = true;
+        //                        continue;
+        //                    }
 
-                            books.Add(new Book()
-                            {
-                                Title = values[TITLE_COLUMN],
-                                Author = values[AUTHORS_COLUMN],
-                                Description = values[DESCRIPTION_COLUMN],
-                                Category = values[CATEGORY_COLUMN],
-                                Publisher = values[PUBLISHER_COLUMN],
-                                PublicationDate = DateTime.Parse(values[PUBLICATION_DATE_COLUMN]),
-                                Price = decimal.Parse(values[PRICE_COLUMN])
-                            });
-                        }
-                    }
+        //                    books.Add(new Book()
+        //                    {
+        //                        Title = values[TITLE_COLUMN],
+        //                        Author = values[AUTHORS_COLUMN],
+        //                        Description = values[DESCRIPTION_COLUMN],
+        //                        Category = values[CATEGORY_COLUMN],
+        //                        Publisher = values[PUBLISHER_COLUMN],
+        //                        PublicationDate = DateTime.Parse(values[PUBLICATION_DATE_COLUMN]),
+        //                        Price = decimal.Parse(values[PRICE_COLUMN])
+        //                    });
+        //                }
+        //            }
 
-                    if (books.Count > 0)
-                    {
-                        this.Books.Clear();
-                        books.ForEach(b => this.Books.Add(b)); //Copy new books over
-                    }
-                }
-                catch (FileNotFoundException e)
-                {
-                    this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-                }
-                catch (DirectoryNotFoundException e)
-                {
-                    this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-                }
-                catch (IOException e)
-                {
-                    this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-                }
-            }
-            else
-            {
-                string message = $"{filePath} does not exist.";
-                this.mainWindowViewModel.ShowErrorMessageBox(message);
-            }
-        }
+        //            if (books.Count > 0)
+        //            {
+        //                this.Books.Clear();
+        //                books.ForEach(b => this.Books.Add(b)); //Copy new books over
+        //            }
+        //        }
+        //        catch (FileNotFoundException e)
+        //        {
+        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
+        //        }
+        //        catch (DirectoryNotFoundException e)
+        //        {
+        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
+        //        }
+        //        catch (IOException e)
+        //        {
+        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        string message = $"{filePath} does not exist.";
+        //        this.mainWindowViewModel.ShowErrorMessageBox(message);
+        //    }
+        //}
     }
 }

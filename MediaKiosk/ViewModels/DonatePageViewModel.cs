@@ -5,46 +5,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace MediaKiosk.ViewModels
 {
     internal class DonatePageViewModel : ViewModelBase
     {
         private MainWindow mainWindow;
+        private DonatePage donatePage;
+        private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
-        internal BrowseBooksPageViewModel browseBooksPageViewModel;
-        internal BrowseAlbumsPageViewModel browseAlbumsPageViewModel;
-        internal BrowseMoviesPageViewModel browseMoviesPageViewModel;
+        private BookDetailsPage bookDetailsPage;
+        private AlbumDetailsPage albumDetailsPage;
+        private MovieDetailsPage movieDetailsPage;
+        private BookDetailsPageViewModel bookDetailsPageViewModel;
+        private AlbumDetailsPageViewModel albumDetailsPageViewModel;
+        private MovieDetailsPageViewModel movieDetailsPageViewModel;
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
         public RelayCommand selectBooksCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Books); });
         public RelayCommand selectAlbumsCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Albums); });
         public RelayCommand selectMoviesCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Movies); });
 
-        public DonatePageViewModel(MainWindow mainWindow)
+        public DonatePageViewModel(DonatePage donatePage)
         {
-            this.mainWindow = mainWindow;
-            this.browseBooksPageViewModel = this.mainWindow.browseBooksPage.DataContext as BrowseBooksPageViewModel;
-            this.browseAlbumsPageViewModel = this.mainWindow.browseAlbumsPage.DataContext as BrowseAlbumsPageViewModel;
-            this.browseMoviesPageViewModel = this.mainWindow.browseMoviesPage.DataContext as BrowseMoviesPageViewModel;
+            this.donatePage = donatePage;
+            this.mainWindow = Application.Current.MainWindow as MainWindow;
+            this.detailsFrame = donatePage.mediaTableFrame;
+
+            //Construct pages and viewmodels
+            this.bookDetailsPage = new BookDetailsPage(this.mainWindow);
+            this.albumDetailsPage = new AlbumDetailsPage(this.mainWindow);
+            this.movieDetailsPage = new MovieDetailsPage(this.mainWindow);
+
+            this.bookDetailsPageViewModel = bookDetailsPage.DataContext as BookDetailsPageViewModel;
+            this.albumDetailsPageViewModel = albumDetailsPage.DataContext as AlbumDetailsPageViewModel;
+            this.movieDetailsPageViewModel = movieDetailsPage.DataContext as MovieDetailsPageViewModel;
+
+            //Set initial navigation page
+            this.detailsFrame.Navigate(this.bookDetailsPage);
+
+            //Set specifics for donations
+            SetPageDetailsForDonations();
         }
 
         private void SelectMediaType(MediaType mediaType)
         {
             this.mediaType = mediaType;
-            DonatePage donatePage = this.mainWindow.donatePage;
 
             switch (this.mediaType)
             {
                 case MediaType.Books:
-                    donatePage.mediaTableFrame.Navigate(this.mainWindow.browseBooksPage);
+                    this.detailsFrame.Navigate(this.bookDetailsPage);
                     break;
                 case MediaType.Albums:
-                    donatePage.mediaTableFrame.Navigate(this.mainWindow.browseAlbumsPage);
+                    this.detailsFrame.Navigate(this.albumDetailsPage);
                     break;
                 case MediaType.Movies:
-                    donatePage.mediaTableFrame.Navigate(this.mainWindow.browseMoviesPage);
+                    this.detailsFrame.Navigate(this.movieDetailsPage);
                     break;
             }
+        }
+
+        private void SetPageDetailsForDonations()
+        {
+            this.bookDetailsPageViewModel.SetDetailsForDonations();
+            this.albumDetailsPageViewModel.SetDetailsForDonations();
+            this.movieDetailsPageViewModel.SetDetailsForDonations();
+            //this.SelectedBook.Stock = 0;
+            //this.SelectedAlbum.Stock = 0;
+            //this.SelectedMovie.Stock = 0;
         }
 
         public void Donate()

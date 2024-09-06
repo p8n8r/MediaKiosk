@@ -21,11 +21,11 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class DonatePage : Page
     {
-        public DonatePage(MainWindow mainWindow)
+        public DonatePage()
         {
             InitializeComponent();
 
-            this.DataContext = new DonatePageViewModel(mainWindow);
+            this.DataContext = new DonatePageViewModel(this);
         }
     }
 }

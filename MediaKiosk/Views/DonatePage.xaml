@@ -35,7 +35,7 @@
             </Grid>
         </Grid>
 
-        <Frame Name="mediaTableFrame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden"/>
+        <Frame Name="mediaTableFrame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden" Width="400"/>
 
         <Grid Grid.Row="2" Grid.Column="0">
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

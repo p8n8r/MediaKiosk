@@ -38,22 +38,19 @@ namespace MediaKiosk.ViewModels
             {
                 new Movie() {
                     Title = "wegerg",
-                    Genre = "sdfgsfd",
-                    RunTime = 150M,
+                    Category = "sdfgsfd",
                     Price = 2.00M,
                     Stock = 1
                 },
                 new Movie() {
                     Title = "agarg",
-                    Genre = "arghare",
-                    RunTime = 130M,
+                    Category = "arghare",
                     Price = 5.00M,
                     Stock = 2
                 },
                 new Movie() {
                     Title = "ojnsr",
-                    Genre = "vseru",
-                    RunTime = 120M,
+                    Category = "vseru",
                     Price = 6.00M,
                     Stock = 0
                 },

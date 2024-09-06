@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaKiosk.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class AlbumDetailsPage : Page
     {
-        public AlbumDetailsPage()
+        public AlbumDetailsPage(MainWindow mainWindow)
         {
             InitializeComponent();
+
+            this.DataContext = new AlbumDetailsPageViewModel(mainWindow);
         }
     }
 }

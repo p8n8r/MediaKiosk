@@ -59,9 +59,12 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="ViewModels\AlbumDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\BookDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\BrowseAlbumsPageViewModel.cs" />
     <Compile Include="ViewModels\BrowseMoviesPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\ReturnsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\BrowseBooksPageViewModel.cs" />
