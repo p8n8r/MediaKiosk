@@ -59,6 +59,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="ViewModels\Donate\BookDonationPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowseAlbumsPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModel.cs" />

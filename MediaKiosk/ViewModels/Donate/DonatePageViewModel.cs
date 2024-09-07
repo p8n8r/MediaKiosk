@@ -85,8 +85,24 @@ namespace MediaKiosk.ViewModels.Donate
 
         public bool IsMediaAcceptable()
         {
-            //TODO
-            return false;
+            switch (this.mediaType)
+            {
+                case MediaType.Books:
+                    try
+                    {
+                        return bookDonationPageViewModel.HasValidBookProperties();
+                    }
+                    catch (InvalidBookException e)
+                    {
+                        return false;
+                    }
+                //case MediaType.Albums:
+                //    return albumDonationPageViewModel.HasValidBookProperties();
+                //case MediaType.Movies:
+                //    return movieDonationPageViewModel.HasValidBookProperties();
+                default:
+                    return false;
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Browse
 {
@@ -57,6 +58,7 @@ namespace MediaKiosk.ViewModels.Browse
                     Title = "Tactics",
                     Author = "Greg Cocal",
                     Category = "Self-help",
+                    PublicationYear = 2000,
                     Price = 4.00M,
                     Stock = 2
                 }

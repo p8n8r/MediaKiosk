@@ -26,17 +26,17 @@
         </Grid.RowDefinitions>
 
         <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding SelectedBook.Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
         <Label Content="Author" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding SelectedBook.Author, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
         <Label Content="Category" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding SelectedBook.Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
         <Label Content="Publication Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding SelectedBook.PublicationYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding PublicationYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
         <StackPanel Grid.Row="8" Grid.Column="0" Orientation="Horizontal">
             <Label Content="Cover Art" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <Button Command="{Binding browseCmd}" Content="Browse..." Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </StackPanel>
-        <TextBox Text="{Binding SelectedBook.CoverArt.Path, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding CoverArtFilePath, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
     </Grid>
 </Page>
