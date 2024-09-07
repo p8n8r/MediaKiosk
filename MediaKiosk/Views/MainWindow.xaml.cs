@@ -1,4 +1,7 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.Views.Browse;
+using MediaKiosk.Views.Donate;
+using MediaKiosk.Views.Returns;
 using System;
 using System.Collections.Generic;
 using System.Linq;

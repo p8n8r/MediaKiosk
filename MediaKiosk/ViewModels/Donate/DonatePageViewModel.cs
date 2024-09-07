@@ -1,5 +1,6 @@
 ﻿using MediaKiosk.Models;
 using MediaKiosk.Views;
+using MediaKiosk.Views.Donate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MediaKiosk.ViewModels
+namespace MediaKiosk.ViewModels.Donate
 {
     internal class DonatePageViewModel : ViewModelBase
     {
@@ -16,12 +17,12 @@ namespace MediaKiosk.ViewModels
         private DonatePage donatePage;
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
-        private BookDetailsPage bookDetailsPage;
-        private AlbumDetailsPage albumDetailsPage;
-        private MovieDetailsPage movieDetailsPage;
-        private BookDetailsPageViewModel bookDetailsPageViewModel;
-        private AlbumDetailsPageViewModel albumDetailsPageViewModel;
-        private MovieDetailsPageViewModel movieDetailsPageViewModel;
+        private BookDonationPage bookDonationPage;
+        //private AlbumDetailsPage albumDetailsPage;
+        //private MovieDetailsPage movieDetailsPage;
+        private BookDonationPageViewModel bookDonationPageViewModel;
+        //private AlbumDetailsPageViewModel albumDetailsPageViewModel;
+        //private MovieDetailsPageViewModel movieDetailsPageViewModel;
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
         public RelayCommand selectBooksCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Books); });
         public RelayCommand selectAlbumsCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Albums); });
@@ -34,16 +35,16 @@ namespace MediaKiosk.ViewModels
             this.detailsFrame = donatePage.mediaTableFrame;
 
             //Construct pages and viewmodels
-            this.bookDetailsPage = new BookDetailsPage();
-            this.albumDetailsPage = new AlbumDetailsPage();
-            this.movieDetailsPage = new MovieDetailsPage();
+            this.bookDonationPage = new BookDonationPage();
+            //this.albumDetailsPage = new AlbumDetailsPage();
+            //this.movieDetailsPage = new MovieDetailsPage();
 
-            this.bookDetailsPageViewModel = bookDetailsPage.DataContext as BookDetailsPageViewModel;
-            this.albumDetailsPageViewModel = albumDetailsPage.DataContext as AlbumDetailsPageViewModel;
-            this.movieDetailsPageViewModel = movieDetailsPage.DataContext as MovieDetailsPageViewModel;
+            this.bookDonationPageViewModel = bookDonationPage.DataContext as BookDonationPageViewModel;
+            //this.albumDetailsPageViewModel = albumDetailsPage.DataContext as AlbumDetailsPageViewModel;
+            //this.movieDetailsPageViewModel = movieDetailsPage.DataContext as MovieDetailsPageViewModel;
 
             //Set initial navigation page
-            this.detailsFrame.Navigate(this.bookDetailsPage);
+            this.detailsFrame.Navigate(this.bookDonationPage);
 
             //Set specifics for donations
             SetPageDetailsForDonations();
@@ -56,22 +57,22 @@ namespace MediaKiosk.ViewModels
             switch (this.mediaType)
             {
                 case MediaType.Books:
-                    this.detailsFrame.Navigate(this.bookDetailsPage);
+                    this.detailsFrame.Navigate(this.bookDonationPage);
                     break;
-                case MediaType.Albums:
-                    this.detailsFrame.Navigate(this.albumDetailsPage);
-                    break;
-                case MediaType.Movies:
-                    this.detailsFrame.Navigate(this.movieDetailsPage);
-                    break;
+                //case MediaType.Albums:
+                //    this.detailsFrame.Navigate(this.albumDetailsPage);
+                //    break;
+                //case MediaType.Movies:
+                //    this.detailsFrame.Navigate(this.movieDetailsPage);
+                //    break;
             }
         }
 
         private void SetPageDetailsForDonations()
         {
-            this.bookDetailsPageViewModel.SetDetailsForDonations();
-            this.albumDetailsPageViewModel.SetDetailsForDonations();
-            this.movieDetailsPageViewModel.SetDetailsForDonations();
+            //this.bookDonationPageViewModel.SetDetailsForDonations();
+            //this.albumDetailsPageViewModel.SetDetailsForDonations();
+            //this.movieDetailsPageViewModel.SetDetailsForDonations();
             //this.SelectedBook.Stock = 0;
             //this.SelectedAlbum.Stock = 0;
             //this.SelectedMovie.Stock = 0;

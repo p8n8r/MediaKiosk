@@ -1,4 +1,5 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Browse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk.Views
+namespace MediaKiosk.Views.Browse
 {
     /// <summary>
-    /// Interaction logic for ReturnsPage.xaml
+    /// Interaction logic for BookDetailsPage.xaml
     /// </summary>
-    public partial class ReturnsPage : Page
+    public partial class BookDetailsPage : Page
     {
-        public ReturnsPage(MainWindow mainWindow)
+        public BookDetailsPage()
         {
             InitializeComponent();
 
-            this.DataContext = new ReturnsPageViewModel(mainWindow);
+            this.DataContext = new BookDetailsPageViewModel();
         }
     }
 }

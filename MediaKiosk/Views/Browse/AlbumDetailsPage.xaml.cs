@@ -1,4 +1,5 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Browse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk.Views
+namespace MediaKiosk.Views.Browse
 {
     /// <summary>
-    /// Interaction logic for BrowsePage.xaml
+    /// Interaction logic for AlbumDetailsPage.xaml
     /// </summary>
-    public partial class BrowsePage : Page
+    public partial class AlbumDetailsPage : Page
     {
-        public BrowsePage(MainWindow mainWindow)
+        public AlbumDetailsPage()
         {
             InitializeComponent();
 
-            this.DataContext = new BrowsePageViewModel(mainWindow);
+            this.DataContext = new AlbumDetailsPageViewModel();
         }
     }
 }

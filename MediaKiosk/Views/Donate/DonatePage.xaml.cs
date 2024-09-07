@@ -1,4 +1,5 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Donate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk.Views
+namespace MediaKiosk.Views.Donate
 {
     /// <summary>
-    /// Interaction logic for BookDetailsPage.xaml
+    /// Interaction logic for DonatePage.xaml
     /// </summary>
-    public partial class BookDetailsPage : Page
+    public partial class DonatePage : Page
     {
-        public BookDetailsPage()
+        public DonatePage()
         {
             InitializeComponent();
 
-            this.DataContext = new BookDetailsPageViewModel();
+            this.DataContext = new DonatePageViewModel(this);
         }
     }
 }

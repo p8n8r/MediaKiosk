@@ -59,42 +59,46 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="ViewModels\AlbumDetailsPageViewModel.cs" />
-    <Compile Include="ViewModels\BookDetailsPageViewModel.cs" />
-    <Compile Include="ViewModels\BrowseAlbumsPageViewModel.cs" />
-    <Compile Include="ViewModels\BrowseMoviesPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\AlbumDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BookDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\BookDonationPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowseAlbumsPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\MovieDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\ReturnsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\BrowseBooksPageViewModel.cs" />
-    <Compile Include="ViewModels\BrowsePageViewModel.cs" />
-    <Compile Include="ViewModels\DonatePageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowseBooksPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowsePageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\DonatePageViewModel.cs" />
     <Compile Include="ViewModels\LogInPageViewModel.cs" />
     <Compile Include="ViewModels\PurposePageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="Views\AlbumDetailsPage.xaml.cs">
+    <Compile Include="Views\Browse\AlbumDetailsPage.xaml.cs">
       <DependentUpon>AlbumDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BookDetailsPage.xaml.cs">
+    <Compile Include="Views\Browse\BookDetailsPage.xaml.cs">
       <DependentUpon>BookDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BrowseAlbumsPage.xaml.cs">
+    <Compile Include="Views\Donate\BookDonationPage.xaml.cs">
+      <DependentUpon>BookDonationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Browse\BrowseAlbumsPage.xaml.cs">
       <DependentUpon>BrowseAlbumsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BrowseBooksPage.xaml.cs">
+    <Compile Include="Views\Browse\BrowseBooksPage.xaml.cs">
       <DependentUpon>BrowseBooksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BrowseMoviesPage.xaml.cs">
+    <Compile Include="Views\Browse\BrowseMoviesPage.xaml.cs">
       <DependentUpon>BrowseMoviesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BrowsePage.xaml.cs">
+    <Compile Include="Views\Browse\BrowsePage.xaml.cs">
       <DependentUpon>BrowsePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DonatePage.xaml.cs">
+    <Compile Include="Views\Donate\DonatePage.xaml.cs">
       <DependentUpon>DonatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieDetailsPage.xaml.cs">
+    <Compile Include="Views\Browse\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PurposePage.xaml.cs">
@@ -103,34 +107,38 @@
     <Compile Include="Views\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReturnsPage.xaml.cs">
+    <Compile Include="Views\Returns\ReturnsPage.xaml.cs">
       <DependentUpon>ReturnsPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AlbumDetailsPage.xaml">
+    <Page Include="Views\Browse\AlbumDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookDetailsPage.xaml">
+    <Page Include="Views\Browse\BookDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BrowseAlbumsPage.xaml">
+    <Page Include="Views\Donate\BookDonationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BrowseBooksPage.xaml">
+    <Page Include="Views\Browse\BrowseAlbumsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BrowseMoviesPage.xaml">
+    <Page Include="Views\Browse\BrowseBooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BrowsePage.xaml">
+    <Page Include="Views\Browse\BrowseMoviesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DonatePage.xaml">
+    <Page Include="Views\Browse\BrowsePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Donate\DonatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,7 +154,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\MovieDetailsPage.xaml">
+    <Page Include="Views\Browse\MovieDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,7 +166,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ReturnsPage.xaml">
+    <Page Include="Views\Returns\ReturnsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Returns\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

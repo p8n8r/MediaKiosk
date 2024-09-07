@@ -14,18 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk.Views
+namespace MediaKiosk.Views.Returns
 {
     /// <summary>
-    /// Interaction logic for BrowseMoviesPage.xaml
+    /// Interaction logic for ReturnsPage.xaml
     /// </summary>
-    public partial class BrowseMoviesPage : Page
+    public partial class ReturnsPage : Page
     {
-        public BrowseMoviesPage(MainWindow mainWindow)
+        public ReturnsPage(MainWindow mainWindow)
         {
             InitializeComponent();
 
-            this.DataContext = new BrowseMoviesPageViewModel(mainWindow);
+            this.DataContext = new ReturnsPageViewModel(mainWindow);
         }
     }
 }

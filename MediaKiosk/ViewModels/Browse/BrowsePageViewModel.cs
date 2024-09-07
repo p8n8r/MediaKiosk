@@ -1,5 +1,6 @@
 ﻿using MediaKiosk.Models;
 using MediaKiosk.Views;
+using MediaKiosk.Views.Browse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace MediaKiosk.ViewModels
+namespace MediaKiosk.ViewModels.Browse
 {
-    enum MediaType
-    {
-        Books, Magazines, Albums, Movies
-    }
-
     internal class BrowsePageViewModel : ViewModelBase
     {
         private const int EMPTY = 0;

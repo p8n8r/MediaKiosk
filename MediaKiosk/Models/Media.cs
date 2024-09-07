@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
+    enum MediaType
+    {
+        Books, Magazines, Albums, Movies
+    }
+
     internal class Media
     {
         public Media() { }

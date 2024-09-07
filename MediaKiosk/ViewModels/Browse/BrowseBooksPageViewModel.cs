@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MediaKiosk.ViewModels
+namespace MediaKiosk.ViewModels.Browse
 {
     internal class BrowseBooksPageViewModel : ViewModelBase
     {

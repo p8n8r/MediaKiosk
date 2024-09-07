@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaKiosk.ViewModels
+namespace MediaKiosk.ViewModels.Browse
 {
     internal class BrowseAlbumsPageViewModel : ViewModelBase
     {
