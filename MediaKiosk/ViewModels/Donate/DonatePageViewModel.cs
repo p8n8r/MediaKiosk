@@ -8,11 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
 {
     internal class DonatePageViewModel : ViewModelBase
     {
+        private readonly string[] THANKS_MESSAGES = 
+        { 
+            "Thanks for your donation!", 
+            "Thank you for your generosity!", 
+            "Thank you for donating!" 
+        };
         private MainWindow mainWindow;
         private DonatePage donatePage;
         private Frame detailsFrame;
@@ -23,6 +30,8 @@ namespace MediaKiosk.ViewModels.Donate
         private BookDonationPageViewModel bookDonationPageViewModel;
         //private AlbumDetailsPageViewModel albumDetailsPageViewModel;
         //private MovieDetailsPageViewModel movieDetailsPageViewModel;
+        private List<Book> books = new List<Book>();
+        private Random random = new Random();
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
         public RelayCommand selectBooksCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Books); });
         public RelayCommand selectAlbumsCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Albums); });
@@ -80,7 +89,31 @@ namespace MediaKiosk.ViewModels.Donate
 
         public void Donate()
         {
-            //TODO
+            //All properties of selected media type should be valid now
+            switch (this.mediaType)
+            {
+                case MediaType.Books:
+                    Book book = new Book()
+                    {
+                        Title = bookDonationPageViewModel.Title,
+                        Author = bookDonationPageViewModel.Author,
+                        Category = bookDonationPageViewModel.Category,
+                        PublicationYear = Convert.ToInt32(bookDonationPageViewModel.PublicationYear),
+                        CoverArt = new BitmapImage(new Uri(bookDonationPageViewModel.CoverArtFilePath)) //TODO: Make relative
+                    };
+                    //has book already?
+                    //  add one to stock
+                    //else
+                    this.books.Add(book);
+                    //Thank user for donation via messagebox
+                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
+                    bookDonationPageViewModel.ClearBookProperties();
+                    break;
+                //case MediaType.Albums:
+                //    ...
+                //case MediaType.Movies:
+                //    ...
+            }
         }
 
         public bool IsMediaAcceptable()

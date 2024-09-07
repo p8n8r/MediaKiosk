@@ -15,9 +15,7 @@ namespace MediaKiosk.ViewModels.Donate
     internal class BookDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
-        //private Book book;
         private string title, author, category, publicationYear, coverArtFilePath;
-        //private BitmapImage coverArt;
 
         public string Title
         {
@@ -39,27 +37,11 @@ namespace MediaKiosk.ViewModels.Donate
             get { return publicationYear; }
             set { publicationYear = value; OnPropertyChanged(); }
         }
-        //public BitmapImage CoverArt
-        //{
-        //    get { return coverArt; }
-        //    set { coverArt = value; OnPropertyChanged(); }
-        //}
         public string CoverArtFilePath
         {
             get { return coverArtFilePath; }
             set { coverArtFilePath = value; OnPropertyChanged(); }
         }
-
-        //public Book Book
-        //{
-        //    get { return this.book; }
-        //    set { this.book = value; OnPropertyChanged(); }
-        //}
-
-        //public BookDonationPageViewModel()
-        //{
-        //    //this.Book = new Book();
-        //}
 
         private void BrowseForImage()
         {
@@ -96,6 +78,15 @@ namespace MediaKiosk.ViewModels.Donate
                 throw new InvalidBookException("Invalid cover art file.");
 
             return true;
+        }
+
+        internal void ClearBookProperties()
+        {
+            this.Title = string.Empty;
+            this.Author = string.Empty;
+            this.Category = string.Empty;
+            this.PublicationYear = string.Empty;
+            this.CoverArtFilePath = string.Empty;
         }
     }
 }
