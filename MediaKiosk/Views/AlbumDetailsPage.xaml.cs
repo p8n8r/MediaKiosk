@@ -21,11 +21,11 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class AlbumDetailsPage : Page
     {
-        public AlbumDetailsPage(MainWindow mainWindow)
+        public AlbumDetailsPage()
         {
             InitializeComponent();
 
-            this.DataContext = new AlbumDetailsPageViewModel(mainWindow);
+            this.DataContext = new AlbumDetailsPageViewModel();
         }
     }
 }

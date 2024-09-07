@@ -34,9 +34,9 @@ namespace MediaKiosk.ViewModels
             this.detailsFrame = donatePage.mediaTableFrame;
 
             //Construct pages and viewmodels
-            this.bookDetailsPage = new BookDetailsPage(this.mainWindow);
-            this.albumDetailsPage = new AlbumDetailsPage(this.mainWindow);
-            this.movieDetailsPage = new MovieDetailsPage(this.mainWindow);
+            this.bookDetailsPage = new BookDetailsPage();
+            this.albumDetailsPage = new AlbumDetailsPage();
+            this.movieDetailsPage = new MovieDetailsPage();
 
             this.bookDetailsPageViewModel = bookDetailsPage.DataContext as BookDetailsPageViewModel;
             this.albumDetailsPageViewModel = albumDetailsPage.DataContext as AlbumDetailsPageViewModel;

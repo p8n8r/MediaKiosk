@@ -10,7 +10,6 @@ namespace MediaKiosk.ViewModels
 {
     internal class AlbumDetailsPageViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
         private Album selectedAlbum;
         public Album SelectedAlbum
         {
@@ -18,9 +17,8 @@ namespace MediaKiosk.ViewModels
             set { this.selectedAlbum = value; OnPropertyChanged(); }
         }
 
-        public AlbumDetailsPageViewModel(MainWindow mainWindow)
+        public AlbumDetailsPageViewModel()
         {
-            this.mainWindow = mainWindow;
             this.SelectedAlbum = new Album();
         }
 

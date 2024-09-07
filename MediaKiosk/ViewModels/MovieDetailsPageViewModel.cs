@@ -10,7 +10,6 @@ namespace MediaKiosk.ViewModels
 {
     internal class MovieDetailsPageViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
         private Movie selectedMovie;
         public Movie SelectedMovie
         {
@@ -18,9 +17,8 @@ namespace MediaKiosk.ViewModels
             set { this.selectedMovie = value; OnPropertyChanged(); }
         }
 
-        public MovieDetailsPageViewModel(MainWindow mainWindow)
+        public MovieDetailsPageViewModel()
         {
-            this.mainWindow = mainWindow;
             this.SelectedMovie = new Movie();
         }
 

@@ -21,11 +21,11 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class BookDetailsPage : Page
     {
-        public BookDetailsPage(MainWindow mainWindow)
+        public BookDetailsPage()
         {
             InitializeComponent();
 
-            this.DataContext = new BookDetailsPageViewModel(mainWindow);
+            this.DataContext = new BookDetailsPageViewModel();
         }
     }
 }
