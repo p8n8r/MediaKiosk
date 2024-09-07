@@ -37,23 +37,21 @@ namespace MediaKiosk.ViewModels.Browse
             this.Movies = new ObservableCollection<Movie>()
             {
                 new Movie() {
-                    Title = "wegerg",
-                    Category = "sdfgsfd",
+                    Title = "National Treasure",
+                    Category = "Mystery",
+                    Rating = Rating.FourStars,
+                    ReleaseYear = 2007,
                     Price = 2.00M,
                     Stock = 1
                 },
                 new Movie() {
-                    Title = "agarg",
-                    Category = "arghare",
+                    Title = "Apollo 13",
+                    Category = "Docu-drama",
+                    Rating = Rating.FiveStars,
+                    ReleaseYear = 1998,
                     Price = 5.00M,
                     Stock = 2
-                },
-                new Movie() {
-                    Title = "ojnsr",
-                    Category = "vseru",
-                    Price = 6.00M,
-                    Stock = 0
-                },
+                }
             };
         }
     }

@@ -38,6 +38,7 @@ namespace MediaKiosk.ViewModels.Browse
             this.mainWindowViewModel = this.mainWindow.DataContext as MainWindowViewModel;
 
             //ReloadBooks(BOOKS_FILE_PATH);
+            FillWithBooks();
         }
 
         private void FillWithBooks()
@@ -45,25 +46,19 @@ namespace MediaKiosk.ViewModels.Browse
             this.books = new ObservableCollection<Book>()
             {
                 new Book() {
-                    Title = "xxxxxxx",
-                    Author = "yyyyy",
-                    Category = "xxxxxx",
-                    Price = 3.00M,
+                    Title = "Holy Bible",
+                    Author = "God",
+                    Category = "Non-fiction",
+                    PublicationYear = 0,
+                    Price = 5.00M,
                     Stock = 1
                 },
                 new Book() {
-                    Title = "qqqq",
-                    Author = "rrrr",
-                    Category = "yyyy",
+                    Title = "Tactics",
+                    Author = "Greg Cocal",
+                    Category = "Self-help",
                     Price = 4.00M,
                     Stock = 2
-                },
-                new Book() {
-                    Title = "ytty",
-                    Author = "arfar",
-                    Category = "afgag",
-                    Price = 1.00M,
-                    Stock = 0
                 }
             };
         }

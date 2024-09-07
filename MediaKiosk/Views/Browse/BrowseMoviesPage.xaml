@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <DataGrid Name="browseMoviesDataGrid" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}"
             CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -27,6 +27,37 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Frame Source="MovieDetailsPage.xaml" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Rating" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Rating, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Category" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Release Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.ReleaseYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+
+            <Label Content="Price" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Price, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Stock" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Stock, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Promo Art" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Image Grid.Row="5" Grid.Column="1" Grid.RowSpan="3"/>
+        </Grid>
     </Grid>
 </Page>

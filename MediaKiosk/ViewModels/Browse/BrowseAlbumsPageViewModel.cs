@@ -37,24 +37,24 @@ namespace MediaKiosk.ViewModels.Browse
             this.Albums = new ObservableCollection<Album>()
             {
                 new Album() {
-                    Title = "gwerger",
-                    Artist = "sdfgsdr",
-                    Genre = "sfdgsdf",
+                    Title = "Four",
+                    Artist = "Huey Lewis and the News",
+                    Genre = "Rock",
                     Price = 5.00M,
                     Stock = 0
                 },
                 new Album() {
-                    Title = "sfgsfdges",
-                    Artist = "hrthrt",
-                    Genre = "aergrg",
+                    Title = "Thriller",
+                    Artist = "Michael Jackson",
+                    Genre = "Pop",
                     Price = 2.00M,
                     Stock = 3
                 },
                 new Album() {
-                    Title = "htgerth",
-                    Artist = "arger",
-                    Genre = "w5gwe",
-                    Price = 11.00M,
+                    Title = "Rio",
+                    Artist = "Duran Duran",
+                    Genre = "Pop",
+                    Price = 4.00M,
                     Stock = 1
                 }
             };
