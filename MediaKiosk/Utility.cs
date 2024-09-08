@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MediaKiosk.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MediaKiosk
 {
@@ -33,6 +35,11 @@ namespace MediaKiosk
                 Multiselect = false,
                 Filter = Utility.ALL_IMAGE_FILTERS
             };
+        }
+
+        public static void ShowErrorMessageBox(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -38,10 +38,11 @@ namespace MediaKiosk.Views
             InitializeComponent();
 
             //Set data context
-            this.DataContext = new MainWindowViewModel(this);
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(this);
+            this.DataContext = mainWindowViewModel;
 
             //Construct pages and viewmodels
-            this.browseBooksPage = new BrowseBooksPage(this);
+            this.browseBooksPage = new BrowseBooksPage(mainWindowViewModel);
             this.browseAlbumsPage = new BrowseAlbumsPage(this);
             this.browseMoviesPage = new BrowseMoviesPage(this);
             this.loginPage = new LogInPage(this);
