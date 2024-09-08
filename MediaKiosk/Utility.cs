@@ -1,10 +1,12 @@
 ﻿using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace MediaKiosk
 {
@@ -35,6 +37,36 @@ namespace MediaKiosk
                 Multiselect = false,
                 Filter = Utility.ALL_IMAGE_FILTERS
             };
+        }
+
+        public static byte[] ConvertBitmapImageToBytes(BitmapImage image)
+        {
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(image));
+            using (MemoryStream stream = new MemoryStream())
+            {
+                try
+                {
+                    encoder.Save(stream);
+                    return stream.ToArray();
+                }
+                catch (InvalidOperationException e) { ShowErrorMessageBox(e.Message); }
+                catch (NotSupportedException e) { ShowErrorMessageBox(e.Message); }
+            }
+            return null;
+        }
+
+        public static BitmapImage ConvertBytesToBitmapImage(byte[] bytes)
+        {
+            using (MemoryStream stream = new MemoryStream(bytes))
+            {
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = stream;
+                bitmapImage.EndInit();
+                return bitmapImage;
+            }
         }
 
         public static void ShowErrorMessageBox(string message)

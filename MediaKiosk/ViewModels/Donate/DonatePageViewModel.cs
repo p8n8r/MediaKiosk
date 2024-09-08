@@ -20,7 +20,10 @@ namespace MediaKiosk.ViewModels.Donate
             "Thank you for your generosity!", 
             "Thank you for donating!" 
         };
-        private MainWindow mainWindow;
+
+        private MainWindowViewModel mainWindowViewModel;
+        //private MainWindow mainWindow;
+        internal MediaLibrary MediaLibrary { get; set; }
         private DonatePage donatePage;
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
@@ -40,8 +43,10 @@ namespace MediaKiosk.ViewModels.Donate
         public DonatePageViewModel(DonatePage donatePage)
         {
             this.donatePage = donatePage;
-            this.mainWindow = Application.Current.MainWindow as MainWindow;
             this.detailsFrame = donatePage.mediaTableFrame;
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            this.mainWindowViewModel = mainWindow.DataContext as MainWindowViewModel;
+            this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
 
             //Construct pages and viewmodels
             this.bookDonationPage = new BookDonationPage();
@@ -93,18 +98,24 @@ namespace MediaKiosk.ViewModels.Donate
             switch (this.mediaType)
             {
                 case MediaType.Books:
+                    BitmapImage artwork = new BitmapImage(new Uri(bookDonationPageViewModel.CoverArtFilePath)); //TODO: Make relative
+
                     Book book = new Book()
                     {
                         Title = bookDonationPageViewModel.Title,
                         Author = bookDonationPageViewModel.Author,
                         Category = bookDonationPageViewModel.Category,
                         PublicationYear = Convert.ToInt32(bookDonationPageViewModel.PublicationYear),
-                        CoverArt = new BitmapImage(new Uri(bookDonationPageViewModel.CoverArtFilePath)) //TODO: Make relative
+                        ArtWork = artwork,
+                        ArtWorkBytes = Utility.ConvertBitmapImageToBytes(artwork)
                     };
+
                     //has book already?
                     //  add one to stock
                     //else
-                    this.books.Add(book);
+                    book.Stock = 1;
+                    this.MediaLibrary.Books.Add(book);
+
                     //Thank user for donation via messagebox
                     MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
                     bookDonationPageViewModel.ClearBookProperties();

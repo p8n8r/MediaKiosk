@@ -10,78 +10,113 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class MainWindowViewModel
+    internal class MainWindowViewModel : ViewModelBase
     {
         private MainWindow mainWindow;
-        private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.lib";
-        internal MediaLibrary MediaLibrary { get; set; }
+        private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
+        internal MediaLibrary MediaLibrary { get; set; } 
         //private const string BOOKS_FILE = @".\Datasets\Books.csv",
         //    ALBUMS_FILE = @".\Datasets\Albums.csv", MOVIES_FILE = @".\Datasets\Movies.csv";
         //private const int BOOK_TITLE_COL = 0, BOOK_AUTHORS_COL = 1, BOOK_DESCRIPTION_COL = 2, 
         //    BOOK_CATEGORY_COL = 3, BOOK_PUBLICATION_DATE_COL = 4, BOOK_PRICE_COL = 5,
         //    BOOK_StTOCK_COL = 5, BOOK_NUM_COLUMNS_CSV = 6;
+        public RelayCommand onCloseCmd => new RelayCommand(execute => OnClose());
 
         public MainWindowViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            //ImportMediaLibrary();
+            ImportMediaLibrary();
         }
 
         private void ExportMediaLibrary()
         {
+            if (this.MediaLibrary == null)
+                this.MediaLibrary = new MediaLibrary(); //Use empty libray
+
             FileStream stream = new FileStream(MEDIA_LIBRARY_FILE, FileMode.Create, FileAccess.Write);
 
             try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                XmlSerializer serializer = new XmlSerializer(typeof(MediaLibrary));
 
                 using (stream)
                 {
-                    formatter.Serialize(stream, this.MediaLibrary);
+                    serializer.Serialize(stream, this.MediaLibrary);
                 }
             }
-            catch (ArgumentNullException e)
-            {
-                Utility.ShowErrorMessageBox(e.Message);
-            }
-            catch (SerializationException e)
-            {
-                Utility.ShowErrorMessageBox(e.Message);
-            }
-            catch (SecurityException e)
-            {
-                Utility.ShowErrorMessageBox(e.Message);
-            }
+            //catch (Exception e)
+            //{
+            //    Utility.ShowErrorMessageBox(e.Message);
+            //    throw; //?
+            //}
+            catch (ArgumentNullException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentOutOfRangeException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (NotSupportedException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (FileNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (UnauthorizedAccessException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (DirectoryNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (PathTooLongException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
         }
 
         private void ImportMediaLibrary()
         {
-            FileStream stream = new FileStream(MEDIA_LIBRARY_FILE, FileMode.Open, FileAccess.Read, FileShare.None);
+            if (!File.Exists(MEDIA_LIBRARY_FILE))
+            {
+                this.MediaLibrary = new MediaLibrary(); //Create empty library
+                return;
+            }
 
             try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(MEDIA_LIBRARY_FILE, FileMode.Open, FileAccess.Read, FileShare.None);
+                XmlSerializer serializer = new XmlSerializer(typeof(MediaLibrary));
 
                 using (stream)
                 {
-                    this.MediaLibrary = (MediaLibrary)formatter.Deserialize(stream);
+                    this.MediaLibrary = (MediaLibrary)serializer.Deserialize(stream);
+
+                    foreach (Book book in this.MediaLibrary.Books)
+                        book.ArtWork = Utility.ConvertBytesToBitmapImage(book.ArtWorkBytes);
+
+                    foreach (Album album in this.MediaLibrary.Albums)
+                        album.ArtWork = Utility.ConvertBytesToBitmapImage(album.ArtWorkBytes);
+
+                    foreach (Movie movie in this.MediaLibrary.Movies)
+                        movie.ArtWork = Utility.ConvertBytesToBitmapImage(movie.ArtWorkBytes);
                 }
             }
-            catch (ArgumentNullException e)
+            //catch (Exception e)
+            //{
+            //    Utility.ShowErrorMessageBox(e.Message);
+            //    throw; //?
+            //}
+            catch (ArgumentNullException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentOutOfRangeException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (NotSupportedException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (FileNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (UnauthorizedAccessException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (DirectoryNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (PathTooLongException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
+            finally
             {
-                Utility.ShowErrorMessageBox(e.Message);
+                if (this.MediaLibrary == null) //No data found?
+                    this.MediaLibrary = new MediaLibrary(); //Create empty library
             }
-            catch (SerializationException e)
-            {
-                Utility.ShowErrorMessageBox(e.Message);
-            }
-            catch (SecurityException e)
-            {
-                Utility.ShowErrorMessageBox(e.Message);
-            }
+        }
+
+        private void OnClose()
+        {
+            ExportMediaLibrary();
         }
 
         //private void ReloadBooks(string filePath)

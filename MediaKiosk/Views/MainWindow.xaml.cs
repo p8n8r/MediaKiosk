@@ -24,6 +24,7 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal MainWindowViewModel mainWindowViewModel;
         internal LogInPage loginPage;
         internal PurposePage purposePage;
         internal BrowsePage browsePage;
@@ -38,7 +39,7 @@ namespace MediaKiosk.Views
             InitializeComponent();
 
             //Set data context
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(this);
+            this.mainWindowViewModel = new MainWindowViewModel(this);
             this.DataContext = mainWindowViewModel;
 
             //Construct pages and viewmodels
@@ -54,6 +55,11 @@ namespace MediaKiosk.Views
             //Set initial navigation pages
             this.mainFrame.Navigate(this.loginPage);
             this.browsePage.mediaTableFrame.Navigate(this.browseBooksPage);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.mainWindowViewModel.onCloseCmd.Execute();
         }
     }
 }

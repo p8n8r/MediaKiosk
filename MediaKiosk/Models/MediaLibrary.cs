@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MediaKiosk.Models
 {
     [Serializable]
-    internal class MediaLibrary
+    public class MediaLibrary
     {
         public List<Book> Books { get; set; }
         public List<Album> Albums { get; set; }
@@ -18,9 +18,9 @@ namespace MediaKiosk.Models
 
         public MediaLibrary()
         {
-            //ReloadBooks(BOOKS_FILE);
-            //ReloadAlbums(ALBUMS_FILE);
-            //ReloadMovies(MOVIES_FILE);
+            this.Books = new List<Book>();
+            this.Albums = new List<Album>();
+            this.Movies = new List<Movie>();
         }
     }
 }

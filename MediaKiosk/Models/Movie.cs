@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    enum Rating { OneStar = 1, TwoStars, ThreeStars, FourStars, FiveStars }
+    public enum Rating { OneStar = 1, TwoStars, ThreeStars, FourStars, FiveStars }
 
-    internal class Movie : Media
+    [Serializable]
+    public class Movie : Media
     {
-        public Movie() { }
+        //public Movie() { }
 
-        public string Title { get; set; }
         public string Category { get; set; }
         public Rating Rating { get; set; }
         public int ReleaseYear { get; set; }

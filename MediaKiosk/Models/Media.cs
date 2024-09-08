@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace MediaKiosk.Models
 {
@@ -13,28 +15,14 @@ namespace MediaKiosk.Models
         Books, Magazines, Albums, Movies
     }
 
-    internal class Media : INotifyPropertyChanged
+    [Serializable]
+    public class Media
     {
-        private int stock;
-        private decimal price;
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public int Stock
-        {
-            get { return stock; }
-            set { stock = value; OnPropertyChanged(); }
-        }
-        public decimal Price 
-        {
-            get { return price; }
-            set { price = value; OnPropertyChanged(); } 
-        }
-
-        //public Media() { }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public string Title { get; set; }
+        public int Stock { get; set; }
+        public decimal Price { get; set; }
+        public byte[] ArtWorkBytes { get; set; }
+        [XmlIgnore]
+        public BitmapImage ArtWork { get; set; }
     }
 }

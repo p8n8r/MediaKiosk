@@ -14,7 +14,8 @@ namespace MediaKiosk.ViewModels.Browse
 {
     internal class BrowseBooksPageViewModel : ViewModelBase
     {
-        MainWindowViewModel mainWindowViewModel;
+        private MainWindowViewModel mainWindowViewModel;
+        public MediaLibrary MediaLibrary { get; set; }
         private Book selectedBook;
         private ObservableCollection<Book> books;
 
@@ -32,9 +33,11 @@ namespace MediaKiosk.ViewModels.Browse
         public BrowseBooksPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
             this.mainWindowViewModel = mainWindowViewModel;
+            this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
 
+            this.Books = new ObservableCollection<Book>(this.MediaLibrary.Books);
             //ReloadBooks(BOOKS_FILE_PATH);
-            FillWithBooks();
+            //FillWithBooks();
         }
 
         private void FillWithBooks()

@@ -25,7 +25,7 @@ namespace MediaKiosk.Views.Browse
         internal BrowseBooksPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
-
+            
             this.DataContext = new BrowseBooksPageViewModel(mainWindowViewModel);
         }
     }

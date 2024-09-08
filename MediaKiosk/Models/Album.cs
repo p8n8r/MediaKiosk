@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    internal class Album : Media
+    [Serializable]
+    public class Album : Media
     {
-        public Album() { }
+        //public Album() { }
 
-        public string Title { get; set; }
         public string Artist { get; set; }
         public string Genre { get; set; }
         public int ReleaseYear { get; set; }
