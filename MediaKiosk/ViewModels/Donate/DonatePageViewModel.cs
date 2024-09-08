@@ -20,6 +20,7 @@ namespace MediaKiosk.ViewModels.Donate
             "Thank you for your generosity!", 
             "Thank you for donating!" 
         };
+        private const decimal MIN_PRICE = 1.0M, MAX_PRICE = 10.0M;
 
         private MainWindowViewModel mainWindowViewModel;
         //private MainWindow mainWindow;
@@ -114,6 +115,7 @@ namespace MediaKiosk.ViewModels.Donate
                     //  add one to stock
                     //else
                     book.Stock = 1;
+                    book.Price = GetRandomPrice();
                     this.MediaLibrary.Books.Add(book);
 
                     //Thank user for donation via messagebox
@@ -147,6 +149,11 @@ namespace MediaKiosk.ViewModels.Donate
                 default:
                     return false;
             }
+        }
+
+        public static string GetRandomPrice()
+        {
+            return Utility.GetRandomDollarValue(MIN_PRICE, MAX_PRICE);
         }
     }
 }

@@ -18,9 +18,18 @@ namespace MediaKiosk.Models
     [Serializable]
     public class Media
     {
+        private decimal price;
         public string Title { get; set; }
         public int Stock { get; set; }
-        public decimal Price { get; set; }
+        public string Price
+        {
+            get { return price.ToString("C"); }
+            set
+            {
+                string priceStr = value.Replace("$", "");
+                decimal.TryParse(priceStr, out price);
+            }
+        }
         public byte[] ArtWorkBytes { get; set; }
         [XmlIgnore]
         public BitmapImage ArtWork { get; set; }

@@ -41,7 +41,7 @@ namespace MediaKiosk.ViewModels.Browse
                     Category = "Mystery",
                     Rating = Rating.FourStars,
                     ReleaseYear = 2007,
-                    Price = 2.00M,
+                    Price = "$2.00",
                     Stock = 1
                 },
                 new Movie() {
@@ -49,7 +49,7 @@ namespace MediaKiosk.ViewModels.Browse
                     Category = "Docu-drama",
                     Rating = Rating.FiveStars,
                     ReleaseYear = 1998,
-                    Price = 5.00M,
+                    Price = "$5.00",
                     Stock = 2
                 }
             };

@@ -49,7 +49,7 @@ namespace MediaKiosk.ViewModels.Browse
                     Author = "God",
                     Category = "Non-fiction",
                     PublicationYear = 0,
-                    Price = 5.00M,
+                    Price = "$5.00",
                     Stock = 1
                 },
                 new Book() {
@@ -57,7 +57,7 @@ namespace MediaKiosk.ViewModels.Browse
                     Author = "Greg Cocal",
                     Category = "Self-help",
                     PublicationYear = 2000,
-                    Price = 4.00M,
+                    Price = "$4.00",
                     Stock = 2
                 }
             };

@@ -25,6 +25,7 @@ namespace MediaKiosk
         
         //Combine all filters into one filter string
         public static readonly string ALL_IMAGE_FILTERS = string.Join("|", IMAGE_FILTERS);
+        private static Random random = new Random();
 
         public static Microsoft.Win32.OpenFileDialog CreateImageFileDialog()
         {
@@ -72,6 +73,14 @@ namespace MediaKiosk
         public static void ShowErrorMessageBox(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        internal static string GetRandomDollarValue(decimal min, decimal max)
+        {
+            const decimal factor = 100M;
+            int minInt = Convert.ToInt32(min * factor);
+            int maxInt = Convert.ToInt32(max * factor);
+            return (random.Next(minInt, maxInt) / factor).ToString("C");
         }
     }
 }

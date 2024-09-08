@@ -40,21 +40,21 @@ namespace MediaKiosk.ViewModels.Browse
                     Title = "Four",
                     Artist = "Huey Lewis and the News",
                     Genre = "Rock",
-                    Price = 5.00M,
+                    Price = "$5.00",
                     Stock = 0
                 },
                 new Album() {
                     Title = "Thriller",
                     Artist = "Michael Jackson",
                     Genre = "Pop",
-                    Price = 2.00M,
+                    Price = "$2.00",
                     Stock = 3
                 },
                 new Album() {
                     Title = "Rio",
                     Artist = "Duran Duran",
                     Genre = "Pop",
-                    Price = 4.00M,
+                    Price = "$4.00",
                     Stock = 1
                 }
             };
