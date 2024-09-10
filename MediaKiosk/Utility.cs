@@ -82,5 +82,10 @@ namespace MediaKiosk
             int maxInt = Convert.ToInt32(max * factor);
             return (random.Next(minInt, maxInt) / factor).ToString("C");
         }
+
+        public static T Single<T>(this IEnumerable<T> enumerable, IEqualityComparer<T> comparer, T value)
+        {
+            return enumerable.Single(v => comparer.Equals(v, value));
+        }
     }
 }

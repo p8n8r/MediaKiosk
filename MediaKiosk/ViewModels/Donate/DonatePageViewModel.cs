@@ -10,8 +10,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static MediaKiosk.Models.Album;
-using static MediaKiosk.Models.Movie;
 
 namespace MediaKiosk.ViewModels.Donate
 {
@@ -39,7 +37,9 @@ namespace MediaKiosk.ViewModels.Donate
         private BookDonationPageViewModel bookDonationPageViewModel;
         private AlbumDonationPageViewModel albumDonationPageViewModel;
         private MovieDonationPageViewModel movieDonationPageViewModel;
-        private List<Book> books = new List<Book>();
+        private BookComparer bookComparer = new BookComparer();
+        private AlbumComparer albumComparer = new AlbumComparer();
+        private MovieComparer movieComparer = new MovieComparer();
         private Random random = new Random();
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
         public RelayCommand selectBooksCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Books); });
@@ -117,15 +117,18 @@ namespace MediaKiosk.ViewModels.Donate
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(coverArt)
                     };
 
-                    //has book already?
-                    //  add one to stock
-                    //else
-                    book.Stock = 1;
-                    book.Price = GetRandomPrice();
-                    this.MediaLibrary.Books.Add(book);
+                    if (this.MediaLibrary.Books.Contains(book, bookComparer))
+                    {
+                        Book bookSame = this.MediaLibrary.Books.Single(bookComparer, book);
+                        bookSame.Stock++;
+                    }
+                    else
+                    {
+                        book.Stock = 1;
+                        book.Price = GetRandomPrice();
+                        this.MediaLibrary.Books.Add(book);
+                    }
 
-                    //Thank user for donation via messagebox
-                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
                     bookDonationPageViewModel.ClearBookProperties();
                     break;
 
@@ -143,15 +146,18 @@ namespace MediaKiosk.ViewModels.Donate
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(albumArtwork)
                     };
 
-                    //has album already?
-                    //  add one to stock
-                    //else
-                    album.Stock = 1;
-                    album.Price = GetRandomPrice();
-                    this.MediaLibrary.Albums.Add(album);
+                    if (this.MediaLibrary.Albums.Contains(album, albumComparer))
+                    {
+                        Album albumSame = this.MediaLibrary.Albums.Single(albumComparer, album);
+                        albumSame.Stock++;
+                    }
+                    else
+                    {
+                        album.Stock = 1;
+                        album.Price = GetRandomPrice();
+                        this.MediaLibrary.Albums.Add(album);
+                    }
 
-                    //Thank user for donation via messagebox
-                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
                     albumDonationPageViewModel.ClearAlbumProperties();
                     break;
 
@@ -169,18 +175,24 @@ namespace MediaKiosk.ViewModels.Donate
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(promoArtwork)
                     };
 
-                    //has movie already?
-                    //  add one to stock
-                    //else
-                    movie.Stock = 1;
-                    movie.Price = GetRandomPrice();
-                    this.MediaLibrary.Movies.Add(movie);
+                    if (this.MediaLibrary.Movies.Contains(movie, movieComparer))
+                    {
+                        Movie movieSame = this.MediaLibrary.Movies.Single(movieComparer, movie);
+                        movieSame.Stock++;
+                    }
+                    else
+                    {
+                        movie.Stock = 1;
+                        movie.Price = GetRandomPrice();
+                        this.MediaLibrary.Movies.Add(movie);
+                    }
 
-                    //Thank user for donation via messagebox
-                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
                     movieDonationPageViewModel.ClearMovieProperties();
                     break;
             }
+
+            //Thank user for donation via messagebox
+            MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
         }
 
         public bool IsMediaAcceptable()

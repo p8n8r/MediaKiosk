@@ -50,7 +50,7 @@ namespace MediaKiosk.Views
             this.purposePage = new PurposePage(this);
             this.browsePage = new BrowsePage(this); //Depends on subpages
             this.returnsPage = new ReturnsPage(this);
-            this.donatePage = new DonatePage();
+            this.donatePage = new DonatePage(); //TODO: give mainwindowviewmodel
 
             //Set initial navigation pages
             this.mainFrame.Navigate(this.loginPage);

@@ -15,10 +15,27 @@ namespace MediaKiosk.Models
         public string Author { get; set; }
         public string Category { get; set; }
         public int PublicationYear { get; set; }
+
         //public BitmapImage CoverArt { get; set; }
         //public string Publisher { get; set; }
         //public string Description { get; set; }
 
         //public Book() { }
+    }
+
+    public class BookComparer : IEqualityComparer<Book>
+    {
+        public bool Equals(Book x, Book y)
+        {
+            return x.Title == y.Title && x.Author == y.Author
+                && x.Category == y.Category && x.PublicationYear == y.PublicationYear;
+        }
+
+        public int GetHashCode(Book book)
+        {
+            //Create tuple and let compiler handle the hash
+            return new Tuple<string, string, string, int>
+                (book.Title, book.Author, book.Category, book.PublicationYear).GetHashCode();
+        }
     }
 }

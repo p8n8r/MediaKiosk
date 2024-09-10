@@ -21,4 +21,20 @@ namespace MediaKiosk.Models
 
         //public Movie() { }
     }
+
+    public class MovieComparer : IEqualityComparer<Movie>
+    {
+        public bool Equals(Movie x, Movie y)
+        {
+            return x.Title == y.Title && x.Rating == y.Rating
+                && x.Category == y.Category && x.ReleaseYear == y.ReleaseYear;
+        }
+
+        public int GetHashCode(Movie movie)
+        {
+            //Create tuple and let compiler handle the hash
+            return new Tuple<string, string, string, int>
+                (movie.Title, movie.Rating, movie.Category, movie.ReleaseYear).GetHashCode();
+        }
+    }
 }
