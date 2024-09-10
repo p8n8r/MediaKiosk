@@ -11,7 +11,6 @@ namespace MediaKiosk.ViewModels.Browse
 {
     internal class BrowseMoviesPageViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
         private Movie selectedMovie;
         private ObservableCollection<Movie> movies;
 
@@ -26,33 +25,33 @@ namespace MediaKiosk.ViewModels.Browse
             set { this.movies = value; OnPropertyChanged(); }
         }
 
-        public BrowseMoviesPageViewModel(MainWindow mainWindow)
+        public BrowseMoviesPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.mainWindow = mainWindow;
-            FillWithMovies();
+            //this.mainWindowViewModel = mainWindowViewModel;
+            this.Movies = new ObservableCollection<Movie>(mainWindowViewModel.MediaLibrary.Movies);
         }
 
-        private void FillWithMovies()
-        {
-            this.Movies = new ObservableCollection<Movie>()
-            {
-                new Movie() {
-                    Title = "National Treasure",
-                    Category = "Mystery",
-                    Rating = Rating.FourStars,
-                    ReleaseYear = 2007,
-                    Price = "$2.00",
-                    Stock = 1
-                },
-                new Movie() {
-                    Title = "Apollo 13",
-                    Category = "Docu-drama",
-                    Rating = Rating.FiveStars,
-                    ReleaseYear = 1998,
-                    Price = "$5.00",
-                    Stock = 2
-                }
-            };
-        }
+        //private void FillWithMovies()
+        //{
+        //    this.Movies = new ObservableCollection<Movie>()
+        //    {
+        //        new Movie() {
+        //            Title = "National Treasure",
+        //            Category = "Mystery",
+        //            Rating = Rating.FourStars,
+        //            ReleaseYear = 2007,
+        //            Price = "$2.00",
+        //            Stock = 1
+        //        },
+        //        new Movie() {
+        //            Title = "Apollo 13",
+        //            Category = "Docu-drama",
+        //            Rating = Rating.FiveStars,
+        //            ReleaseYear = 1998,
+        //            Price = "$5.00",
+        //            Stock = 2
+        //        }
+        //    };
+        //}
     }
 }

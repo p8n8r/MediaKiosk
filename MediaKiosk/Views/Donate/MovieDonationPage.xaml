@@ -1,4 +1,4 @@
-﻿<Page x:Class="MediaKiosk.Views.Donate.BookDonationPage"
+﻿<Page x:Class="MediaKiosk.Views.Donate.MovieDonationPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MediaKiosk.Views.Donate"
       mc:Ignorable="d" 
       d:DesignHeight="321" d:DesignWidth="400"
-      Title="BookDonationPage" Background="White">
+      Title="MovieDonationPage" Background="White">
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
@@ -26,20 +26,26 @@
         </Grid.RowDefinitions>
 
         <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding TitleBorderColor}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
-        <Label Content="Author" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
-        <Label Content="Category" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <Label Content="Rating (1-5)" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <ComboBox Text="{Binding Rating, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center">
+            <ComboBoxItem Content="☆"/>
+            <ComboBoxItem Content="☆☆"/>
+            <ComboBoxItem Content="☆☆☆"/>
+            <ComboBoxItem Content="☆☆☆☆"/>
+            <ComboBoxItem Content="☆☆☆☆☆"/>
+        </ComboBox>
+        <Label Content="Genre" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
-        <Label Content="Publication Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding PublicationYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
-        <Label Content="Cover Art" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Label Content="Release Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <Label Content="Promo Art" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Grid Grid.Row="9" Grid.Column="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding CoverArtFilePath, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding PromoArtFilePath, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
             <Button Command="{Binding browseCmd}" Content="Browse..." Grid.Column="1" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>

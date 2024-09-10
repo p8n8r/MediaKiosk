@@ -34,4 +34,13 @@ namespace MediaKiosk.Models
         [XmlIgnore]
         public BitmapImage ArtWork { get; set; }
     }
+
+    public class InvalidMediaException : Exception
+    {
+        public string Property { get; set; }
+        public InvalidMediaException(string message, string property=null) : base(message)
+        { 
+            this.Property = property;
+        }
+    }
 }

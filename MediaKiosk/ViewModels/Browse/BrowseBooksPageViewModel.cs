@@ -14,8 +14,6 @@ namespace MediaKiosk.ViewModels.Browse
 {
     internal class BrowseBooksPageViewModel : ViewModelBase
     {
-        private MainWindowViewModel mainWindowViewModel;
-        public MediaLibrary MediaLibrary { get; set; }
         private Book selectedBook;
         private ObservableCollection<Book> books;
 
@@ -32,35 +30,30 @@ namespace MediaKiosk.ViewModels.Browse
 
         public BrowseBooksPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.mainWindowViewModel = mainWindowViewModel;
-            this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
-
-            this.Books = new ObservableCollection<Book>(this.MediaLibrary.Books);
-            //ReloadBooks(BOOKS_FILE_PATH);
-            //FillWithBooks();
+            this.Books = new ObservableCollection<Book>(mainWindowViewModel.MediaLibrary.Books);
         }
 
-        private void FillWithBooks()
-        {
-            this.books = new ObservableCollection<Book>()
-            {
-                new Book() {
-                    Title = "Holy Bible",
-                    Author = "God",
-                    Category = "Non-fiction",
-                    PublicationYear = 0,
-                    Price = "$5.00",
-                    Stock = 1
-                },
-                new Book() {
-                    Title = "Tactics",
-                    Author = "Greg Cocal",
-                    Category = "Self-help",
-                    PublicationYear = 2000,
-                    Price = "$4.00",
-                    Stock = 2
-                }
-            };
-        }
+        //private void FillWithBooks()
+        //{
+        //    this.books = new ObservableCollection<Book>()
+        //    {
+        //        new Book() {
+        //            Title = "Holy Bible",
+        //            Author = "God",
+        //            Category = "Non-fiction",
+        //            PublicationYear = 0,
+        //            Price = "$5.00",
+        //            Stock = 1
+        //        },
+        //        new Book() {
+        //            Title = "Tactics",
+        //            Author = "Greg Cocal",
+        //            Category = "Self-help",
+        //            PublicationYear = 2000,
+        //            Price = "$4.00",
+        //            Stock = 2
+        //        }
+        //    };
+        //}
     }
 }

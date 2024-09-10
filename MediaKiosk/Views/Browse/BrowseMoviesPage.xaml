@@ -57,7 +57,7 @@
             <Label Content="Stock" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <TextBox Text="{Binding SelectedMovie.Stock, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
             <Label Content="Promo Art" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <Image Grid.Row="5" Grid.Column="1" Grid.RowSpan="3"/>
+            <Image Source="{Binding SelectedMovie.ArtWork}" Grid.Row="5" Grid.Column="1" Grid.RowSpan="3"/>
         </Grid>
     </Grid>
 </Page>

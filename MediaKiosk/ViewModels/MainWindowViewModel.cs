@@ -107,6 +107,7 @@ namespace MediaKiosk.ViewModels
             catch (PathTooLongException e) { Utility.ShowErrorMessageBox(e.Message); }
             catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
             catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (InvalidOperationException e) { Utility.ShowErrorMessageBox(e.Message); }
             finally
             {
                 if (this.MediaLibrary == null) //No data found?

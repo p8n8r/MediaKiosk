@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static MediaKiosk.Models.Album;
+using static MediaKiosk.Models.Movie;
 
 namespace MediaKiosk.ViewModels.Donate
 {
@@ -21,6 +24,8 @@ namespace MediaKiosk.ViewModels.Donate
             "Thank you for donating!" 
         };
         private const decimal MIN_PRICE = 1.0M, MAX_PRICE = 10.0M;
+        private static readonly Color DEFAULT_BORDER_COLOR = Color.FromRgb(171, 173, 179);
+        private static readonly Brush DEFAULT_BORDER_BRUSH = new SolidColorBrush(DEFAULT_BORDER_COLOR);
 
         private MainWindowViewModel mainWindowViewModel;
         //private MainWindow mainWindow;
@@ -29,11 +34,11 @@ namespace MediaKiosk.ViewModels.Donate
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
         private BookDonationPage bookDonationPage;
-        //private AlbumDetailsPage albumDetailsPage;
-        //private MovieDetailsPage movieDetailsPage;
+        private AlbumDonationPage albumDonationPage;
+        private MovieDonationPage movieDonationPage;
         private BookDonationPageViewModel bookDonationPageViewModel;
-        //private AlbumDetailsPageViewModel albumDetailsPageViewModel;
-        //private MovieDetailsPageViewModel movieDetailsPageViewModel;
+        private AlbumDonationPageViewModel albumDonationPageViewModel;
+        private MovieDonationPageViewModel movieDonationPageViewModel;
         private List<Book> books = new List<Book>();
         private Random random = new Random();
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
@@ -51,12 +56,12 @@ namespace MediaKiosk.ViewModels.Donate
 
             //Construct pages and viewmodels
             this.bookDonationPage = new BookDonationPage();
-            //this.albumDetailsPage = new AlbumDetailsPage();
-            //this.movieDetailsPage = new MovieDetailsPage();
+            this.albumDonationPage = new AlbumDonationPage();
+            this.movieDonationPage = new MovieDonationPage();
 
             this.bookDonationPageViewModel = bookDonationPage.DataContext as BookDonationPageViewModel;
-            //this.albumDetailsPageViewModel = albumDetailsPage.DataContext as AlbumDetailsPageViewModel;
-            //this.movieDetailsPageViewModel = movieDetailsPage.DataContext as MovieDetailsPageViewModel;
+            this.albumDonationPageViewModel = albumDonationPage.DataContext as AlbumDonationPageViewModel;
+            this.movieDonationPageViewModel = movieDonationPage.DataContext as MovieDonationPageViewModel;
 
             //Set initial navigation page
             this.detailsFrame.Navigate(this.bookDonationPage);
@@ -74,12 +79,12 @@ namespace MediaKiosk.ViewModels.Donate
                 case MediaType.Books:
                     this.detailsFrame.Navigate(this.bookDonationPage);
                     break;
-                //case MediaType.Albums:
-                //    this.detailsFrame.Navigate(this.albumDetailsPage);
-                //    break;
-                //case MediaType.Movies:
-                //    this.detailsFrame.Navigate(this.movieDetailsPage);
-                //    break;
+                case MediaType.Albums:
+                    this.detailsFrame.Navigate(this.albumDonationPage);
+                    break;
+                case MediaType.Movies:
+                    this.detailsFrame.Navigate(this.movieDonationPage);
+                    break;
             }
         }
 
@@ -99,7 +104,8 @@ namespace MediaKiosk.ViewModels.Donate
             switch (this.mediaType)
             {
                 case MediaType.Books:
-                    BitmapImage artwork = new BitmapImage(new Uri(bookDonationPageViewModel.CoverArtFilePath)); //TODO: Make relative
+                    BitmapImage coverArt = new BitmapImage(
+                        new Uri(this.bookDonationPageViewModel.CoverArtFilePath)); //TODO: Make relative
 
                     Book book = new Book()
                     {
@@ -107,8 +113,8 @@ namespace MediaKiosk.ViewModels.Donate
                         Author = bookDonationPageViewModel.Author,
                         Category = bookDonationPageViewModel.Category,
                         PublicationYear = Convert.ToInt32(bookDonationPageViewModel.PublicationYear),
-                        ArtWork = artwork,
-                        ArtWorkBytes = Utility.ConvertBitmapImageToBytes(artwork)
+                        ArtWork = coverArt,
+                        ArtWorkBytes = Utility.ConvertBitmapImageToBytes(coverArt)
                     };
 
                     //has book already?
@@ -122,33 +128,91 @@ namespace MediaKiosk.ViewModels.Donate
                     MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
                     bookDonationPageViewModel.ClearBookProperties();
                     break;
-                //case MediaType.Albums:
-                //    ...
-                //case MediaType.Movies:
-                //    ...
+
+                case MediaType.Albums:
+                    BitmapImage albumArtwork = new BitmapImage(
+                        new Uri(this.albumDonationPageViewModel.AlbumArtFilePath)); //TODO: Make relative
+
+                    Album album = new Album()
+                    {
+                        Title = albumDonationPageViewModel.Title,
+                        Artist = albumDonationPageViewModel.Artist,
+                        Genre = albumDonationPageViewModel.Genre,
+                        ReleaseYear = Convert.ToInt32(albumDonationPageViewModel.ReleaseYear),
+                        ArtWork = albumArtwork,
+                        ArtWorkBytes = Utility.ConvertBitmapImageToBytes(albumArtwork)
+                    };
+
+                    //has album already?
+                    //  add one to stock
+                    //else
+                    album.Stock = 1;
+                    album.Price = GetRandomPrice();
+                    this.MediaLibrary.Albums.Add(album);
+
+                    //Thank user for donation via messagebox
+                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
+                    albumDonationPageViewModel.ClearAlbumProperties();
+                    break;
+
+                case MediaType.Movies:
+                    BitmapImage promoArtwork = new BitmapImage(
+                        new Uri(this.movieDonationPageViewModel.PromoArtFilePath)); //TODO: Make relative
+
+                    Movie movie = new Movie()
+                    {
+                        Title = movieDonationPageViewModel.Title,
+                        Rating = movieDonationPageViewModel.Rating,
+                        Category = movieDonationPageViewModel.Category,
+                        ReleaseYear = Convert.ToInt32(movieDonationPageViewModel.ReleaseYear),
+                        ArtWork = promoArtwork,
+                        ArtWorkBytes = Utility.ConvertBitmapImageToBytes(promoArtwork)
+                    };
+
+                    //has movie already?
+                    //  add one to stock
+                    //else
+                    movie.Stock = 1;
+                    movie.Price = GetRandomPrice();
+                    this.MediaLibrary.Movies.Add(movie);
+
+                    //Thank user for donation via messagebox
+                    MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
+                    movieDonationPageViewModel.ClearMovieProperties();
+                    break;
             }
         }
 
         public bool IsMediaAcceptable()
         {
-            switch (this.mediaType)
+            //Set borders back to default colors
+            this.bookDonationPageViewModel.TitleBorderColor = DEFAULT_BORDER_BRUSH;
+
+            try
             {
-                case MediaType.Books:
-                    try
-                    {
-                        return bookDonationPageViewModel.HasValidBookProperties();
-                    }
-                    catch (InvalidBookException e)
-                    {
+                switch (this.mediaType)
+                {
+                    case MediaType.Books:
+                        return this.bookDonationPageViewModel.HasValidBookProperties();
+                    case MediaType.Albums:
+                        return this.albumDonationPageViewModel.HasValidAlbumProperties();
+                    case MediaType.Movies:
+                        return this.movieDonationPageViewModel.HasValidMovieProperties(); 
+                    default:
                         return false;
-                    }
-                //case MediaType.Albums:
-                //    return albumDonationPageViewModel.HasValidBookProperties();
-                //case MediaType.Movies:
-                //    return movieDonationPageViewModel.HasValidBookProperties();
-                default:
-                    return false;
+                }
             }
+            catch (InvalidMediaException e)
+            {
+                switch (e.Property)
+                {
+                    case nameof(Book.Title):
+                        this.bookDonationPageViewModel.TitleBorderColor = Brushes.Red;
+                        break;
+                }
+
+                return false;
+            } //TODO: Reveal bad details
         }
 
         public static string GetRandomPrice()

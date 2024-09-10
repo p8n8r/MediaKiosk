@@ -1,5 +1,4 @@
-﻿using MediaKiosk.ViewModels;
-using MediaKiosk.ViewModels.Browse;
+﻿using MediaKiosk.ViewModels.Donate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MediaKiosk.Views.Browse
+namespace MediaKiosk.Views.Donate
 {
     /// <summary>
-    /// Interaction logic for BrowseMoviesPage.xaml
+    /// Interaction logic for MovieDonationPage.xaml
     /// </summary>
-    public partial class BrowseMoviesPage : Page
+    public partial class MovieDonationPage : Page
     {
-        internal BrowseMoviesPage(MainWindowViewModel mainWindowViewModel)
+        public MovieDonationPage()
         {
             InitializeComponent();
 
-            this.DataContext = new BrowseMoviesPageViewModel(mainWindowViewModel);
+            this.DataContext = new MovieDonationPageViewModel();
         }
     }
 }

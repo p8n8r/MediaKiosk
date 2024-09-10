@@ -21,9 +21,4 @@ namespace MediaKiosk.Models
 
         //public Book() { }
     }
-
-    public class InvalidBookException : Exception
-    {
-        public InvalidBookException(string message) : base(message) { }
-    }
 }

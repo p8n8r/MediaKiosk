@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
@@ -16,6 +17,7 @@ namespace MediaKiosk.ViewModels.Donate
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
         private string title, author, category, publicationYear, coverArtFilePath;
+        private Brush titleColor;
 
         public string Title
         {
@@ -42,6 +44,11 @@ namespace MediaKiosk.ViewModels.Donate
             get { return coverArtFilePath; }
             set { coverArtFilePath = value; OnPropertyChanged(); }
         }
+        public Brush TitleBorderColor
+        {
+            get { return this.titleColor; }
+            set { this.titleColor = value; OnPropertyChanged(); }
+        }
 
         private void BrowseForImage()
         {
@@ -53,29 +60,28 @@ namespace MediaKiosk.ViewModels.Donate
 
             if (result == true)
             {
-                //Save image
+                //Save image file path
                 this.CoverArtFilePath = dlg.FileName;
-                //this.CoverArt = new BitmapImage(new Uri(dlg.FileName));
             }
         }
 
         internal bool HasValidBookProperties()
         {
             if (string.IsNullOrWhiteSpace(this.Title))
-                throw new InvalidBookException("Invalid title.");
+                throw new InvalidMediaException("Invalid title.", nameof(Book.Title));
 
             if (string.IsNullOrWhiteSpace(this.Author))
-                throw new InvalidBookException("Invalid author.");
+                throw new InvalidMediaException("Invalid author.");
 
             if (string.IsNullOrWhiteSpace(this.Category))
-                throw new InvalidBookException("Invalid category.");
+                throw new InvalidMediaException("Invalid category.");
 
             if (!int.TryParse(this.PublicationYear, out int pubYear)
-                || (pubYear < 0 || pubYear > 2024))
-                throw new InvalidBookException("Invalid publication year.");
+                || (pubYear < 0 || pubYear > DateTime.Now.Year))
+                throw new InvalidMediaException("Invalid publication year.");
 
             if (string.IsNullOrWhiteSpace(this.CoverArtFilePath) || !File.Exists(this.CoverArtFilePath))
-                throw new InvalidBookException("Invalid cover art file.");
+                throw new InvalidMediaException("Invalid cover art file.");
 
             return true;
         }

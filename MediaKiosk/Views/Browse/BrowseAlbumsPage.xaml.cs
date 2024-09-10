@@ -22,11 +22,11 @@ namespace MediaKiosk.Views.Browse
     /// </summary>
     public partial class BrowseAlbumsPage : Page
     {
-        public BrowseAlbumsPage(MainWindow mainWindow)
+        internal BrowseAlbumsPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 
-            this.DataContext = new BrowseAlbumsPageViewModel(mainWindow);
+            this.DataContext = new BrowseAlbumsPageViewModel(mainWindowViewModel);
         }
     }
 }

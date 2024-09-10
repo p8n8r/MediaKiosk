@@ -62,6 +62,8 @@
     <Compile Include="Models\MediaLibrary.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="ViewModels\Donate\AlbumDonationPageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\MovieDonationPageViewModel.cs" />
     <Compile Include="ViewModels\Donate\BookDonationPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowseAlbumsPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModel.cs" />
@@ -74,6 +76,9 @@
     <Compile Include="ViewModels\LogInPageViewModel.cs" />
     <Compile Include="ViewModels\PurposePageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\Donate\AlbumDonationPage.xaml.cs">
+      <DependentUpon>AlbumDonationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Donate\BookDonationPage.xaml.cs">
       <DependentUpon>BookDonationPage.xaml</DependentUpon>
     </Compile>
@@ -92,6 +97,9 @@
     <Compile Include="Views\Donate\DonatePage.xaml.cs">
       <DependentUpon>DonatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Donate\MovieDonationPage.xaml.cs">
+      <DependentUpon>MovieDonationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurposePage.xaml.cs">
       <DependentUpon>PurposePage.xaml</DependentUpon>
     </Compile>
@@ -101,6 +109,10 @@
     <Compile Include="Views\Returns\ReturnsPage.xaml.cs">
       <DependentUpon>ReturnsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Donate\AlbumDonationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Donate\BookDonationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Donate\DonatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Donate\MovieDonationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

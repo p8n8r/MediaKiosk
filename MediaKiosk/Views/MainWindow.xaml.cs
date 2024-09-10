@@ -44,8 +44,8 @@ namespace MediaKiosk.Views
 
             //Construct pages and viewmodels
             this.browseBooksPage = new BrowseBooksPage(mainWindowViewModel);
-            this.browseAlbumsPage = new BrowseAlbumsPage(this);
-            this.browseMoviesPage = new BrowseMoviesPage(this);
+            this.browseAlbumsPage = new BrowseAlbumsPage(mainWindowViewModel);
+            this.browseMoviesPage = new BrowseMoviesPage(mainWindowViewModel);
             this.loginPage = new LogInPage(this);
             this.purposePage = new PurposePage(this);
             this.browsePage = new BrowsePage(this); //Depends on subpages
