@@ -65,12 +65,6 @@ namespace MediaKiosk.ViewModels.Donate
 
             if (string.IsNullOrWhiteSpace(this.Rating))
                 throw new InvalidMediaException("Invalid rating.");
-            else
-            {
-                int starCnt = this.Rating.Count(c => c == Movie.STAR);
-                if ((Rating)starCnt < Models.Rating.OneStar || (Rating)starCnt > Models.Rating.FiveStars)
-                    throw new InvalidMediaException("Invalid rating.");
-            }
 
             if (string.IsNullOrWhiteSpace(this.Category))
                 throw new InvalidMediaException("Invalid category.");
