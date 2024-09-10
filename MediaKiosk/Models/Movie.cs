@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    public enum Rating { OneStar = 1, TwoStars, ThreeStars, FourStars, FiveStars }
-
     [Serializable]
     public class Movie : Media
     {
@@ -26,15 +24,14 @@ namespace MediaKiosk.Models
     {
         public bool Equals(Movie x, Movie y)
         {
-            return x.Title == y.Title && x.Rating == y.Rating
-                && x.Category == y.Category && x.ReleaseYear == y.ReleaseYear;
+            return x.Title == y.Title && x.Category == y.Category && x.ReleaseYear == y.ReleaseYear;
         }
 
         public int GetHashCode(Movie movie)
         {
             //Create tuple and let compiler handle the hash
-            return new Tuple<string, string, string, int>
-                (movie.Title, movie.Rating, movie.Category, movie.ReleaseYear).GetHashCode();
+            return new Tuple<string, string, int>
+                (movie.Title, movie.Category, movie.ReleaseYear).GetHashCode();
         }
     }
 }

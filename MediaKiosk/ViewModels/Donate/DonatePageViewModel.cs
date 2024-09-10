@@ -105,7 +105,7 @@ namespace MediaKiosk.ViewModels.Donate
             {
                 case MediaType.Books:
                     BitmapImage coverArt = new BitmapImage(
-                        new Uri(this.bookDonationPageViewModel.CoverArtFilePath)); //TODO: Make relative
+                        new Uri(this.bookDonationPageViewModel.CoverArtFilePath)); 
 
                     Book book = new Book()
                     {
@@ -134,7 +134,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                 case MediaType.Albums:
                     BitmapImage albumArtwork = new BitmapImage(
-                        new Uri(this.albumDonationPageViewModel.AlbumArtFilePath)); //TODO: Make relative
+                        new Uri(this.albumDonationPageViewModel.AlbumArtFilePath)); 
 
                     Album album = new Album()
                     {
@@ -163,7 +163,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                 case MediaType.Movies:
                     BitmapImage promoArtwork = new BitmapImage(
-                        new Uri(this.movieDonationPageViewModel.PromoArtFilePath)); //TODO: Make relative
+                        new Uri(this.movieDonationPageViewModel.PromoArtFilePath)); 
 
                     Movie movie = new Movie()
                     {
