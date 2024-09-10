@@ -11,20 +11,20 @@ namespace MediaKiosk.ViewModels
 {
     internal class LogInPageViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
+        private MainWindowViewModel mainWindowViewModel;
         public RelayCommand loginCmd => new RelayCommand(execute => LogIn(), canExecute => CanLogIn());
         public RelayCommand registerCmd => new RelayCommand(execute => Register(), canExecute => CanRegister());
 
-        public LogInPageViewModel(MainWindow mainWindow)
+        public LogInPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.mainWindow = mainWindow;
+            this.mainWindowViewModel = mainWindowViewModel;
         }
 
         private void LogIn()
         {
             //TODO
-
-            this.mainWindow.mainFrame.Navigate(this.mainWindow.purposePage);
+            mainWindowViewModel.HasLoggedIn = true;
+            this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
         }
 
         private bool CanLogIn()
@@ -36,8 +36,7 @@ namespace MediaKiosk.ViewModels
         private void Register()
         {
             //TODO
-
-            this.mainWindow.mainFrame.Navigate(this.mainWindow.purposePage);
+            mainWindowViewModel.HasLoggedIn = true;
         }
 
         private bool CanRegister()

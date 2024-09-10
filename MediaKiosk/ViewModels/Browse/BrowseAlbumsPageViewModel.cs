@@ -14,6 +14,8 @@ namespace MediaKiosk.ViewModels.Browse
     {
         private Album selectedAlbum;
         private ObservableCollection<Album> albums;
+        private MainWindowViewModel mainWindowViewModel;
+        public RelayCommand reloadCmd => new RelayCommand(execute => ReloadAlbums());
 
         public Album SelectedAlbum
         {
@@ -27,6 +29,11 @@ namespace MediaKiosk.ViewModels.Browse
         }
 
         public BrowseAlbumsPageViewModel(MainWindowViewModel mainWindowViewModel)
+        {
+            this.mainWindowViewModel = mainWindowViewModel;
+        }
+
+        private void ReloadAlbums()
         {
             this.Albums = new ObservableCollection<Album>(mainWindowViewModel.MediaLibrary.Albums);
         }

@@ -28,5 +28,10 @@ namespace MediaKiosk.Views.Browse
 
             this.DataContext = new BrowseAlbumsPageViewModel(mainWindowViewModel);
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as BrowseAlbumsPageViewModel).reloadCmd.Execute();
+        }
     }
 }

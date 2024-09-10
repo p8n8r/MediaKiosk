@@ -21,11 +21,11 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class LogInPage : Page
     {
-        public LogInPage(MainWindow mainWindow)
+        internal LogInPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 
-            this.DataContext = new LogInPageViewModel(mainWindow);
+            this.DataContext = new LogInPageViewModel(mainWindowViewModel);
         }
     }
 }

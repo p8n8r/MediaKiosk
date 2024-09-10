@@ -13,6 +13,8 @@ namespace MediaKiosk.ViewModels.Browse
     {
         private Movie selectedMovie;
         private ObservableCollection<Movie> movies;
+        private MainWindowViewModel mainWindowViewModel;
+        public RelayCommand reloadCmd => new RelayCommand(execute => ReloadMovies());
 
         public Movie SelectedMovie
         {
@@ -27,7 +29,11 @@ namespace MediaKiosk.ViewModels.Browse
 
         public BrowseMoviesPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            //this.mainWindowViewModel = mainWindowViewModel;
+            this.mainWindowViewModel = mainWindowViewModel;
+        }
+
+        private void ReloadMovies()
+        {
             this.Movies = new ObservableCollection<Movie>(mainWindowViewModel.MediaLibrary.Movies);
         }
 

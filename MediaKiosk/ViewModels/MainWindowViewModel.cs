@@ -18,18 +18,34 @@ namespace MediaKiosk.ViewModels
     {
         private MainWindow mainWindow;
         private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
-        internal MediaLibrary MediaLibrary { get; set; } 
+        internal MediaLibrary MediaLibrary { get; set; }
         //private const string BOOKS_FILE = @".\Datasets\Books.csv",
         //    ALBUMS_FILE = @".\Datasets\Albums.csv", MOVIES_FILE = @".\Datasets\Movies.csv";
         //private const int BOOK_TITLE_COL = 0, BOOK_AUTHORS_COL = 1, BOOK_DESCRIPTION_COL = 2, 
         //    BOOK_CATEGORY_COL = 3, BOOK_PUBLICATION_DATE_COL = 4, BOOK_PRICE_COL = 5,
         //    BOOK_StTOCK_COL = 5, BOOK_NUM_COLUMNS_CSV = 6;
+        private bool hasLoggedIn;
+        public bool HasLoggedIn
+        {
+            get { return hasLoggedIn; }
+            internal set { hasLoggedIn = value; OnPropertyChanged(); }
+        }
+        public RelayCommand browseCmd => new RelayCommand(execute => Browse(), canExecute => this.HasLoggedIn);
+        public RelayCommand returnsCmd => new RelayCommand(execute => Returns(), canExecute => this.HasLoggedIn);
+        public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => this.HasLoggedIn);
         public RelayCommand onCloseCmd => new RelayCommand(execute => OnClose());
+        public RelayCommand navigateToWelcomePageCmd => new RelayCommand(execute => NavigateToWelcomePage());
 
         public MainWindowViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+
             ImportMediaLibrary();
+        }
+
+        private void NavigateToWelcomePage()
+        {
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.purposePage);
         }
 
         private void ExportMediaLibrary()
@@ -113,6 +129,21 @@ namespace MediaKiosk.ViewModels
                 if (this.MediaLibrary == null) //No data found?
                     this.MediaLibrary = new MediaLibrary(); //Create empty library
             }
+        }
+
+        private void Browse()
+        {
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.browsePage);
+        }
+
+        private void Returns()
+        {
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.returnsPage);
+        }
+
+        private void Donate()
+        {
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.donatePage);
         }
 
         private void OnClose()

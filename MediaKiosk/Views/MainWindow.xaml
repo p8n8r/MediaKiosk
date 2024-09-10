@@ -6,7 +6,30 @@
         xmlns:local="clr-namespace:MediaKiosk"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
+    
     <Grid>
-        <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FF26B59B">
+            <Grid Grid.Row="0" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button Content="Browse" Command="{Binding browseCmd}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
+                <Button Content="Returns" Command="{Binding returnsCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
+                <Button Content="Donate" Command="{Binding donateCmd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
+            </Grid>
+        </Grid>
+        <Frame Grid.Row="1" Name="mainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
