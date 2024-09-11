@@ -18,12 +18,9 @@ namespace MediaKiosk.ViewModels
     {
         private MainWindow mainWindow;
         private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
+        private const string USERS_FILE = @".\Datasets\Users.xml";
         internal MediaLibrary MediaLibrary { get; set; }
-        //private const string BOOKS_FILE = @".\Datasets\Books.csv",
-        //    ALBUMS_FILE = @".\Datasets\Albums.csv", MOVIES_FILE = @".\Datasets\Movies.csv";
-        //private const int BOOK_TITLE_COL = 0, BOOK_AUTHORS_COL = 1, BOOK_DESCRIPTION_COL = 2, 
-        //    BOOK_CATEGORY_COL = 3, BOOK_PUBLICATION_DATE_COL = 4, BOOK_PRICE_COL = 5,
-        //    BOOK_StTOCK_COL = 5, BOOK_NUM_COLUMNS_CSV = 6;
+        internal List<User> Users { get; set; }
         private bool hasLoggedIn;
         public bool HasLoggedIn
         {
@@ -40,6 +37,7 @@ namespace MediaKiosk.ViewModels
         {
             this.mainWindow = mainWindow;
 
+            ImportUsers();
             ImportMediaLibrary();
         }
 
@@ -48,20 +46,17 @@ namespace MediaKiosk.ViewModels
             this.mainWindow.mainFrame.Navigate(this.mainWindow.purposePage);
         }
 
-        private void ExportMediaLibrary()
+        private void ExportAsXmlFile(object data, Type dataType, string filePath)
         {
-            if (this.MediaLibrary == null)
-                this.MediaLibrary = new MediaLibrary(); //Use empty libray
-
-            FileStream stream = new FileStream(MEDIA_LIBRARY_FILE, FileMode.Create, FileAccess.Write);
+            FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(MediaLibrary));
+                XmlSerializer serializer = new XmlSerializer(dataType);
 
                 using (stream)
                 {
-                    serializer.Serialize(stream, this.MediaLibrary);
+                    serializer.Serialize(stream, data);
                 }
             }
             //catch (Exception e)
@@ -81,31 +76,19 @@ namespace MediaKiosk.ViewModels
             catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
         }
 
-        private void ImportMediaLibrary()
+        private object ImportXmlFile(Type dataType, string filePath)
         {
-            if (!File.Exists(MEDIA_LIBRARY_FILE))
-            {
-                this.MediaLibrary = new MediaLibrary(); //Create empty library
-                return;
-            }
+            object data = null;
 
             try
             {
-                FileStream stream = new FileStream(MEDIA_LIBRARY_FILE, FileMode.Open, FileAccess.Read, FileShare.None);
-                XmlSerializer serializer = new XmlSerializer(typeof(MediaLibrary));
-
+                FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
+                XmlSerializer serializer = new XmlSerializer(dataType);
+                
                 using (stream)
                 {
-                    this.MediaLibrary = (MediaLibrary)serializer.Deserialize(stream);
-
-                    foreach (Book book in this.MediaLibrary.Books)
-                        book.ArtWork = Utility.ConvertBytesToBitmapImage(book.ArtWorkBytes);
-
-                    foreach (Album album in this.MediaLibrary.Albums)
-                        album.ArtWork = Utility.ConvertBytesToBitmapImage(album.ArtWorkBytes);
-
-                    foreach (Movie movie in this.MediaLibrary.Movies)
-                        movie.ArtWork = Utility.ConvertBytesToBitmapImage(movie.ArtWorkBytes);
+                    data = serializer.Deserialize(stream);
+                    Convert.ChangeType(data, dataType);
                 }
             }
             //catch (Exception e)
@@ -124,11 +107,45 @@ namespace MediaKiosk.ViewModels
             catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
             catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
             catch (InvalidOperationException e) { Utility.ShowErrorMessageBox(e.Message); }
-            finally
-            {
-                if (this.MediaLibrary == null) //No data found?
-                    this.MediaLibrary = new MediaLibrary(); //Create empty library
-            }
+            catch (InvalidCastException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (FormatException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (OverflowException e) { Utility.ShowErrorMessageBox(e.Message); }
+
+            return data;
+        }
+
+        private void ExportMediaLibrary()
+        {
+            if (this.MediaLibrary == null) //No data found?
+                this.MediaLibrary = new MediaLibrary(); //Create empty libray
+
+            ExportAsXmlFile(this.MediaLibrary, typeof(MediaLibrary), MEDIA_LIBRARY_FILE);
+        }
+
+        private void ImportMediaLibrary()
+        {
+            if (File.Exists(MEDIA_LIBRARY_FILE))
+                this.MediaLibrary = ImportXmlFile(typeof(MediaLibrary), MEDIA_LIBRARY_FILE) as MediaLibrary;
+
+            if (this.MediaLibrary == null) //No data found?
+                this.MediaLibrary = new MediaLibrary(); //Create empty library
+        }
+
+        private void ExportUsers()
+        {
+            if (this.Users == null) //No data found?
+                this.Users = new List<User>(); //Create empty users
+
+            ExportAsXmlFile(this.Users, typeof(List<User>), USERS_FILE);
+        }
+
+        private void ImportUsers()
+        {
+            if (File.Exists(USERS_FILE))
+                this.Users = ImportXmlFile(typeof(List<User>), USERS_FILE) as List<User>;
+
+            if (this.Users == null) //No data found?
+                this.Users = new List<User>(); //Create empty users
         }
 
         private void Browse()
@@ -148,6 +165,7 @@ namespace MediaKiosk.ViewModels
 
         private void OnClose()
         {
+            ExportUsers();
             ExportMediaLibrary();
         }
 

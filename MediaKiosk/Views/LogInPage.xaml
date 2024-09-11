@@ -22,16 +22,16 @@
             </Grid.ColumnDefinitions>
             <Label Content="Log In or Register" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Username:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBox Name="usernameTextBox" Grid.Row="1" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Username}" Grid.Row="1" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
             <Label Content="Password:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <PasswordBox Name="passwordTextBox" Grid.Row="2" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
+            <PasswordBox Name="PasswordBox" Grid.Row="2" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
             <Grid Grid.Row="3" Grid.Column="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Log In" Command="{Binding loginCmd}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
-                <Button Content="Register" Command="{Binding registerCmd}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
+                <Button Content="Log In" Command="{Binding loginCmd}" CommandParameter="{Binding ElementName=PasswordBox}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
+                <Button Content="Register" Command="{Binding registerCmd}" CommandParameter="{Binding ElementName=PasswordBox}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
             </Grid>
         </Grid>
     </Grid>
