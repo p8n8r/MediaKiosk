@@ -129,6 +129,15 @@ namespace MediaKiosk.ViewModels
 
             if (this.MediaLibrary == null) //No data found?
                 this.MediaLibrary = new MediaLibrary(); //Create empty library
+
+            foreach (Book book in this.MediaLibrary.Books)
+                book.ArtWork = Utility.ConvertBytesToBitmapImage(book.ArtWorkBytes);
+
+            foreach (Album album in this.MediaLibrary.Albums)
+                album.ArtWork = Utility.ConvertBytesToBitmapImage(album.ArtWorkBytes);
+
+            foreach (Movie movie in this.MediaLibrary.Movies)
+                movie.ArtWork = Utility.ConvertBytesToBitmapImage(movie.ArtWorkBytes);
         }
 
         private void ExportUsers()

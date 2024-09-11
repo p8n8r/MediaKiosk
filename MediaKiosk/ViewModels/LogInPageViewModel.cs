@@ -41,8 +41,8 @@ namespace MediaKiosk.ViewModels
                 Password = (passwordBox as PasswordBox).SecurePassword
             };
 
-            if (!this.Users.Any(u => u.Username == user.Username)
-                && !this.Users.Contains(user, this.userComparer))
+            if (this.Users.Any(u => u.Username == user.Username)
+                && this.Users.Contains(user, this.userComparer))
             {
                 this.mainWindowViewModel.HasLoggedIn = true;
                 this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
