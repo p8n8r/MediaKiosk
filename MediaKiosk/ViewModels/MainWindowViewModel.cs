@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -153,8 +154,20 @@ namespace MediaKiosk.ViewModels
             if (File.Exists(USERS_FILE))
                 this.Users = ImportXmlFile(typeof(List<User>), USERS_FILE) as List<User>;
 
-            if (this.Users == null) //No data found?
+            if (this.Users != null) //Data found?
+            {
+                foreach (User user in this.Users)
+                {
+                    byte[] passwordBytes = ProtectedData.Unprotect(user.PasswordData, null,
+                        DataProtectionScope.LocalMachine);
+
+                    user.Password = Encoding.UTF8.GetString(passwordBytes);
+                }
+            }
+            else
+            {
                 this.Users = new List<User>(); //Create empty users
+            }
         }
 
         private void Browse()

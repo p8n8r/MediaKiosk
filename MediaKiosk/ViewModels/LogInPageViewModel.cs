@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,8 +18,8 @@ namespace MediaKiosk.ViewModels
         private List<User> Users;
         private string username;
         private UserComparer userComparer;
-        public RelayCommand loginCmd => new RelayCommand(pw => LogIn(pw), pw => HasEnteredValidUserData(pw));
-        public RelayCommand registerCmd => new RelayCommand(pw => Register(pw), pw => HasEnteredValidUserData(pw));
+        public RelayCommand loginCmd => new RelayCommand(pw => LogIn(pw));
+        public RelayCommand registerCmd => new RelayCommand(pw => Register(pw));
 
         public string Username
         {
@@ -35,43 +36,51 @@ namespace MediaKiosk.ViewModels
 
         private void LogIn(object passwordBox)
         {
-            User user = new User()
+            if (HasEnteredValidUserData(passwordBox))
             {
-                Username = Username,
-                Password = (passwordBox as PasswordBox).SecurePassword
-            };
+                User user = new User(this.Username, (passwordBox as PasswordBox).Password);
 
-            if (this.Users.Any(u => u.Username == user.Username)
-                && this.Users.Contains(user, this.userComparer))
-            {
-                this.mainWindowViewModel.HasLoggedIn = true;
-                this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
+                if (this.Users.Any(u => u.Username == user.Username)
+                    && this.Users.Contains(user, this.userComparer))
+                {
+                    this.mainWindowViewModel.HasLoggedIn = true;
+                    this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
+                }
+                else
+                {
+                    Utility.ShowErrorMessageBox($"The username/password was not found. "
+                        + "Please try again.");
+                }
             }
             else
             {
-                Utility.ShowErrorMessageBox($"The username/password was not found. "
-                    + "Please try again.");
+                Utility.ShowErrorMessageBox($"Invalid characters found. "
+                    + "Please use only letters and numbers for your username and password.");
             }
         }
 
         private void Register(object passwordBox)
         {
-            User user = new User()
-            {
-                Username = Username,
-                Password = (passwordBox as PasswordBox).SecurePassword
-            };
+            if (HasEnteredValidUserData(passwordBox))
+            { 
+                User user = new User(this.Username, (passwordBox as PasswordBox).Password);
 
-            if (!this.Users.Any(u => u.Username == user.Username))
-            {
-                this.Users.Add(user);
-                this.mainWindowViewModel.HasLoggedIn = true;
-                this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
+                if (!this.Users.Any(u => u.Username == user.Username))
+                {
+                    this.Users.Add(user);
+                    this.mainWindowViewModel.HasLoggedIn = true;
+                    this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
+                }
+                else
+                {
+                    Utility.ShowErrorMessageBox($"The username \"{user.Username}\" already exists. "
+                        + "Please choose another username.");
+                }
             }
             else
             {
-                Utility.ShowErrorMessageBox($"The username \"{user.Username}\" already exists. "
-                    + "Please choose another username.");
+                Utility.ShowErrorMessageBox($"Invalid characters found. "
+                    + "Please use only letters and numbers for your username and password.");
             }
         }
 
