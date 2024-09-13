@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -41,13 +47,10 @@
                 <Button Content="Returns" Command="{Binding returnsCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
                 <Button Content="Donate" Command="{Binding donateCmd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
             </Grid>
-            <Button Command="{Binding logOutCmd}" HorizontalAlignment="Right" Width="25" Height="25" Padding="1,1,1,1" VerticalAlignment="Center" Margin="0,0,10,0">
+            <Button Command="{Binding logOutCmd}" Visibility="{Binding HasLoggedIn, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Right" Width="25" Height="25" Padding="1,1,1,1" VerticalAlignment="Center" Margin="0,0,10,0">
                 <Button.Content>
                     <Image Source="/Resources/Log Out Icon.png" Stretch="Fill"/>
                 </Button.Content>
-                <!--<Button.Background>
-                    <ImageBrush ImageSource="/Resources/Log Out Icon.png" Stretch="Fill"/>
-                </Button.Background>-->
             </Button>
         </Grid>
         <Frame Grid.Row="1" Name="mainFrame" NavigationUIVisibility="Hidden"/>

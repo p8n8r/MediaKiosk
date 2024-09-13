@@ -19,6 +19,7 @@ namespace MediaKiosk.ViewModels.Donate
         { 
             "Thanks for your donation!", 
             "Thank you for your generosity!", 
+            "We appreciate you contribution!",
             "Thank you for donating!" 
         };
         private const decimal MIN_PRICE = 1.0M, MAX_PRICE = 10.0M;
