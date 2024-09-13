@@ -26,7 +26,7 @@ namespace MediaKiosk.Views
     {
         internal MainWindowViewModel mainWindowViewModel;
         internal LogInPage loginPage;
-        internal PurposePage purposePage;
+        internal WelcomePage purposePage;
         internal BrowsePage browsePage;
         internal ReturnsPage returnsPage;
         internal DonatePage donatePage;
@@ -47,7 +47,7 @@ namespace MediaKiosk.Views
             this.browseAlbumsPage = new BrowseAlbumsPage(mainWindowViewModel);
             this.browseMoviesPage = new BrowseMoviesPage(mainWindowViewModel);
             this.loginPage = new LogInPage(mainWindowViewModel);
-            this.purposePage = new PurposePage(this);
+            this.purposePage = new WelcomePage(this);
             this.browsePage = new BrowsePage(this); //Depends on subpages
             this.returnsPage = new ReturnsPage(this);
             this.donatePage = new DonatePage(); //TODO: give mainwindowviewmodel

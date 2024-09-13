@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Username>peyton</Username>
+    <PasswordData>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAeDAQbBxavki0fT0q8HzozwQAAAACAAAAAAAQZgAAAAEAACAAAABrfaMzJGlLGdZF+QlD5Uh4kxBQsqVpZQba0405KOQXvgAAAAAOgAAAAAIAACAAAADMy85MYMNA/0mwX88MQiknyM6t7KdwG6xrfcv3iPliYxAAAADvxEM6psJndI8ts/SfSLy2QAAAAPDjpW+x+yf5T73ReMA/B0/8VfeK6z2Kb6AqzUIv5AWC2Zn3Bcq9ilP/J/IwC4MQh96LdE2rX1bkTFuME2cMaEI=</PasswordData>
+  </User>
+</ArrayOfUser>

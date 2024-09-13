@@ -19,13 +19,13 @@ namespace MediaKiosk.Views
     /// <summary>
     /// Interaction logic for PurposePage.xaml
     /// </summary>
-    public partial class PurposePage : Page
+    public partial class WelcomePage : Page
     {
-        public PurposePage(MainWindow mainWindow)
+        public WelcomePage(MainWindow mainWindow)
         {
             InitializeComponent();
 
-            this.DataContext = new PurposePageViewModel(mainWindow);
+            this.DataContext = new WelcomePageViewModel(mainWindow);
         }
     }
 }
