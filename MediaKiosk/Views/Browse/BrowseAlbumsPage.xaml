@@ -20,10 +20,10 @@
         <DataGrid Name="browseAlbumsDataGrid" ItemsSource="{Binding Albums}" SelectedItem="{Binding SelectedAlbum}"
             CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*"/>
-                <!--<DataGridTextColumn Header="Artist" Binding="{Binding Artist}" Width="3*"/>-->
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="1*"/>
-                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*" IsReadOnly="True"/>
+                <!--<DataGridTextColumn Header="Artist" Binding="{Binding Artist}" Width="3*" IsReadOnly="True"/>-->
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="1*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
 

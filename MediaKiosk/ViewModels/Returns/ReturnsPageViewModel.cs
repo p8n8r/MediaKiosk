@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaKiosk.ViewModels
+namespace MediaKiosk.ViewModels.Returns
 {
     internal class ReturnsPageViewModel : ViewModelBase
     {

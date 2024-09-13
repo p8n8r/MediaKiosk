@@ -32,6 +32,10 @@ namespace MediaKiosk.ViewModels
             this.mainWindowViewModel = mainWindowViewModel;
             this.Users = mainWindowViewModel.Users;
             this.userComparer = new UserComparer();
+
+            //Temporary code to speed up development
+            this.Username = "peyton";
+            //In xaml, remove password="peydey"
         }
 
         private void LogIn(object passwordBox)

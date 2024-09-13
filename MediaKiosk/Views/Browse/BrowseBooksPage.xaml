@@ -20,10 +20,10 @@
         <DataGrid Name="browseBooksDataGrid" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
             Grid.Column="0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*"/>
-                <!--<DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="2*"/>-->
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="1*"/>
-                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*" IsReadOnly="True"/>
+                <!--<DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="2*" IsReadOnly="True"/>-->
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="1*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
 

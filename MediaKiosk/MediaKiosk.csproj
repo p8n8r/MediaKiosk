@@ -70,7 +70,7 @@
     <Compile Include="ViewModels\Browse\BrowseAlbumsPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\ReturnsPageViewModel.cs" />
+    <Compile Include="ViewModels\Returns\ReturnsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\Browse\BrowseBooksPageViewModel.cs" />
     <Compile Include="ViewModels\Browse\BrowsePageViewModel.cs" />
@@ -194,9 +194,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Returns\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Datasets\MediaLibrary.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
