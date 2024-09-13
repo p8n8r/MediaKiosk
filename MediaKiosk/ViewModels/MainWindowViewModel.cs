@@ -31,6 +31,7 @@ namespace MediaKiosk.ViewModels
         public RelayCommand browseCmd => new RelayCommand(execute => Browse(), canExecute => this.HasLoggedIn);
         public RelayCommand returnsCmd => new RelayCommand(execute => Returns(), canExecute => this.HasLoggedIn);
         public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => this.HasLoggedIn);
+        public RelayCommand logOutCmd => new RelayCommand(execute => LogOut(), canExecute => this.HasLoggedIn);
         public RelayCommand onCloseCmd => new RelayCommand(execute => OnClose());
         public RelayCommand navigateToWelcomePageCmd => new RelayCommand(execute => NavigateToWelcomePage());
 
@@ -44,7 +45,7 @@ namespace MediaKiosk.ViewModels
 
         private void NavigateToWelcomePage()
         {
-            this.mainWindow.mainFrame.Navigate(this.mainWindow.purposePage);
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.welcomePage);
         }
 
         private void ExportAsXmlFile(object data, Type dataType, string filePath)
@@ -183,6 +184,12 @@ namespace MediaKiosk.ViewModels
         private void Donate()
         {
             this.mainWindow.mainFrame.Navigate(this.mainWindow.donatePage);
+        }
+
+        private void LogOut()
+        {
+            this.HasLoggedIn = false;
+            this.mainWindow.mainFrame.Navigate(this.mainWindow.loginPage);
         }
 
         private void OnClose()

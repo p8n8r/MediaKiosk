@@ -194,7 +194,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Log Out Icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Datasets\MediaLibrary.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
