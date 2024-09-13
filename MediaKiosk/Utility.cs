@@ -75,7 +75,7 @@ namespace MediaKiosk
             MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        internal static string GetRandomDollarValue(decimal min, decimal max)
+        public static string GetRandomDollarValue(decimal min, decimal max)
         {
             const decimal factor = 100M;
             int minInt = Convert.ToInt32(min * factor);

@@ -35,7 +35,7 @@ namespace MediaKiosk.ViewModels
 
             //Temporary code to speed up development
             this.Username = "peyton";
-            //In xaml, remove password="peydey"
+            //In xaml, remove Password="peydey"
         }
 
         private void LogIn(object passwordBox)
@@ -44,8 +44,7 @@ namespace MediaKiosk.ViewModels
             {
                 User user = new User(this.Username, (passwordBox as PasswordBox).Password);
 
-                if (this.Users.Any(u => u.Username == user.Username)
-                    && this.Users.Contains(user, this.userComparer))
+                if (this.Users.Contains(user, this.userComparer))
                 {
                     this.mainWindowViewModel.HasLoggedIn = true;
                     this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();

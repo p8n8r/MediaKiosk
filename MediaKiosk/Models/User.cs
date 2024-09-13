@@ -18,8 +18,14 @@ namespace MediaKiosk.Models
         [XmlIgnore]
         public string Password { get; set; }
         public byte[] PasswordData { get; set; }
+        public MediaLibrary Purchases { get; set; }
+        public MediaLibrary Rentals { get; set; }
 
-        public User() { } //Required for XML serialization
+        public User() //Required for XML serialization
+        { 
+            this.Purchases = new MediaLibrary();
+            this.Rentals = new MediaLibrary();
+        }
 
         public User(string username, string password)
         {
@@ -27,6 +33,9 @@ namespace MediaKiosk.Models
             this.Password = password;
 
             UpdatePasswordData(password);
+
+            this.Purchases = new MediaLibrary();
+            this.Rentals = new MediaLibrary();
         }
 
         public void UpdatePasswordData(string password)
