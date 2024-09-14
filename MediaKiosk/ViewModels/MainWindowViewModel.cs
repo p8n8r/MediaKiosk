@@ -192,6 +192,7 @@ namespace MediaKiosk.ViewModels
         {
             this.CurrentUser = User.INVALID_USER;
             this.HasLoggedIn = false;
+            (this.mainWindow.loginPage.DataContext as LogInPageViewModel).Username = string.Empty;
             this.mainWindow.mainFrame.Navigate(this.mainWindow.loginPage);
         }
 

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MediaKiosk"
       mc:Ignorable="d" 
       d:DesignHeight="150" d:DesignWidth="300"
-      Title="LogInPage" Background="White">
+      Title="LogInPage">
 
     <Grid>
         <Grid VerticalAlignment="Center" Height="125" HorizontalAlignment="Center">

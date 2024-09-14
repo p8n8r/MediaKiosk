@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MediaKiosk.Views.Donate"
       mc:Ignorable="d" 
       d:DesignHeight="321" d:DesignWidth="400"
-      Title="BookDonationPage" Background="White">
+      Title="BookDonationPage">
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>

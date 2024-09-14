@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MediaKiosk.Views.Browse"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="800"
-      Title="BooksTable" Background="White" Loaded="Page_Loaded">
+      Title="BooksTable" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
