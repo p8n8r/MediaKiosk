@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <DataGrid Name="browseBooksDataGrid" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
-            Grid.Column="0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+            Grid.Column="0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Margin="0,0,13,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*" IsReadOnly="True"/>
                 <!--<DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="2*" IsReadOnly="True"/>-->
@@ -27,7 +27,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="10,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -55,7 +55,7 @@
             <Label Content="Price" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <TextBox Text="{Binding SelectedBook.Price, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
             <Label Content="Stock" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <TextBox Text="{Binding SelectedBook.Stock, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <TextBox Text="{Binding SelectedBook.Stock, UpdateSourceTrigger=PropertyChanged}" Name="stockTextBox" Grid.Row="3" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
             <Label Content="Cover Art" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <Image Source="{Binding SelectedBook.ArtWork}" Grid.Row="5" Grid.Column="1" Grid.RowSpan="3"/>
         </Grid>

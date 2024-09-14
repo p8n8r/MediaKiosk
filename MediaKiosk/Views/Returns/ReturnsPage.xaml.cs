@@ -1,4 +1,5 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Browse;
 using MediaKiosk.ViewModels.Returns;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,16 @@ namespace MediaKiosk.Views.Returns
     /// </summary>
     public partial class ReturnsPage : Page
     {
-        public ReturnsPage(MainWindow mainWindow)
+        internal ReturnsPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 
-            this.DataContext = new ReturnsPageViewModel(mainWindow);
+            this.DataContext = new ReturnsPageViewModel(mainWindowViewModel);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ReturnsPageViewModel).reloadCmd.Execute();
         }
     }
 }

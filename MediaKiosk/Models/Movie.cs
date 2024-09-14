@@ -7,17 +7,28 @@ using System.Threading.Tasks;
 namespace MediaKiosk.Models
 {
     [Serializable]
-    public class Movie : Media
+    public class Movie : Media, ICloneable
     {
         public const char STAR = '\u2606';
 
         public string Rating { get; set; }
         public string Category { get; set; }
         public int ReleaseYear { get; set; }
-        //public decimal RunTime { get; set; } //Minutes
-        //public string Description { get; set; }
 
-        //public Movie() { }
+        public object Clone()
+        {
+            return new Movie()
+            {
+                Title = this.Title,
+                Rating = this.Rating,
+                Category = this.Category,
+                ReleaseYear = this.ReleaseYear,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes
+            };
+        }
     }
 
     public class MovieComparer : IEqualityComparer<Movie>

@@ -26,15 +26,15 @@ namespace MediaKiosk.ViewModels.Donate
         private static readonly Color DEFAULT_BORDER_COLOR = Color.FromRgb(171, 173, 179);
         private static readonly Brush DEFAULT_BORDER_BRUSH = new SolidColorBrush(DEFAULT_BORDER_COLOR);
 
+        private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
         //private MainWindow mainWindow;
         internal MediaLibrary MediaLibrary { get; set; }
-        private DonatePage donatePage;
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
-        private BookDonationPage bookDonationPage;
-        private AlbumDonationPage albumDonationPage;
-        private MovieDonationPage movieDonationPage;
+        internal BookDonationPage bookDonationPage;
+        internal AlbumDonationPage albumDonationPage;
+        internal MovieDonationPage movieDonationPage;
         private BookDonationPageViewModel bookDonationPageViewModel;
         private AlbumDonationPageViewModel albumDonationPageViewModel;
         private MovieDonationPageViewModel movieDonationPageViewModel;
@@ -47,33 +47,27 @@ namespace MediaKiosk.ViewModels.Donate
         public RelayCommand selectAlbumsCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Albums); });
         public RelayCommand selectMoviesCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Movies); });
 
-        public DonatePageViewModel(DonatePage donatePage)
+        public DonatePageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.donatePage = donatePage;
-            this.detailsFrame = donatePage.mediaTableFrame;
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            this.mainWindowViewModel = mainWindow.DataContext as MainWindowViewModel;
+            this.mainWindowViewModel = mainWindowViewModel;
+            this.mainWindow = mainWindowViewModel.MainWindow;
             this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
 
-            //Construct pages and viewmodels
+            //Construct pages
             this.bookDonationPage = new BookDonationPage();
             this.albumDonationPage = new AlbumDonationPage();
             this.movieDonationPage = new MovieDonationPage();
 
+            //Capture viewmodels
             this.bookDonationPageViewModel = bookDonationPage.DataContext as BookDonationPageViewModel;
             this.albumDonationPageViewModel = albumDonationPage.DataContext as AlbumDonationPageViewModel;
             this.movieDonationPageViewModel = movieDonationPage.DataContext as MovieDonationPageViewModel;
-
-            //Set initial navigation page
-            this.detailsFrame.Navigate(this.bookDonationPage);
-
-            //Set specifics for donations
-            SetPageDetailsForDonations();
         }
 
         private void SelectMediaType(MediaType mediaType)
         {
             this.mediaType = mediaType;
+            this.detailsFrame = this.mainWindow.donatePage.mediaTableFrame; //replace with binding?
 
             switch (this.mediaType)
             {
@@ -87,16 +81,6 @@ namespace MediaKiosk.ViewModels.Donate
                     this.detailsFrame.Navigate(this.movieDonationPage);
                     break;
             }
-        }
-
-        private void SetPageDetailsForDonations()
-        {
-            //this.bookDonationPageViewModel.SetDetailsForDonations();
-            //this.albumDetailsPageViewModel.SetDetailsForDonations();
-            //this.movieDetailsPageViewModel.SetDetailsForDonations();
-            //this.SelectedBook.Stock = 0;
-            //this.SelectedAlbum.Stock = 0;
-            //this.SelectedMovie.Stock = 0;
         }
 
         public void Donate()
@@ -120,7 +104,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                     if (this.MediaLibrary.Books.Contains(book, bookComparer))
                     {
-                        Book bookSame = this.MediaLibrary.Books.Single(bookComparer, book);
+                        Book bookSame = this.MediaLibrary.Books.Single(book, bookComparer);
                         bookSame.Stock++;
                     }
                     else
@@ -149,7 +133,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                     if (this.MediaLibrary.Albums.Contains(album, albumComparer))
                     {
-                        Album albumSame = this.MediaLibrary.Albums.Single(albumComparer, album);
+                        Album albumSame = this.MediaLibrary.Albums.Single(album, albumComparer);
                         albumSame.Stock++;
                     }
                     else
@@ -178,7 +162,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                     if (this.MediaLibrary.Movies.Contains(movie, movieComparer))
                     {
-                        Movie movieSame = this.MediaLibrary.Movies.Single(movieComparer, movie);
+                        Movie movieSame = this.MediaLibrary.Movies.Single(movie, movieComparer);
                         movieSame.Stock++;
                     }
                     else

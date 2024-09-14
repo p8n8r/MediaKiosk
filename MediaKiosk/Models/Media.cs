@@ -33,6 +33,7 @@ namespace MediaKiosk.Models
         public byte[] ArtWorkBytes { get; set; }
         [XmlIgnore]
         public BitmapImage ArtWork { get; set; }
+        public string Type { get { return this.GetType().Name; } } //Needed for data binding
     }
 
     public class InvalidMediaException : Exception

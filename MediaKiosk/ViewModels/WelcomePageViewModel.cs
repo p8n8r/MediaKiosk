@@ -11,11 +11,11 @@ namespace MediaKiosk.ViewModels
 {
     internal class WelcomePageViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
+        private MainWindowViewModel mainWindowViewModel;
 
-        public WelcomePageViewModel(MainWindow mainWindow)
+        public WelcomePageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.mainWindow = mainWindow;
+            this.mainWindowViewModel = mainWindowViewModel;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace MediaKiosk.Models
     [Serializable]
     public class User
     {
+        public static readonly User INVALID_USER = new User(); 
+
         public string Username {  get; set; }
         [XmlIgnore]
         public string Password { get; set; }

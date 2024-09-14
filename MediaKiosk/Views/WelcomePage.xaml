@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Welcome!" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,5,5,30"/>
         <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="WrapWithOverflow" Text="Browse our selection of books, albums, and movies." HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,5,0" Width="150" FontSize="18" TextAlignment="Center" Margin="15,0,15,0"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="WrapWithOverflow" Text="View which books, albums, and movies you have checked out." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,15,0" Width="150" FontSize="18" TextAlignment="Center"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="WrapWithOverflow" Text="Make donations of books, albums, and movies." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,15,0" Width="150" FontSize="18" TextAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="WrapWithOverflow" Text="View which books, albums, and movies you have purchased or checked out." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,15,0" Width="150" FontSize="18" TextAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="WrapWithOverflow" Text="Make donations of books, albums, or movies." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,15,0" Width="150" FontSize="18" TextAlignment="Center"/>
     </Grid>
 </Page>

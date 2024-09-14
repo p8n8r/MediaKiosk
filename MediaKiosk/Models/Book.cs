@@ -10,17 +10,26 @@ using System.Windows.Media.Imaging;
 namespace MediaKiosk.Models
 {
     [Serializable]
-    public class Book : Media
+    public class Book : Media, ICloneable
     {
         public string Author { get; set; }
         public string Category { get; set; }
         public int PublicationYear { get; set; }
 
-        //public BitmapImage CoverArt { get; set; }
-        //public string Publisher { get; set; }
-        //public string Description { get; set; }
-
-        //public Book() { }
+        public object Clone()
+        {
+            return new Book()
+            {
+                Title = this.Title,
+                Author = this.Author,
+                Category = this.Category,
+                PublicationYear = this.PublicationYear,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes
+            };
+        }
     }
 
     public class BookComparer : IEqualityComparer<Book>

@@ -1,4 +1,7 @@
-﻿using MediaKiosk.ViewModels;
+﻿using MediaKiosk.Models;
+using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Browse;
+using MediaKiosk.ViewModels.Donate;
 using MediaKiosk.Views.Browse;
 using MediaKiosk.Views.Donate;
 using MediaKiosk.Views.Returns;
@@ -30,9 +33,6 @@ namespace MediaKiosk.Views
         internal BrowsePage browsePage;
         internal ReturnsPage returnsPage;
         internal DonatePage donatePage;
-        internal BrowseBooksPage browseBooksPage;
-        internal BrowseAlbumsPage browseAlbumsPage;
-        internal BrowseMoviesPage browseMoviesPage;
 
         public MainWindow()
         {
@@ -43,18 +43,18 @@ namespace MediaKiosk.Views
             this.DataContext = mainWindowViewModel;
 
             //Construct pages and viewmodels
-            this.browseBooksPage = new BrowseBooksPage(mainWindowViewModel);
-            this.browseAlbumsPage = new BrowseAlbumsPage(mainWindowViewModel);
-            this.browseMoviesPage = new BrowseMoviesPage(mainWindowViewModel);
             this.loginPage = new LogInPage(mainWindowViewModel);
-            this.welcomePage = new WelcomePage(this);
-            this.browsePage = new BrowsePage(this); //Depends on subpages
-            this.returnsPage = new ReturnsPage(this);
-            this.donatePage = new DonatePage(); //TODO: give mainwindowviewmodel
+            this.welcomePage = new WelcomePage(mainWindowViewModel);
+            this.browsePage = new BrowsePage(mainWindowViewModel); 
+            this.returnsPage = new ReturnsPage(mainWindowViewModel);
+            this.donatePage = new DonatePage(mainWindowViewModel); 
 
             //Set initial navigation pages
-            this.mainFrame.Navigate(this.loginPage);
-            this.browsePage.mediaTableFrame.Navigate(this.browseBooksPage);
+            this.mainFrame.Navigate(this.loginPage); //Cannot set in xaml with param
+            BrowsePageViewModel browsePageViewModel = this.browsePage.DataContext as BrowsePageViewModel;
+            this.browsePage.mediaTableFrame.Navigate(browsePageViewModel.browseBooksPage);
+            DonatePageViewModel donatePageViewModel=this.donatePage.DataContext as DonatePageViewModel;
+            this.donatePage.mediaTableFrame.Navigate(donatePageViewModel.bookDonationPage);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

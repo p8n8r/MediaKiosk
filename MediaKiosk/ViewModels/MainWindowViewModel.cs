@@ -17,11 +17,13 @@ namespace MediaKiosk.ViewModels
 {
     internal class MainWindowViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
         private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
         private const string USERS_FILE = @".\Datasets\Users.xml";
+        private MainWindow mainWindow;
+        public MainWindow MainWindow {  get { return mainWindow; } }
         internal MediaLibrary MediaLibrary { get; set; }
         internal List<User> Users { get; set; }
+        internal User CurrentUser { get; set; } = User.INVALID_USER;
         private bool hasLoggedIn;
         public bool HasLoggedIn
         {
@@ -188,6 +190,7 @@ namespace MediaKiosk.ViewModels
 
         private void LogOut()
         {
+            this.CurrentUser = User.INVALID_USER;
             this.HasLoggedIn = false;
             this.mainWindow.mainFrame.Navigate(this.mainWindow.loginPage);
         }

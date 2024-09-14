@@ -7,15 +7,26 @@ using System.Threading.Tasks;
 namespace MediaKiosk.Models
 {
     [Serializable]
-    public class Album : Media
+    public class Album : Media, ICloneable
     {
         public string Artist { get; set; }
         public string Genre { get; set; }
         public int ReleaseYear { get; set; }
-        //public decimal Length { get; set; } //Minutes
-        //public string Description { get; set; }
 
-        //public Album() { }
+        public object Clone()
+        {
+            return new Album()
+            {
+                Title = this.Title,
+                Artist = this.Artist,
+                Genre = this.Genre,
+                ReleaseYear = this.ReleaseYear,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes
+            };
+        }
     }
 
     public class AlbumComparer : IEqualityComparer<Album>

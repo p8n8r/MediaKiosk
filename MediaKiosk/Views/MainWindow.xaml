@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaKiosk"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
+        Title="Neighborhood Library Kiosk" Height="450" Width="800" Closing="Window_Closing">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -43,9 +43,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Button Content="Browse" Command="{Binding browseCmd}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
-                <Button Content="Returns" Command="{Binding returnsCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
-                <Button Content="Donate" Command="{Binding donateCmd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" Margin="10,0,10,0"/>
+                <Button Content="Browse" Command="{Binding browseCmd}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="25" Margin="15,0,15,0"/>
+                <Button Content="Purchases/Returns" Command="{Binding returnsCmd}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="25" Margin="15,0,15,0"/>
+                <Button Content="Donate" Command="{Binding donateCmd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="25" Margin="15,0,15,0"/>
             </Grid>
             <Button Command="{Binding logOutCmd}" Visibility="{Binding HasLoggedIn, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Right" Width="25" Height="25" Padding="1,1,1,1" VerticalAlignment="Center" Margin="0,0,10,0">
                 <Button.Content>

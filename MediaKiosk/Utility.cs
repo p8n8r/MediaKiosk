@@ -83,7 +83,7 @@ namespace MediaKiosk
             return (random.Next(minInt, maxInt) / factor).ToString("C");
         }
 
-        public static T Single<T>(this IEnumerable<T> enumerable, IEqualityComparer<T> comparer, T value)
+        public static T Single<T>(this IEnumerable<T> enumerable, T value, IEqualityComparer<T> comparer)
         {
             return enumerable.Single(v => comparer.Equals(v, value));
         }
