@@ -35,7 +35,7 @@ namespace MediaKiosk.ViewModels.Browse
 
         private void ReloadAlbums()
         {
-            this.Albums = new ObservableCollection<Album>(mainWindowViewModel.MediaLibrary.Albums);
+            this.Albums = new ObservableCollection<Album>(this.mainWindowViewModel.MediaLibrary.Albums);
         }
 
         //private void FillWithAlbums()

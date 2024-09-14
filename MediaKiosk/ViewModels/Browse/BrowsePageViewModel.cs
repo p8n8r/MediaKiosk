@@ -94,8 +94,12 @@ namespace MediaKiosk.ViewModels.Browse
                     Book selectedBook = this.browseBooksPageViewModel.SelectedBook;
                     selectedBook.Stock--;
 
+                    //Remove one book from browse and library
                     if (selectedBook.Stock <= 0)
+                    {
                         this.browseBooksPageViewModel.Books.Remove(selectedBook);
+                        this.mainWindowViewModel.MediaLibrary.Books.Remove(selectedBook);
+                    }
 
                     //Force refresh of media in browse page,
                     //so Media subclasses can remain plain old CLR objects (pocos).
@@ -103,6 +107,7 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseBooksPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
+                    //Add one book to purchases
                     if (purchasedMedia.Books.Contains(selectedBook, bookComparer))
                     {
                         Book bookSame = purchasedMedia.Books.Single(selectedBook, bookComparer);
@@ -121,8 +126,12 @@ namespace MediaKiosk.ViewModels.Browse
                     Album selectedAlbum = this.browseAlbumsPageViewModel.SelectedAlbum;
                     selectedAlbum.Stock--;
 
+                    //Remove one album from browse and library
                     if (selectedAlbum.Stock <= 0)
+                    {
                         this.browseAlbumsPageViewModel.Albums.Remove(selectedAlbum);
+                        this.mainWindowViewModel.MediaLibrary.Albums.Remove(selectedAlbum);
+                    }
 
                     //Force refresh of media in browse page,
                     //so Media subclasses can remain plain old CLR objects (pocos).
@@ -130,6 +139,7 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseAlbumsPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
+                    //Add one album to purchases
                     if (purchasedMedia.Albums.Contains(selectedAlbum, albumComparer))
                     {
                         Album albumSame = purchasedMedia.Albums.Single(selectedAlbum, albumComparer);
@@ -148,8 +158,12 @@ namespace MediaKiosk.ViewModels.Browse
                     Movie selectedMovie = this.browseMoviesPageViewModel.SelectedMovie;
                     selectedMovie.Stock--;
 
+                    //Remove one movie from browse and library
                     if (selectedMovie.Stock <= 0)
+                    {
                         this.browseMoviesPageViewModel.Movies.Remove(selectedMovie);
+                        this.mainWindowViewModel.MediaLibrary.Movies.Remove(selectedMovie);
+                    }
 
                     //Force refresh of media in browse page,
                     //so Media subclasses can remain plain old CLR objects (pocos).
@@ -157,6 +171,7 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseMoviesPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
+                    //Add one movie to purchases
                     if (purchasedMedia.Movies.Contains(selectedMovie, movieComparer))
                     {
                         Movie movieSame = purchasedMedia.Movies.Single(selectedMovie, movieComparer);

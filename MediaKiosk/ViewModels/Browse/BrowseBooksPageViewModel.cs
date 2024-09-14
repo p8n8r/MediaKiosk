@@ -37,7 +37,7 @@ namespace MediaKiosk.ViewModels.Browse
 
         private void ReloadBooks()
         {
-            this.Books = new ObservableCollection<Book>(mainWindowViewModel.MediaLibrary.Books);
+            this.Books = new ObservableCollection<Book>(this.mainWindowViewModel.MediaLibrary.Books);
         }
 
         //private void FillWithBooks()

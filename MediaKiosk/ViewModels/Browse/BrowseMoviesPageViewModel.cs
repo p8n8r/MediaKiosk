@@ -34,7 +34,7 @@ namespace MediaKiosk.ViewModels.Browse
 
         private void ReloadMovies()
         {
-            this.Movies = new ObservableCollection<Movie>(mainWindowViewModel.MediaLibrary.Movies);
+            this.Movies = new ObservableCollection<Movie>(this.mainWindowViewModel.MediaLibrary.Movies);
         }
 
         //private void FillWithMovies()
