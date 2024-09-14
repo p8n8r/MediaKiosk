@@ -35,29 +35,7 @@ namespace MediaKiosk.ViewModels.Browse
         private void ReloadMovies()
         {
             this.Movies = new ObservableCollection<Movie>(this.mainWindowViewModel.MediaLibrary.Movies);
+            this.SelectedMovie = this.Movies.FirstOrDefault() ?? null;
         }
-
-        //private void FillWithMovies()
-        //{
-        //    this.Movies = new ObservableCollection<Movie>()
-        //    {
-        //        new Movie() {
-        //            Title = "National Treasure",
-        //            Category = "Mystery",
-        //            Rating = Rating.FourStars,
-        //            ReleaseYear = 2007,
-        //            Price = "$2.00",
-        //            Stock = 1
-        //        },
-        //        new Movie() {
-        //            Title = "Apollo 13",
-        //            Category = "Docu-drama",
-        //            Rating = Rating.FiveStars,
-        //            ReleaseYear = 1998,
-        //            Price = "$5.00",
-        //            Stock = 2
-        //        }
-        //    };
-        //}
     }
 }

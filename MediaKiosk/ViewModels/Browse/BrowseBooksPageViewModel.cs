@@ -38,29 +38,7 @@ namespace MediaKiosk.ViewModels.Browse
         private void ReloadBooks()
         {
             this.Books = new ObservableCollection<Book>(this.mainWindowViewModel.MediaLibrary.Books);
+            this.SelectedBook = this.Books.FirstOrDefault() ?? null;
         }
-
-        //private void FillWithBooks()
-        //{
-        //    this.books = new ObservableCollection<Book>()
-        //    {
-        //        new Book() {
-        //            Title = "Holy Bible",
-        //            Author = "God",
-        //            Category = "Non-fiction",
-        //            PublicationYear = 0,
-        //            Price = "$5.00",
-        //            Stock = 1
-        //        },
-        //        new Book() {
-        //            Title = "Tactics",
-        //            Author = "Greg Cocal",
-        //            Category = "Self-help",
-        //            PublicationYear = 2000,
-        //            Price = "$4.00",
-        //            Stock = 2
-        //        }
-        //    };
-        //}
     }
 }

@@ -28,7 +28,6 @@ namespace MediaKiosk.ViewModels.Donate
 
         private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
-        //private MainWindow mainWindow;
         internal MediaLibrary MediaLibrary { get; set; }
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
@@ -94,10 +93,10 @@ namespace MediaKiosk.ViewModels.Donate
 
                     Book book = new Book()
                     {
-                        Title = bookDonationPageViewModel.Title,
-                        Author = bookDonationPageViewModel.Author,
-                        Category = bookDonationPageViewModel.Category,
-                        PublicationYear = Convert.ToInt32(bookDonationPageViewModel.PublicationYear),
+                        Title = this.bookDonationPageViewModel.Title,
+                        Author = this.bookDonationPageViewModel.Author,
+                        Category = this.bookDonationPageViewModel.Category,
+                        PublicationYear = Convert.ToInt32(this.bookDonationPageViewModel.PublicationYear),
                         ArtWork = coverArt,
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(coverArt)
                     };
@@ -114,7 +113,8 @@ namespace MediaKiosk.ViewModels.Donate
                         this.MediaLibrary.Books.Add(book);
                     }
 
-                    bookDonationPageViewModel.ClearBookProperties();
+                    this.bookDonationPageViewModel.ClearBookProperties();
+                    this.mainWindowViewModel.MediaLibrary.SortBooksByTitle();
                     break;
 
                 case MediaType.Albums:
@@ -123,10 +123,10 @@ namespace MediaKiosk.ViewModels.Donate
 
                     Album album = new Album()
                     {
-                        Title = albumDonationPageViewModel.Title,
-                        Artist = albumDonationPageViewModel.Artist,
-                        Genre = albumDonationPageViewModel.Genre,
-                        ReleaseYear = Convert.ToInt32(albumDonationPageViewModel.ReleaseYear),
+                        Title = this.albumDonationPageViewModel.Title,
+                        Artist = this.albumDonationPageViewModel.Artist,
+                        Genre = this.albumDonationPageViewModel.Genre,
+                        ReleaseYear = Convert.ToInt32(this.albumDonationPageViewModel.ReleaseYear),
                         ArtWork = albumArtwork,
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(albumArtwork)
                     };
@@ -143,7 +143,8 @@ namespace MediaKiosk.ViewModels.Donate
                         this.MediaLibrary.Albums.Add(album);
                     }
 
-                    albumDonationPageViewModel.ClearAlbumProperties();
+                    this.albumDonationPageViewModel.ClearAlbumProperties();
+                    this.mainWindowViewModel.MediaLibrary.SortAlbumsByTitle();
                     break;
 
                 case MediaType.Movies:
@@ -152,10 +153,10 @@ namespace MediaKiosk.ViewModels.Donate
 
                     Movie movie = new Movie()
                     {
-                        Title = movieDonationPageViewModel.Title,
-                        Rating = movieDonationPageViewModel.Rating,
-                        Category = movieDonationPageViewModel.Category,
-                        ReleaseYear = Convert.ToInt32(movieDonationPageViewModel.ReleaseYear),
+                        Title = this.movieDonationPageViewModel.Title,
+                        Rating = this.movieDonationPageViewModel.Rating,
+                        Category = this.movieDonationPageViewModel.Category,
+                        ReleaseYear = Convert.ToInt32(this.movieDonationPageViewModel.ReleaseYear),
                         ArtWork = promoArtwork,
                         ArtWorkBytes = Utility.ConvertBitmapImageToBytes(promoArtwork)
                     };
@@ -172,7 +173,8 @@ namespace MediaKiosk.ViewModels.Donate
                         this.MediaLibrary.Movies.Add(movie);
                     }
 
-                    movieDonationPageViewModel.ClearMovieProperties();
+                    this.movieDonationPageViewModel.ClearMovieProperties();
+                    this.mainWindowViewModel.MediaLibrary.SortMoviesByTitle();
                     break;
             }
 
