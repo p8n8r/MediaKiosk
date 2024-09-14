@@ -82,25 +82,11 @@ namespace MediaKiosk.ViewModels.Browse
             }
         }
 
+        //Consider refactoring to be DRY
         public void Buy()
         {
-            Checkout(this.mainWindowViewModel.CurrentUser.Purchases);
+            MediaLibrary purchasedMedia = this.mainWindowViewModel.CurrentUser.Purchases;
 
-            //Thank user for purchase via messagebox
-            MessageBox.Show(THANKS_FOR_PURCHASE_MESSAGES[random.Next(THANKS_FOR_PURCHASE_MESSAGES.Count())]);
-        }
-
-        public void Rent()
-        {
-            Checkout(this.mainWindowViewModel.CurrentUser.Rentals);
-
-            //Thank user for renting via messagebox
-            MessageBox.Show(THANKS_FOR_RENT_MESSAGES[random.Next(THANKS_FOR_RENT_MESSAGES.Count())]);
-        }
-
-        //Consider refactoring to be DRY
-        private void Checkout(MediaLibrary mediaLibrary)
-        {
             switch (this.mediaType)
             {
                 case MediaType.Books:
@@ -117,16 +103,16 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseBooksPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
-                    if (mediaLibrary.Books.Contains(selectedBook, bookComparer))
+                    if (purchasedMedia.Books.Contains(selectedBook, bookComparer))
                     {
-                        Book bookSame = mediaLibrary.Books.Single(selectedBook, bookComparer);
+                        Book bookSame = purchasedMedia.Books.Single(selectedBook, bookComparer);
                         bookSame.Stock++;
                     }
                     else
                     {
                         Book purchasedBook = (Book)selectedBook.Clone();
                         purchasedBook.Stock = 1;
-                        mediaLibrary.Books.Add(purchasedBook);
+                        purchasedMedia.Books.Add(purchasedBook);
                     }
                     break;
 
@@ -144,16 +130,16 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseAlbumsPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
-                    if (mediaLibrary.Albums.Contains(selectedAlbum, albumComparer))
+                    if (purchasedMedia.Albums.Contains(selectedAlbum, albumComparer))
                     {
-                        Album albumSame = mediaLibrary.Albums.Single(selectedAlbum, albumComparer);
+                        Album albumSame = purchasedMedia.Albums.Single(selectedAlbum, albumComparer);
                         albumSame.Stock++;
                     }
                     else
                     {
                         Album purchasedAlbum = (Album)selectedAlbum.Clone();
                         purchasedAlbum.Stock = 1;
-                        mediaLibrary.Albums.Add(purchasedAlbum);
+                        purchasedMedia.Albums.Add(purchasedAlbum);
                     }
                     break;
 
@@ -171,19 +157,106 @@ namespace MediaKiosk.ViewModels.Browse
                     BindingOperations.GetBindingExpression(this.browseMoviesPage.stockTextBox,
                         TextBox.TextProperty).UpdateTarget();
 
-                    if (mediaLibrary.Movies.Contains(selectedMovie, movieComparer))
+                    if (purchasedMedia.Movies.Contains(selectedMovie, movieComparer))
                     {
-                        Movie movieSame = mediaLibrary.Movies.Single(selectedMovie, movieComparer);
+                        Movie movieSame = purchasedMedia.Movies.Single(selectedMovie, movieComparer);
                         movieSame.Stock++;
                     }
                     else
                     {
                         Movie purchasedMovie = (Movie)selectedMovie.Clone();
                         purchasedMovie.Stock = 1;
-                        mediaLibrary.Movies.Add(purchasedMovie);
+                        purchasedMedia.Movies.Add(purchasedMovie);
                     }
                     break;
             }
+
+            //Thank user for purchase via messagebox
+            MessageBox.Show(THANKS_FOR_PURCHASE_MESSAGES[random.Next(THANKS_FOR_PURCHASE_MESSAGES.Count())]);
+        }
+
+        //Consider refactoring to be DRY
+        public void Rent()
+        {
+            MediaLibrary rentedMedia = this.mainWindowViewModel.CurrentUser.Rentals;
+
+            switch (this.mediaType)
+            {
+                case MediaType.Books:
+                    //Subtract one from stock
+                    Book selectedBook = this.browseBooksPageViewModel.SelectedBook;
+                    selectedBook.Stock--;
+
+                    //Force refresh of media in browse page,
+                    //so Media subclasses can remain plain old CLR objects (pocos).
+                    CollectionViewSource.GetDefaultView(this.browseBooksPageViewModel.Books).Refresh();
+                    BindingOperations.GetBindingExpression(this.browseBooksPage.stockTextBox,
+                        TextBox.TextProperty).UpdateTarget();
+
+                    if (rentedMedia.Books.Contains(selectedBook, bookComparer))
+                    {
+                        Book bookSame = rentedMedia.Books.Single(selectedBook, bookComparer);
+                        bookSame.Stock++;
+                    }
+                    else
+                    {
+                        Book purchasedBook = (Book)selectedBook.Clone();
+                        purchasedBook.Stock = 1;
+                        rentedMedia.Books.Add(purchasedBook);
+                    }
+                    break;
+
+                case MediaType.Albums:
+                    //Subtract one from stock
+                    Album selectedAlbum = this.browseAlbumsPageViewModel.SelectedAlbum;
+                    selectedAlbum.Stock--;
+
+                    //Force refresh of media in browse page,
+                    //so Media subclasses can remain plain old CLR objects (pocos).
+                    CollectionViewSource.GetDefaultView(this.browseAlbumsPageViewModel.Albums).Refresh();
+                    BindingOperations.GetBindingExpression(this.browseAlbumsPage.stockTextBox,
+                        TextBox.TextProperty).UpdateTarget();
+
+                    if (rentedMedia.Albums.Contains(selectedAlbum, albumComparer))
+                    {
+                        Album albumSame = rentedMedia.Albums.Single(selectedAlbum, albumComparer);
+                        albumSame.Stock++;
+                    }
+                    else
+                    {
+                        Album purchasedAlbum = (Album)selectedAlbum.Clone();
+                        purchasedAlbum.Stock = 1;
+                        rentedMedia.Albums.Add(purchasedAlbum);
+                    }
+                    break;
+
+                case MediaType.Movies:
+                    //Subtract one from stock
+                    Movie selectedMovie = this.browseMoviesPageViewModel.SelectedMovie;
+                    selectedMovie.Stock--;
+
+                    //Force refresh of media in browse page,
+                    //so Media subclasses can remain plain old CLR objects (pocos).
+                    CollectionViewSource.GetDefaultView(this.browseMoviesPageViewModel.Movies).Refresh();
+                    BindingOperations.GetBindingExpression(this.browseMoviesPage.stockTextBox,
+                        TextBox.TextProperty).UpdateTarget();
+
+                    if (rentedMedia.Movies.Contains(selectedMovie, movieComparer))
+                    {
+                        Movie movieSame = rentedMedia.Movies.Single(selectedMovie, movieComparer);
+                        movieSame.Stock++;
+                    }
+                    else
+                    {
+                        Movie purchasedMovie = (Movie)selectedMovie.Clone();
+                        purchasedMovie.Stock = 1;
+                        rentedMedia.Movies.Add(purchasedMovie);
+                    }
+                    break;
+            }
+
+            //Thank user for renting via messagebox
+            MessageBox.Show(THANKS_FOR_RENT_MESSAGES[random.Next(THANKS_FOR_RENT_MESSAGES.Count())]);
         }
 
         public bool HasMadeSelection()

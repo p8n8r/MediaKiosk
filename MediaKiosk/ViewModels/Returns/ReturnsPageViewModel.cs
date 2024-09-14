@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -14,12 +15,20 @@ namespace MediaKiosk.ViewModels.Returns
 {
     internal class ReturnsPageViewModel : ViewModelBase
     {
+        private static readonly string[] THANKS_FOR_RETURN =
+        {
+            "Thanks for returning that!",
+            "Thank you for bringing that back!",
+            "Thanks! We hope you enjoyed it."
+        };
+
         private MainWindowViewModel mainWindowViewModel;
         private Media selectedPurchasedMedia, selectedRentedMedia;
         private ObservableCollection<Media> purchasedMedia, rentedMedia;
         private BookComparer bookComparer = new BookComparer();
         private AlbumComparer albumComparer = new AlbumComparer();
         private MovieComparer movieComparer = new MovieComparer();
+        private Random random = new Random();
         public RelayCommand returnCmd => new RelayCommand(media => Return(media), 
             media => this.SelectedRentedMedia != null);
         public RelayCommand reloadCmd => new RelayCommand(execute => ReloadMedia());
@@ -76,7 +85,11 @@ namespace MediaKiosk.ViewModels.Returns
             media.Stock--;
             if (media.Stock <= 0)
                 this.RentedMedia.Remove(media);
-            
+
+            //Force refresh of media in browse page,
+            //so Media subclasses can remain plain old CLR objects (pocos).
+            CollectionViewSource.GetDefaultView(this.RentedMedia).Refresh();
+
             //Add media to library
             if (media.GetType() == typeof(Book))
             {
@@ -92,6 +105,8 @@ namespace MediaKiosk.ViewModels.Returns
                     book.Stock = 1;
                     this.mainWindowViewModel.MediaLibrary.Books.Add(book);
                 }
+
+                this.mainWindowViewModel.CurrentUser.Rentals.Books.Remove(book);
             }
             else if (media.GetType() == typeof(Album))
             {
@@ -107,8 +122,10 @@ namespace MediaKiosk.ViewModels.Returns
                     album.Stock = 1;
                     this.mainWindowViewModel.MediaLibrary.Albums.Add(album);
                 }
+
+                this.mainWindowViewModel.CurrentUser.Rentals.Albums.Remove(album);
             }
-            else if (media.GetType() == typeof(Book))
+            else if (media.GetType() == typeof(Movie))
             {
                 Movie movie = media as Movie;
 
@@ -122,7 +139,11 @@ namespace MediaKiosk.ViewModels.Returns
                     movie.Stock = 1;
                     this.mainWindowViewModel.MediaLibrary.Movies.Add(movie);
                 }
+
+                this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movie);
             }
+
+            MessageBox.Show(THANKS_FOR_RETURN[random.Next(THANKS_FOR_RETURN.Count())]);
         }
     }
 }
