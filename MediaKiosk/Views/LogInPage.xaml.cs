@@ -21,7 +21,7 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class LogInPage : Page
     {
-        internal LogInPage(MainWindowViewModel mainWindowViewModel)
+        public LogInPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 

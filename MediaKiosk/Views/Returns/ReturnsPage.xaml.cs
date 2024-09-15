@@ -23,7 +23,7 @@ namespace MediaKiosk.Views.Returns
     /// </summary>
     public partial class ReturnsPage : Page
     {
-        internal ReturnsPage(MainWindowViewModel mainWindowViewModel)
+        public ReturnsPage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 

@@ -12,7 +12,7 @@ using System.Windows.Data;
 
 namespace MediaKiosk.ViewModels.Browse
 {
-    internal class BrowsePageViewModel : ViewModelBase
+    public class BrowsePageViewModel : ViewModelBase
     {
         private static readonly string[] THANKS_FOR_PURCHASE_MESSAGES =
         {
@@ -32,9 +32,9 @@ namespace MediaKiosk.ViewModels.Browse
         private MainWindowViewModel mainWindowViewModel;
         private MediaType mediaType = MediaType.Books;
         private Random random = new Random();
-        internal BrowseBooksPage browseBooksPage;
-        internal BrowseAlbumsPage browseAlbumsPage;
-        internal BrowseMoviesPage browseMoviesPage;
+        public BrowseBooksPage browseBooksPage;
+        public BrowseAlbumsPage browseAlbumsPage;
+        public BrowseMoviesPage browseMoviesPage;
         private BrowseBooksPageViewModel browseBooksPageViewModel;
         private BrowseAlbumsPageViewModel browseAlbumsPageViewModel;
         private BrowseMoviesPageViewModel browseMoviesPageViewModel;
@@ -83,7 +83,7 @@ namespace MediaKiosk.ViewModels.Browse
         }
 
         //Consider refactoring to be DRY
-        public void Buy()
+        private void Buy()
         {
             MediaLibrary purchasedMedia = this.mainWindowViewModel.CurrentUser.Purchases;
 
@@ -191,7 +191,7 @@ namespace MediaKiosk.ViewModels.Browse
         }
 
         //Consider refactoring to be DRY
-        public void Rent()
+        private void Rent()
         {
             MediaLibrary rentedMedia = this.mainWindowViewModel.CurrentUser.Rentals;
 
@@ -274,7 +274,7 @@ namespace MediaKiosk.ViewModels.Browse
             MessageBox.Show(THANKS_FOR_RENT_MESSAGES[random.Next(THANKS_FOR_RENT_MESSAGES.Count())]);
         }
 
-        public bool HasMadeSelection()
+        private bool HasMadeSelection()
         {
             switch (this.mediaType)
             {

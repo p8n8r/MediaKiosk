@@ -13,7 +13,7 @@ using System.Windows.Data;
 
 namespace MediaKiosk.ViewModels.Returns
 {
-    internal class ReturnsPageViewModel : ViewModelBase
+    public class ReturnsPageViewModel : ViewModelBase
     {
         private static readonly string[] THANKS_FOR_RETURN =
         {

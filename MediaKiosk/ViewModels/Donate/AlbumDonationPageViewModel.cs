@@ -13,7 +13,7 @@ using static MediaKiosk.Models.Album;
 
 namespace MediaKiosk.ViewModels.Donate
 {
-    internal class AlbumDonationPageViewModel : ViewModelBase
+    public class AlbumDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
         private string title, artist, genre, releaseYear, albumArtFilePath;
@@ -59,7 +59,7 @@ namespace MediaKiosk.ViewModels.Donate
             }
         }
 
-        internal bool HasValidAlbumProperties()
+        public bool HasValidAlbumProperties()
         {
             if (string.IsNullOrWhiteSpace(this.Title))
                 throw new InvalidMediaException("Invalid title.");
@@ -80,7 +80,7 @@ namespace MediaKiosk.ViewModels.Donate
             return true;
         }
 
-        internal void ClearAlbumProperties()
+        public void ClearAlbumProperties()
         {
             this.Title = string.Empty;
             this.Artist = string.Empty;

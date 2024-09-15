@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class LogInPageViewModel : ViewModelBase
+    public class LogInPageViewModel : ViewModelBase
     {
         private MainWindowViewModel mainWindowViewModel;
         private List<User> Users;

@@ -22,7 +22,7 @@ namespace MediaKiosk.Views.Browse
     /// </summary>
     public partial class BrowsePage : Page
     {
-        internal BrowsePage(MainWindowViewModel mainWindowViewModel)
+        public BrowsePage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 

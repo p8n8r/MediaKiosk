@@ -27,12 +27,12 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal MainWindowViewModel mainWindowViewModel;
-        internal LogInPage loginPage;
-        internal WelcomePage welcomePage;
-        internal BrowsePage browsePage;
-        internal ReturnsPage returnsPage;
-        internal DonatePage donatePage;
+        public MainWindowViewModel mainWindowViewModel;
+        public LogInPage loginPage;
+        public WelcomePage welcomePage;
+        public BrowsePage browsePage;
+        public ReturnsPage returnsPage;
+        public DonatePage donatePage;
 
         public MainWindow()
         {

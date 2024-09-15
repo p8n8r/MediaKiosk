@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
 {
-    internal class DonatePageViewModel : ViewModelBase
+    public class DonatePageViewModel : ViewModelBase
     {
         private readonly string[] THANKS_MESSAGES = 
         { 
@@ -28,12 +28,12 @@ namespace MediaKiosk.ViewModels.Donate
 
         private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
-        internal MediaLibrary MediaLibrary { get; set; }
+        public MediaLibrary MediaLibrary { get; set; }
         private Frame detailsFrame;
         private MediaType mediaType = MediaType.Books;
-        internal BookDonationPage bookDonationPage;
-        internal AlbumDonationPage albumDonationPage;
-        internal MovieDonationPage movieDonationPage;
+        public BookDonationPage bookDonationPage;
+        public AlbumDonationPage albumDonationPage;
+        public MovieDonationPage movieDonationPage;
         private BookDonationPageViewModel bookDonationPageViewModel;
         private AlbumDonationPageViewModel albumDonationPageViewModel;
         private MovieDonationPageViewModel movieDonationPageViewModel;

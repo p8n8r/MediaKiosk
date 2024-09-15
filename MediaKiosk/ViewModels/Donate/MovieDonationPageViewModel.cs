@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
 {
-    internal class MovieDonationPageViewModel : ViewModelBase
+    public class MovieDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
         private string title, stars, category, releaseYear, promoArtFilePath;
@@ -58,7 +58,7 @@ namespace MediaKiosk.ViewModels.Donate
             }
         }
 
-        internal bool HasValidMovieProperties()
+        public bool HasValidMovieProperties()
         {
             if (string.IsNullOrWhiteSpace(this.Title))
                 throw new InvalidMediaException("Invalid title.");
@@ -79,7 +79,7 @@ namespace MediaKiosk.ViewModels.Donate
             return true;
         }
 
-        internal void ClearMovieProperties()
+        public void ClearMovieProperties()
         {
             this.Title = string.Empty;
             this.Rating = string.Empty;

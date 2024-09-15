@@ -15,20 +15,20 @@ using System.Xml.Serialization;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
         private const string USERS_FILE = @".\Datasets\Users.xml";
         private MainWindow mainWindow;
         public MainWindow MainWindow {  get { return mainWindow; } }
-        internal MediaLibrary MediaLibrary { get; set; }
-        internal List<User> Users { get; set; }
-        internal User CurrentUser { get; set; } = User.INVALID_USER;
+        public MediaLibrary MediaLibrary { get; set; }
+        public List<User> Users { get; set; }
+        public User CurrentUser { get; set; } = User.INVALID_USER;
         private bool hasLoggedIn;
         public bool HasLoggedIn
         {
             get { return hasLoggedIn; }
-            internal set { hasLoggedIn = value; OnPropertyChanged(); }
+            set { hasLoggedIn = value; OnPropertyChanged(); }
         }
         public RelayCommand browseCmd => new RelayCommand(execute => Browse(), canExecute => this.HasLoggedIn);
         public RelayCommand returnsCmd => new RelayCommand(execute => Returns(), canExecute => this.HasLoggedIn);

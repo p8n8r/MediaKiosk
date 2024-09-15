@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Browse
 {
-    internal class BrowseBooksPageViewModel : ViewModelBase
+    public class BrowseBooksPageViewModel : ViewModelBase
     {
         private Book selectedBook;
         private ObservableCollection<Book> books;

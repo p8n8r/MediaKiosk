@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.ViewModels.Browse
 {
-    internal class BrowseMoviesPageViewModel : ViewModelBase
+    public class BrowseMoviesPageViewModel : ViewModelBase
     {
         private Movie selectedMovie;
         private ObservableCollection<Movie> movies;

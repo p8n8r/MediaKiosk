@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace MediaKiosk.ViewModels
 {
-    internal class WelcomePageViewModel : ViewModelBase
+    public class WelcomePageViewModel : ViewModelBase
     {
         private MainWindowViewModel mainWindowViewModel;
 

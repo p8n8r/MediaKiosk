@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.ViewModels.Browse
 {
-    internal class BrowseAlbumsPageViewModel : ViewModelBase
+    public class BrowseAlbumsPageViewModel : ViewModelBase
     {
         private Album selectedAlbum;
         private ObservableCollection<Album> albums;

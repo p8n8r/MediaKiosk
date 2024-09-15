@@ -22,7 +22,7 @@ namespace MediaKiosk.Views.Donate
     /// </summary>
     public partial class DonatePage : Page
     {
-        internal DonatePage(MainWindowViewModel mainWindowViewModel)
+        public DonatePage(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
 

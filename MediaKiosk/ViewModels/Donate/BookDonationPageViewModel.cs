@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
 {
-    internal class BookDonationPageViewModel : ViewModelBase
+    public class BookDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
         private string title, author, category, publicationYear, coverArtFilePath;
@@ -65,7 +65,7 @@ namespace MediaKiosk.ViewModels.Donate
             }
         }
 
-        internal bool HasValidBookProperties()
+        public bool HasValidBookProperties()
         {
             if (string.IsNullOrWhiteSpace(this.Title))
                 throw new InvalidMediaException("Invalid title.", nameof(Book.Title));
@@ -86,7 +86,7 @@ namespace MediaKiosk.ViewModels.Donate
             return true;
         }
 
-        internal void ClearBookProperties()
+        public void ClearBookProperties()
         {
             this.Title = string.Empty;
             this.Author = string.Empty;

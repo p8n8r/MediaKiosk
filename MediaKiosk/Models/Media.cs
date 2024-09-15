@@ -10,9 +10,9 @@ using System.Xml.Serialization;
 
 namespace MediaKiosk.Models
 {
-    enum MediaType
+    public enum MediaType
     {
-        Books, Magazines, Albums, Movies
+        Books, Albums, Movies
     }
 
     [Serializable]
