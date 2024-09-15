@@ -16,8 +16,9 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void BrowseBooksPageViewModelTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseBooksPageViewModel browseBooksVM = new BrowseBooksPageViewModel(mainWindowVM);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseBooksPageViewModel browseBooksVM = browsePageViewModel.browseBooksPage.DataContext as BrowseBooksPageViewModel;
             Assert.IsNotNull(browseBooksVM);
         }
 
@@ -25,8 +26,9 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void ReloadBooksTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseBooksPageViewModel browseBooksVM = new BrowseBooksPageViewModel(mainWindowVM);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseBooksPageViewModel browseBooksVM = browsePageViewModel.browseBooksPage.DataContext as BrowseBooksPageViewModel;
             PrivateObject privObj = new PrivateObject(browseBooksVM);
             privObj.Invoke("ReloadBooks");
 

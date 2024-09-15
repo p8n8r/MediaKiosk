@@ -16,8 +16,8 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void BrowseMoviesPageViewModelTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseMoviesPageViewModel browseMoviesVM = new BrowseMoviesPageViewModel(mainWindowVM);
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseMoviesPageViewModel browseMoviesVM = browsePageViewModel.browseMoviesPage.DataContext as BrowseMoviesPageViewModel;
             Assert.IsNotNull(browseMoviesVM);
         }
 
@@ -25,8 +25,9 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void ReloadMoviesTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseMoviesPageViewModel browseMoviesVM = new BrowseMoviesPageViewModel(mainWindowVM);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseMoviesPageViewModel browseMoviesVM = browsePageViewModel.browseMoviesPage.DataContext as BrowseMoviesPageViewModel;
             PrivateObject privObj = new PrivateObject(browseMoviesVM);
             privObj.Invoke("ReloadMovies");
 

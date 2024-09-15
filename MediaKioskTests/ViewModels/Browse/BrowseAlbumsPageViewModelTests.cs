@@ -17,8 +17,8 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void BrowseAlbumsPageViewModelTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseAlbumsPageViewModel browseAlbumsVM = new BrowseAlbumsPageViewModel(mainWindowVM);
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseAlbumsPageViewModel browseAlbumsVM = browsePageViewModel.browseAlbumsPage.DataContext as BrowseAlbumsPageViewModel;
             Assert.IsNotNull(browseAlbumsVM);
         }
 
@@ -26,8 +26,9 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void ReloadAlbumsTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowseAlbumsPageViewModel browseAlbumsVM = new BrowseAlbumsPageViewModel(mainWindowVM);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseAlbumsPageViewModel browseAlbumsVM = browsePageViewModel.browseAlbumsPage.DataContext as BrowseAlbumsPageViewModel;
             PrivateObject privObj = new PrivateObject(browseAlbumsVM);
             privObj.Invoke("ReloadAlbums");
 

@@ -19,9 +19,11 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         public void BrowsePageViewModelTest()
         {
             MainWindow mainWindow = new MainWindow();
-            MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-            BrowsePageViewModel browsePageVM = new BrowsePageViewModel(mainWindowVM);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageVM = mainWindow.browsePage.DataContext as BrowsePageViewModel;
 
+            Assert.IsNotNull(mainWindowVM);
+            Assert.IsNotNull(browsePageVM);
             Assert.IsNotNull(browsePageVM.browseBooksPage);
             Assert.IsNotNull(browsePageVM.browseAlbumsPage);
             Assert.IsNotNull(browsePageVM.browseMoviesPage);
