@@ -185,9 +185,6 @@ namespace MediaKiosk.ViewModels.Donate
 
         public bool IsMediaAcceptable()
         {
-            //Set borders back to default colors
-            //this.bookDonationPageViewModel.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
-
             switch (this.mediaType)
             {
                 case MediaType.Books:
@@ -200,38 +197,6 @@ namespace MediaKiosk.ViewModels.Donate
                     return false;
             }
         }
-
-        //public bool IsMediaAcceptable()
-        //{
-        //    //Set borders back to default colors
-        //    this.bookDonationPageViewModel.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
-
-        //    try
-        //    {
-        //        switch (this.mediaType)
-        //        {
-        //            case MediaType.Books:
-        //                return this.bookDonationPageViewModel.HasValidBookProperties();
-        //            case MediaType.Albums:
-        //                return this.albumDonationPageViewModel.HasValidAlbumProperties();
-        //            case MediaType.Movies:
-        //                return this.movieDonationPageViewModel.HasValidMovieProperties(); 
-        //            default:
-        //                return false;
-        //        }
-        //    }
-        //    catch (InvalidMediaException e)
-        //    {
-        //        switch (e.Property)
-        //        {
-        //            case nameof(Book.Title):
-        //                this.bookDonationPageViewModel.TitleBorderBrush = Brushes.Red;
-        //                break;
-        //        }
-
-        //        return false;
-        //    } //TODO: Reveal bad details
-        //}
 
         public static string GetRandomPrice()
         {

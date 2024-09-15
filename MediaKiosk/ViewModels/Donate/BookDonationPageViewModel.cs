@@ -23,6 +23,7 @@ namespace MediaKiosk.ViewModels.Donate
         private string title, author, category, publicationYear, coverArtFilePath;
         private Brush titleBorderBrush, authorBorderBrush, categoryBorderBrush,
             publicationYearBorderBrush, coverArtFilePathBorderBrush;
+
         public string Title
         {
             get { return title; }
@@ -141,7 +142,8 @@ namespace MediaKiosk.ViewModels.Donate
                 hasValidProperties = false;
             }
 
-            if (string.IsNullOrWhiteSpace(this.CoverArtFilePath) || !File.Exists(this.CoverArtFilePath))
+            if (string.IsNullOrWhiteSpace(this.CoverArtFilePath)
+                || !File.Exists(this.CoverArtFilePath))
             {
                 this.CoverArtFilePathBorderBrush = Types.INVALID_BORDER_BRUSH;
                 hasValidProperties = false;

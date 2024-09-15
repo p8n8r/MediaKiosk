@@ -35,13 +35,4 @@ namespace MediaKiosk.Models
         public BitmapImage ArtWork { get; set; }
         public string Type { get { return this.GetType().Name; } } //Needed for data binding
     }
-
-    public class InvalidMediaException : Exception
-    {
-        public string Property { get; set; }
-        public InvalidMediaException(string message, string property=null) : base(message)
-        { 
-            this.Property = property;
-        }
-    }
 }

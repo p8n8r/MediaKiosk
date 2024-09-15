@@ -40,15 +40,5 @@ namespace MediaKiosk.Models.Tests
             Assert.AreNotEqual(b1.Type, a.Type);
             Assert.AreNotEqual(a.Type, m.Type);
         }
-
-        [TestMethod()]
-        public void InvalidMediaExceptionTest()
-        {
-            string property = "property";
-            InvalidMediaException ex1 = new InvalidMediaException(property);
-            InvalidMediaException ex2 = new InvalidMediaException(property);
-
-            Assert.AreEqual(ex1.Property, ex2.Property);
-        }
     }
 }

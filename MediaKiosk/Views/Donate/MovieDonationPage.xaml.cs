@@ -27,5 +27,10 @@ namespace MediaKiosk.Views.Donate
 
             this.DataContext = new MovieDonationPageViewModel();
         }
+
+        private void Control_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MovieDonationPageViewModel).controlGotFocusCmd.Execute(sender);
+        }
     }
 }

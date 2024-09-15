@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static MediaKiosk.Models.Album;
 
@@ -16,7 +17,11 @@ namespace MediaKiosk.ViewModels.Donate
     public class AlbumDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
+        public RelayCommand controlGotFocusCmd => new RelayCommand(sender => ResetBorder(sender));
+        
         private string title, artist, genre, releaseYear, albumArtFilePath;
+        private Brush titleBorderBrush, artistBorderBrush, genreBorderBrush,
+            releaseYearBorderBrush, albumArtFilePathBorderBrush;
 
         public string Title
         {
@@ -43,6 +48,51 @@ namespace MediaKiosk.ViewModels.Donate
             get { return this.albumArtFilePath; }
             set { this.albumArtFilePath = value; OnPropertyChanged(); }
         }
+        public Brush TitleBorderBrush
+        {
+            get { return this.titleBorderBrush; }
+            set { this.titleBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush ArtistBorderBrush
+        {
+            get { return this.artistBorderBrush; }
+            set { this.artistBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush GenreBorderBrush
+        {
+            get { return this.genreBorderBrush; }
+            set { this.genreBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush ReleaseYearBorderBrush
+        {
+            get { return this.releaseYearBorderBrush; }
+            set { this.releaseYearBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush AlbumArtFilePathBorderBrush
+        {
+            get { return this.albumArtFilePathBorderBrush; }
+            set { this.albumArtFilePathBorderBrush = value; OnPropertyChanged(); }
+        }
+
+        public AlbumDonationPageViewModel()
+        {
+            InitializeBorders();
+        }
+
+        private void InitializeBorders()
+        {
+            //Initialize all border colors
+            this.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.ArtistBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.GenreBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.ReleaseYearBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.AlbumArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+        }
+
+        private void ResetBorder(object sender)
+        {
+            (sender as Control).BorderBrush = Types.DEFAULT_BORDER_BRUSH;
+        }
 
         private void BrowseForImage()
         {
@@ -56,28 +106,49 @@ namespace MediaKiosk.ViewModels.Donate
             {
                 //Save image file path
                 this.AlbumArtFilePath = dlg.FileName;
+
+                //Reset border color
+                this.AlbumArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
             }
         }
 
         public bool HasValidAlbumProperties()
         {
+            bool hasValidProperties = true;
+
             if (string.IsNullOrWhiteSpace(this.Title))
-                throw new InvalidMediaException("Invalid title.");
+            {
+                this.TitleBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Artist))
-                throw new InvalidMediaException("Invalid artist.");
+            {
+                this.ArtistBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Genre))
-                throw new InvalidMediaException("Invalid genre.");
+            {
+                this.GenreBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (!int.TryParse(this.ReleaseYear, out int relYear)
                 || (relYear < 0 || relYear > DateTime.Now.Year))
-                throw new InvalidMediaException("Invalid publication year.");
+            {
+                this.ReleaseYearBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
-            if (string.IsNullOrWhiteSpace(this.AlbumArtFilePath) || !File.Exists(this.AlbumArtFilePath))
-                throw new InvalidMediaException("Invalid album art file.");
+            if (string.IsNullOrWhiteSpace(this.AlbumArtFilePath)
+                || !File.Exists(this.AlbumArtFilePath))
+            {
+                this.AlbumArtFilePathBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
-            return true;
+            return hasValidProperties;
         }
 
         public void ClearAlbumProperties()

@@ -8,14 +8,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MediaKiosk.ViewModels.Donate
 {
     public class MovieDonationPageViewModel : ViewModelBase
     {
+        private const int INIT_NUM_STARS = 1;
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
-        private string title, stars, category, releaseYear, promoArtFilePath;
+        public RelayCommand controlGotFocusCmd => new RelayCommand(sender => ResetBorder(sender));
+
+        private string title, rating, category, releaseYear, promoArtFilePath;
+        private Brush titleBorderBrush, ratingBorderBrush, categoryBorderBrush,
+            releaseYearBorderBrush, promoArtFilePathBorderBrush;
 
         public string Title
         {
@@ -24,8 +30,8 @@ namespace MediaKiosk.ViewModels.Donate
         }
         public string Rating
         {
-            get { return this.stars; }
-            set { this.stars = value; OnPropertyChanged(); }
+            get { return this.rating; }
+            set { this.rating = value; OnPropertyChanged(); }
         }
         public string Category
         {
@@ -42,6 +48,54 @@ namespace MediaKiosk.ViewModels.Donate
             get { return this.promoArtFilePath; }
             set { this.promoArtFilePath = value; OnPropertyChanged(); }
         }
+        public Brush TitleBorderBrush
+        {
+            get { return this.titleBorderBrush; }
+            set { this.titleBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush RatingBorderBrush
+        {
+            get { return this.ratingBorderBrush; }
+            set { this.ratingBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush CategoryBorderBrush
+        {
+            get { return this.categoryBorderBrush; }
+            set { this.categoryBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush ReleaseYearBorderBrush
+        {
+            get { return this.releaseYearBorderBrush; }
+            set { this.releaseYearBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush PromoArtFilePathBorderBrush
+        {
+            get { return this.promoArtFilePathBorderBrush; }
+            set { this.promoArtFilePathBorderBrush = value; OnPropertyChanged(); }
+        }
+
+        public MovieDonationPageViewModel()
+        {
+            InitializeBorders();
+        }
+
+        private void InitializeBorders()
+        {
+            //Initialize rating
+            this.Rating = new string(Movie.STAR, INIT_NUM_STARS);
+
+            //Initialize all border colors
+            this.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.RatingBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.CategoryBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.ReleaseYearBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.PromoArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+        }
+
+        private void ResetBorder(object sender)
+        {
+            (sender as Control).BorderBrush = Types.DEFAULT_BORDER_BRUSH;
+        }
 
         private void BrowseForImage()
         {
@@ -55,28 +109,49 @@ namespace MediaKiosk.ViewModels.Donate
             {
                 //Save image file path
                 this.PromoArtFilePath = dlg.FileName;
+
+                //Reset border color
+                this.PromoArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
             }
         }
 
         public bool HasValidMovieProperties()
         {
+            bool hasValidProperties = true;
+
             if (string.IsNullOrWhiteSpace(this.Title))
-                throw new InvalidMediaException("Invalid title.");
+            {
+                this.TitleBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Rating))
-                throw new InvalidMediaException("Invalid rating.");
+            {
+                this.RatingBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Category))
-                throw new InvalidMediaException("Invalid category.");
+            {
+                this.CategoryBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (!int.TryParse(this.ReleaseYear, out int relYear)
                 || (relYear < 0 || relYear > DateTime.Now.Year))
-                throw new InvalidMediaException("Invalid release year.");
+            {
+                this.ReleaseYearBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
-            if (string.IsNullOrWhiteSpace(this.PromoArtFilePath) || !File.Exists(this.PromoArtFilePath))
-                throw new InvalidMediaException("Invalid promotional art file.");
+            if (string.IsNullOrWhiteSpace(this.PromoArtFilePath)
+                || !File.Exists(this.PromoArtFilePath))
+            {
+                this.PromoArtFilePathBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
-            return true;
+            return hasValidProperties;
         }
 
         public void ClearMovieProperties()

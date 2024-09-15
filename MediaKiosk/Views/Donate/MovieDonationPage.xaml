@@ -26,9 +26,9 @@
         </Grid.RowDefinitions>
 
         <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding TitleBorderBrush, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Rating (1-5)" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <ComboBox Text="{Binding Rating, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center">
+        <ComboBox Text="{Binding Rating, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" BorderBrush="{Binding RatingBorderBrush, Mode=TwoWay}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus">
             <ComboBoxItem Content="☆"/>
             <ComboBoxItem Content="☆☆"/>
             <ComboBoxItem Content="☆☆☆"/>
@@ -36,16 +36,16 @@
             <ComboBoxItem Content="☆☆☆☆☆"/>
         </ComboBox>
         <Label Content="Genre" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding CategoryBorderBrush, Mode=TwoWay}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Release Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding ReleaseYearBorderBrush, Mode=TwoWay}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Promo Art" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Grid Grid.Row="9" Grid.Column="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding PromoArtFilePath, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding PromoArtFilePath, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding PromoArtFilePathBorderBrush, Mode=TwoWay}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
             <Button Command="{Binding browseCmd}" Content="Browse..." Grid.Column="1" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>

@@ -26,20 +26,20 @@
         </Grid.RowDefinitions>
 
         <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding TitleBorderBrush, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Artist" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Artist, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Artist, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding ArtistBorderBrush, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Genre" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding GenreBorderBrush, Mode=TwoWay}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Release Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding ReleaseYearBorderBrush, Mode=TwoWay}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
         <Label Content="Album Art" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Grid Grid.Row="9" Grid.Column="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding AlbumArtFilePath, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding AlbumArtFilePath, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding AlbumArtFilePathBorderBrush, Mode=TwoWay}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
             <Button Command="{Binding browseCmd}" Content="Browse..." Grid.Column="1" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>

@@ -27,5 +27,10 @@ namespace MediaKiosk.Views.Donate
 
             this.DataContext = new AlbumDonationPageViewModel();
         }
+
+        private void Control_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as AlbumDonationPageViewModel).controlGotFocusCmd.Execute(sender);
+        }
     }
 }
