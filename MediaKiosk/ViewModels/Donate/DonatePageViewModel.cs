@@ -23,8 +23,6 @@ namespace MediaKiosk.ViewModels.Donate
             "Thank you for donating!" 
         };
         private const decimal MIN_PRICE = 1.0M, MAX_PRICE = 10.0M;
-        private static readonly Color DEFAULT_BORDER_COLOR = Color.FromRgb(171, 173, 179);
-        private static readonly Brush DEFAULT_BORDER_BRUSH = new SolidColorBrush(DEFAULT_BORDER_COLOR);
 
         private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
@@ -41,7 +39,7 @@ namespace MediaKiosk.ViewModels.Donate
         private AlbumComparer albumComparer = new AlbumComparer();
         private MovieComparer movieComparer = new MovieComparer();
         private Random random = new Random();
-        public RelayCommand donateCmd => new RelayCommand(execute => Donate(), canExecute => IsMediaAcceptable());
+        public RelayCommand donateCmd => new RelayCommand(execute => Donate());
         public RelayCommand selectBooksCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Books); });
         public RelayCommand selectAlbumsCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Albums); });
         public RelayCommand selectMoviesCmd => new RelayCommand(execute => { SelectMediaType(MediaType.Movies); });
@@ -84,6 +82,9 @@ namespace MediaKiosk.ViewModels.Donate
 
         public void Donate()
         {
+            if (!IsMediaAcceptable()) //Showsinvalid controls
+                return;
+
             //All properties of selected media type should be valid now
             switch (this.mediaType)
             {
@@ -185,34 +186,52 @@ namespace MediaKiosk.ViewModels.Donate
         public bool IsMediaAcceptable()
         {
             //Set borders back to default colors
-            this.bookDonationPageViewModel.TitleBorderColor = DEFAULT_BORDER_BRUSH;
+            //this.bookDonationPageViewModel.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
 
-            try
+            switch (this.mediaType)
             {
-                switch (this.mediaType)
-                {
-                    case MediaType.Books:
-                        return this.bookDonationPageViewModel.HasValidBookProperties();
-                    case MediaType.Albums:
-                        return this.albumDonationPageViewModel.HasValidAlbumProperties();
-                    case MediaType.Movies:
-                        return this.movieDonationPageViewModel.HasValidMovieProperties(); 
-                    default:
-                        return false;
-                }
+                case MediaType.Books:
+                    return this.bookDonationPageViewModel.HasValidBookProperties();
+                case MediaType.Albums:
+                    return this.albumDonationPageViewModel.HasValidAlbumProperties();
+                case MediaType.Movies:
+                    return this.movieDonationPageViewModel.HasValidMovieProperties();
+                default:
+                    return false;
             }
-            catch (InvalidMediaException e)
-            {
-                switch (e.Property)
-                {
-                    case nameof(Book.Title):
-                        this.bookDonationPageViewModel.TitleBorderColor = Brushes.Red;
-                        break;
-                }
-
-                return false;
-            } //TODO: Reveal bad details
         }
+
+        //public bool IsMediaAcceptable()
+        //{
+        //    //Set borders back to default colors
+        //    this.bookDonationPageViewModel.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+
+        //    try
+        //    {
+        //        switch (this.mediaType)
+        //        {
+        //            case MediaType.Books:
+        //                return this.bookDonationPageViewModel.HasValidBookProperties();
+        //            case MediaType.Albums:
+        //                return this.albumDonationPageViewModel.HasValidAlbumProperties();
+        //            case MediaType.Movies:
+        //                return this.movieDonationPageViewModel.HasValidMovieProperties(); 
+        //            default:
+        //                return false;
+        //        }
+        //    }
+        //    catch (InvalidMediaException e)
+        //    {
+        //        switch (e.Property)
+        //        {
+        //            case nameof(Book.Title):
+        //                this.bookDonationPageViewModel.TitleBorderBrush = Brushes.Red;
+        //                break;
+        //        }
+
+        //        return false;
+        //    } //TODO: Reveal bad details
+        //}
 
         public static string GetRandomPrice()
         {

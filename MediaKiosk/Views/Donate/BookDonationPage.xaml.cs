@@ -1,4 +1,5 @@
 ﻿using MediaKiosk.ViewModels;
+using MediaKiosk.ViewModels.Browse;
 using MediaKiosk.ViewModels.Donate;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace MediaKiosk.Views.Donate
             InitializeComponent();
 
             this.DataContext = new BookDonationPageViewModel();
+        }
+
+        private void Control_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as BookDonationPageViewModel).controlGotFocusCmd.Execute(sender);
         }
     }
 }

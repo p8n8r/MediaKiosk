@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -16,9 +18,11 @@ namespace MediaKiosk.ViewModels.Donate
     public class BookDonationPageViewModel : ViewModelBase
     {
         public RelayCommand browseCmd => new RelayCommand(execute => BrowseForImage());
-        private string title, author, category, publicationYear, coverArtFilePath;
-        private Brush titleColor;
+        public RelayCommand controlGotFocusCmd => new RelayCommand(sender => ResetBorder(sender));
 
+        private string title, author, category, publicationYear, coverArtFilePath;
+        private Brush titleBorderBrush, authorBorderBrush, categoryBorderBrush,
+            publicationYearBorderBrush, coverArtFilePathBorderBrush;
         public string Title
         {
             get { return title; }
@@ -44,10 +48,50 @@ namespace MediaKiosk.ViewModels.Donate
             get { return coverArtFilePath; }
             set { coverArtFilePath = value; OnPropertyChanged(); }
         }
-        public Brush TitleBorderColor
+        public Brush TitleBorderBrush
         {
-            get { return this.titleColor; }
-            set { this.titleColor = value; OnPropertyChanged(); }
+            get { return this.titleBorderBrush; }
+            set { this.titleBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush AuthorBorderBrush
+        {
+            get { return this.authorBorderBrush; }
+            set { this.authorBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush CategoryBorderBrush
+        {
+            get { return this.categoryBorderBrush; }
+            set { this.categoryBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush PublicationYearBorderBrush
+        {
+            get { return this.publicationYearBorderBrush; }
+            set { this.publicationYearBorderBrush = value; OnPropertyChanged(); }
+        }
+        public Brush CoverArtFilePathBorderBrush
+        {
+            get { return this.coverArtFilePathBorderBrush; }
+            set { this.coverArtFilePathBorderBrush = value; OnPropertyChanged(); }
+        }
+
+        public BookDonationPageViewModel()
+        {
+            InitializeBorders();
+        }
+
+        private void InitializeBorders()
+        {
+            //Initialize all border colors
+            this.TitleBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.AuthorBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.CategoryBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.PublicationYearBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+            this.CoverArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
+        }
+
+        private void ResetBorder(object sender)
+        {
+            (sender as Control).BorderBrush = Types.DEFAULT_BORDER_BRUSH;
         }
 
         private void BrowseForImage()
@@ -62,28 +106,48 @@ namespace MediaKiosk.ViewModels.Donate
             {
                 //Save image file path
                 this.CoverArtFilePath = dlg.FileName;
+
+                //Reset border color
+                this.CoverArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;
             }
         }
 
         public bool HasValidBookProperties()
         {
+            bool hasValidProperties = true;
+
             if (string.IsNullOrWhiteSpace(this.Title))
-                throw new InvalidMediaException("Invalid title.", nameof(Book.Title));
+            {
+                this.TitleBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Author))
-                throw new InvalidMediaException("Invalid author.");
+            {
+                this.AuthorBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.Category))
-                throw new InvalidMediaException("Invalid category.");
+            {
+                this.CategoryBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (!int.TryParse(this.PublicationYear, out int pubYear)
                 || (pubYear < 0 || pubYear > DateTime.Now.Year))
-                throw new InvalidMediaException("Invalid publication year.");
+            {
+                this.PublicationYearBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.CoverArtFilePath) || !File.Exists(this.CoverArtFilePath))
-                throw new InvalidMediaException("Invalid cover art file.");
+            {
+                this.CoverArtFilePathBorderBrush = Types.INVALID_BORDER_BRUSH;
+                hasValidProperties = false;
+            }
 
-            return true;
+            return hasValidProperties;
         }
 
         public void ClearBookProperties()
