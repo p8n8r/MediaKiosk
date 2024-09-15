@@ -26,7 +26,7 @@ namespace MediaKiosk.Models
             get { return price.ToString("C"); }
             set
             {
-                string priceStr = value.Replace("$", "");
+                string priceStr = value.Replace("$", ""); //Remove '$'
                 decimal.TryParse(priceStr, out price);
             }
         }
