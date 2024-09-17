@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.Views;
 using MediaKiosk.Views.Browse;
 using System;
@@ -27,6 +28,7 @@ namespace MediaKiosk.ViewModels.Browse
             "Thank you! Please remember to return your media.",
         };
         private const int EMPTY = 0;
+        private readonly IDisplayDialog displayDialog;
 
         private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
@@ -51,6 +53,7 @@ namespace MediaKiosk.ViewModels.Browse
         {
             this.mainWindowViewModel = mainWindowViewModel;
             this.mainWindow = this.mainWindowViewModel.MainWindow;
+            this.displayDialog = this.mainWindow.displayDialog;
 
             //Construct pages
             this.browseBooksPage = new BrowseBooksPage(mainWindowViewModel);
@@ -187,7 +190,7 @@ namespace MediaKiosk.ViewModels.Browse
             }
 
             //Thank user for purchase via messagebox
-            MessageBox.Show(THANKS_FOR_PURCHASE_MESSAGES[random.Next(THANKS_FOR_PURCHASE_MESSAGES.Count())]);
+            displayDialog.ShowBasicMessageBox(THANKS_FOR_PURCHASE_MESSAGES[random.Next(THANKS_FOR_PURCHASE_MESSAGES.Count())]);
         }
 
         //Consider refactoring to be DRY
@@ -271,7 +274,7 @@ namespace MediaKiosk.ViewModels.Browse
             }
 
             //Thank user for renting via messagebox
-            MessageBox.Show(THANKS_FOR_RENT_MESSAGES[random.Next(THANKS_FOR_RENT_MESSAGES.Count())]);
+            displayDialog.ShowBasicMessageBox(THANKS_FOR_RENT_MESSAGES[random.Next(THANKS_FOR_RENT_MESSAGES.Count())]);
         }
 
         private bool HasMadeSelection()

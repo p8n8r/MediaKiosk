@@ -9,6 +9,8 @@ using MediaKiosk.Views;
 using MediaKiosk.Models;
 using MediaKiosk.Views.Browse;
 using System.Windows.Controls;
+using MediaKiosk.DisplayDialogs;
+using System.Windows.Navigation;
 
 namespace MediaKiosk.ViewModels.Browse.Tests
 {
@@ -55,11 +57,32 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         //    Assert.IsTrue(true);
         //}
 
-        //[TestMethod()]
-        //public void BuyTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        public void BuyBooksTest()
+        {
+            IDisplayDialog fakeDisplayDialog = new FakeDisplayDialog();
+            MainWindow mainWindow = new MainWindow(fakeDisplayDialog);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageVM = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            //BrowsePageViewModel browsePageVM = browsePageVM.browseBooksPage.DataContext as BrowsePageViewModel;
+            BrowseBooksPage browseBooksPage = browsePageVM.browseBooksPage;
+            BrowseBooksPageViewModel browseBooksPageVM = browseBooksPage.DataContext as BrowseBooksPageViewModel;
+
+            User user = new User();
+            mainWindowVM.CurrentUser = user;
+
+            PrivateObject privBrowseBooksPageVM = new PrivateObject(browseBooksPageVM);
+            privBrowseBooksPageVM.Invoke("ReloadBooks"); //Selects first book 
+
+            //browseBooksPageVM.SelectedBook = browseBooksPageVM.Books.First(); //Select first book in browse
+
+            PrivateObject privBrowsePageVM = new PrivateObject(browsePageVM);
+            privBrowsePageVM.SetField("mediaType", MediaType.Books);
+
+            privBrowsePageVM.Invoke("Buy");
+
+
+        }
 
         //[TestMethod()]
         //public void RentTest()

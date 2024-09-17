@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.ViewModels;
 using MediaKiosk.ViewModels.Browse;
 using MediaKiosk.ViewModels.Donate;
@@ -27,6 +28,7 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        public readonly IDisplayDialog displayDialog;
         public MainWindowViewModel mainWindowViewModel;
         public LogInPage loginPage;
         public WelcomePage welcomePage;
@@ -34,13 +36,17 @@ namespace MediaKiosk.Views
         public ReturnsPage returnsPage;
         public DonatePage donatePage;
 
-        public MainWindow()
+        public MainWindow(IDisplayDialog displayDialog = null)
         {
             InitializeComponent();
 
+            //Set dialogs as displayable or not
+            this.displayDialog = displayDialog ?? new DisplayDialog();
+            Utility.displayDialog = this.displayDialog;
+
             //Set data context
-            this.mainWindowViewModel = new MainWindowViewModel(this);
-            this.DataContext = mainWindowViewModel;
+            this.mainWindowViewModel = new MainWindowViewModel(this, this.displayDialog);
+            this.DataContext = this.mainWindowViewModel;
 
             //Construct pages and viewmodels
             this.loginPage = new LogInPage(mainWindowViewModel);

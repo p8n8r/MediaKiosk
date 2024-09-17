@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DisplayDialog.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Media.cs" />
@@ -206,11 +207,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Datasets\MediaLibrary.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Datasets\Users.xml" />
+    <Resource Include="Datasets\Users.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon.ico" />

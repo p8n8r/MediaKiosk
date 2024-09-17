@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace MediaKiosk.ViewModels
         private List<User> Users;
         private string username;
         private UserComparer userComparer;
+        private readonly IDisplayDialog displayDialog;
         public RelayCommand loginCmd => new RelayCommand(pw => LogIn(pw));
         public RelayCommand registerCmd => new RelayCommand(pw => Register(pw));
 
@@ -30,6 +32,8 @@ namespace MediaKiosk.ViewModels
         public LogInPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
             this.mainWindowViewModel = mainWindowViewModel;
+            this.displayDialog = this.mainWindowViewModel.displayDialog;
+
             this.Users = mainWindowViewModel.Users;
             this.userComparer = new UserComparer();
 
@@ -53,13 +57,13 @@ namespace MediaKiosk.ViewModels
                 }
                 else
                 {
-                    Utility.ShowErrorMessageBox($"The username/password was not found. "
+                    displayDialog.ShowErrorMessageBox($"The username/password was not found. "
                         + "Please try again.");
                 }
             }
             else
             {
-                Utility.ShowErrorMessageBox($"Invalid characters found. "
+                displayDialog.ShowErrorMessageBox($"Invalid characters found. "
                     + "Please use only letters and numbers for your username and password.");
             }
         }
@@ -78,13 +82,13 @@ namespace MediaKiosk.ViewModels
                 }
                 else
                 {
-                    Utility.ShowErrorMessageBox($"The username \"{user.Username}\" already exists. "
+                    displayDialog.ShowErrorMessageBox($"The username \"{user.Username}\" already exists. "
                         + "Please choose another username.");
                 }
             }
             else
             {
-                Utility.ShowErrorMessageBox($"Invalid characters found. "
+                displayDialog.ShowErrorMessageBox($"Invalid characters found. "
                     + "Please use only letters and numbers for your username and password.");
             }
         }

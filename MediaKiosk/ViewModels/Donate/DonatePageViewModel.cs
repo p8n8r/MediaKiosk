@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.Views;
 using MediaKiosk.Views.Donate;
 using System;
@@ -23,6 +24,7 @@ namespace MediaKiosk.ViewModels.Donate
             "Thank you for donating!" 
         };
         private const decimal MIN_PRICE = 1.0M, MAX_PRICE = 10.0M;
+        private readonly IDisplayDialog displayDialog;
 
         private MainWindow mainWindow;
         private MainWindowViewModel mainWindowViewModel;
@@ -48,6 +50,7 @@ namespace MediaKiosk.ViewModels.Donate
         {
             this.mainWindowViewModel = mainWindowViewModel;
             this.mainWindow = mainWindowViewModel.MainWindow;
+            this.displayDialog = this.mainWindowViewModel.displayDialog;
             this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
 
             //Construct pages
@@ -180,7 +183,7 @@ namespace MediaKiosk.ViewModels.Donate
             }
 
             //Thank user for donation via messagebox
-            MessageBox.Show(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
+            displayDialog.ShowBasicMessageBox(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
         }
 
         public bool IsMediaAcceptable()

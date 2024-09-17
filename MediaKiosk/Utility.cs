@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Views;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,7 @@ namespace MediaKiosk
         //Combine all filters into one filter string
         public static readonly string ALL_IMAGE_FILTERS = string.Join("|", IMAGE_FILTERS);
         private static Random random = new Random();
+        public static IDisplayDialog displayDialog;
 
         public static Microsoft.Win32.OpenFileDialog CreateImageFileDialog()
         {
@@ -51,8 +53,8 @@ namespace MediaKiosk
                     encoder.Save(stream);
                     return stream.ToArray();
                 }
-                catch (InvalidOperationException e) { ShowErrorMessageBox(e.Message); }
-                catch (NotSupportedException e) { ShowErrorMessageBox(e.Message); }
+                catch (InvalidOperationException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+                catch (NotSupportedException e) { displayDialog.ShowErrorMessageBox(e.Message); }
             }
             return null;
         }
@@ -68,11 +70,6 @@ namespace MediaKiosk
                 bitmapImage.EndInit();
                 return bitmapImage;
             }
-        }
-
-        public static void ShowErrorMessageBox(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public static string GetRandomDollarValue(decimal min, decimal max)

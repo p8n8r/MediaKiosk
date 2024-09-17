@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace MediaKiosk.ViewModels
     {
         private const string MEDIA_LIBRARY_FILE = @".\Datasets\MediaLibrary.xml";
         private const string USERS_FILE = @".\Datasets\Users.xml";
+        public readonly IDisplayDialog displayDialog;
+
         private MainWindow mainWindow;
         public MainWindow MainWindow {  get { return mainWindow; } }
         public MediaLibrary MediaLibrary { get; set; }
@@ -37,9 +40,10 @@ namespace MediaKiosk.ViewModels
         public RelayCommand onCloseCmd => new RelayCommand(execute => OnClose());
         public RelayCommand navigateToWelcomePageCmd => new RelayCommand(execute => NavigateToWelcomePage());
 
-        public MainWindowViewModel(MainWindow mainWindow)
+        public MainWindowViewModel(MainWindow mainWindow, IDisplayDialog displayDialog)
         {
             this.mainWindow = mainWindow;
+            this.displayDialog = displayDialog;
 
             ImportUsers();
             ImportMediaLibrary();
@@ -65,19 +69,19 @@ namespace MediaKiosk.ViewModels
             }
             //catch (Exception e)
             //{
-            //    Utility.ShowErrorMessageBox(e.Message);
+            //    displayDialog.ShowErrorMessageBox(e.Message);
             //    throw; //?
             //}
-            catch (ArgumentNullException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (ArgumentOutOfRangeException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (ArgumentException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (NotSupportedException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (FileNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (UnauthorizedAccessException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (DirectoryNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (PathTooLongException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentNullException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentOutOfRangeException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (NotSupportedException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (FileNotFoundException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (UnauthorizedAccessException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (DirectoryNotFoundException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (PathTooLongException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (IOException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (SecurityException e) { displayDialog.ShowErrorMessageBox(e.Message); }
         }
 
         private object ImportXmlFile(Type dataType, string filePath)
@@ -97,23 +101,23 @@ namespace MediaKiosk.ViewModels
             }
             //catch (Exception e)
             //{
-            //    Utility.ShowErrorMessageBox(e.Message);
+            //    displayDialog.ShowErrorMessageBox(e.Message);
             //    throw; //?
             //}
-            catch (ArgumentNullException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (ArgumentOutOfRangeException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (ArgumentException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (NotSupportedException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (FileNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (UnauthorizedAccessException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (DirectoryNotFoundException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (PathTooLongException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (IOException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (SecurityException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (InvalidOperationException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (InvalidCastException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (FormatException e) { Utility.ShowErrorMessageBox(e.Message); }
-            catch (OverflowException e) { Utility.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentNullException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentOutOfRangeException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (ArgumentException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (NotSupportedException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (FileNotFoundException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (UnauthorizedAccessException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (DirectoryNotFoundException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (PathTooLongException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (IOException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (SecurityException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (InvalidOperationException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (InvalidCastException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (FormatException e) { displayDialog.ShowErrorMessageBox(e.Message); }
+            catch (OverflowException e) { displayDialog.ShowErrorMessageBox(e.Message); }
 
             return data;
         }

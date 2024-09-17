@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using MediaKiosk.Views;
 using System;
 using System.CodeDom;
@@ -21,6 +22,7 @@ namespace MediaKiosk.ViewModels.Returns
             "Thank you for bringing that back!",
             "Thanks! We hope you enjoyed it."
         };
+        private readonly IDisplayDialog displayDialog;
 
         private MainWindowViewModel mainWindowViewModel;
         private Media selectedPurchasedMedia, selectedRentedMedia;
@@ -56,7 +58,8 @@ namespace MediaKiosk.ViewModels.Returns
 
         public ReturnsPageViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            this.mainWindowViewModel = mainWindowViewModel; 
+            this.mainWindowViewModel = mainWindowViewModel;
+            this.displayDialog = this.mainWindowViewModel.displayDialog;
         }
 
         private void ReloadMedia()
@@ -143,7 +146,7 @@ namespace MediaKiosk.ViewModels.Returns
                 this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movie);
             }
 
-            MessageBox.Show(THANKS_FOR_RETURN[random.Next(THANKS_FOR_RETURN.Count())]);
+            displayDialog.ShowBasicMessageBox(THANKS_FOR_RETURN[random.Next(THANKS_FOR_RETURN.Count())]);
         }
     }
 }
