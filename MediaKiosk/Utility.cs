@@ -84,5 +84,10 @@ namespace MediaKiosk
         {
             return enumerable.Single(v => comparer.Equals(v, value));
         }
+
+        public static bool Any<T>(this IEnumerable<T> enumerable, T value, IEqualityComparer<T> comparer)
+        {
+            return enumerable.Any(v => comparer.Equals(v, value));
+        }
     }
 }
