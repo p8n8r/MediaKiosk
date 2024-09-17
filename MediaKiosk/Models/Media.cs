@@ -16,7 +16,7 @@ namespace MediaKiosk.Models
     }
 
     [Serializable]
-    public class Media
+    public class Media : ICloneable
     {
         private decimal price;
         public string Title { get; set; }
@@ -34,5 +34,17 @@ namespace MediaKiosk.Models
         [XmlIgnore]
         public BitmapImage ArtWork { get; set; }
         public string Type { get { return this.GetType().Name; } } //Needed for data binding
+
+        public virtual object Clone()
+        {
+            return new Book()
+            {
+                Title = this.Title,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes
+            };
+        }
     }
 }
