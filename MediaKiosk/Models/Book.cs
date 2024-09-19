@@ -16,15 +16,19 @@ namespace MediaKiosk.Models
         public string Category { get; set; }
         public int PublicationYear { get; set; }
 
-        public override object Clone()
+        public object Clone()
         {
-            Book book = (Book)base.Clone();
-
-            book.Author = this.Author;
-            book.Category = this.Category;
-            book.PublicationYear = this.PublicationYear;
-
-            return book;
+            return new Book()
+            {
+                Title = this.Title,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes,
+                Author = this.Author,
+                Category = this.Category,
+                PublicationYear = this.PublicationYear
+            };
         }
     }
 

@@ -13,15 +13,19 @@ namespace MediaKiosk.Models
         public string Genre { get; set; }
         public int ReleaseYear { get; set; }
 
-        public override object Clone()
+        public object Clone()
         {
-            Album album = (Album)base.Clone();
-
-            album.Artist = this.Artist;
-            album.Genre = this.Genre;
-            album.ReleaseYear = this.ReleaseYear;
-
-            return album;
+            return new Album()
+            {
+                Title = this.Title,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes,
+                Artist = this.Artist,
+                Genre = this.Genre,
+                ReleaseYear = this.ReleaseYear
+            };
         }
     }
 

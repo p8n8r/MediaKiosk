@@ -30,13 +30,17 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
             BrowseAlbumsPageViewModel browseAlbumsVM = browsePageViewModel.browseAlbumsPage.DataContext as BrowseAlbumsPageViewModel;
             PrivateObject privObj = new PrivateObject(browseAlbumsVM);
-            privObj.Invoke("ReloadAlbums");
+            privObj.Invoke("ReloadAlbums"); //Sets first album as SelectedAlbum if available
 
             Assert.IsNotNull(browseAlbumsVM.Albums);
-            Assert.IsNull(browseAlbumsVM.SelectedAlbum);
+
+            if (mainWindowVM.MediaLibrary.Albums.Count > 0) 
+                Assert.IsNotNull(browseAlbumsVM.SelectedAlbum);
+            else
+                Assert.IsNull(browseAlbumsVM.SelectedAlbum);
 
             mainWindowVM.MediaLibrary.Albums.Add(new Models.Album());
-            privObj.Invoke("ReloadAlbums");
+            privObj.Invoke("ReloadAlbums"); 
 
             Assert.IsNotNull(browseAlbumsVM.Albums);
             Assert.IsNotNull(browseAlbumsVM.SelectedAlbum);

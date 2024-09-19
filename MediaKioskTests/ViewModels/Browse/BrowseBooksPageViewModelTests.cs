@@ -30,10 +30,14 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
             BrowseBooksPageViewModel browseBooksVM = browsePageViewModel.browseBooksPage.DataContext as BrowseBooksPageViewModel;
             PrivateObject privObj = new PrivateObject(browseBooksVM);
-            privObj.Invoke("ReloadBooks");
+            privObj.Invoke("ReloadBooks"); //Sets first book as SelectedBook if available
 
             Assert.IsNotNull(browseBooksVM.Books);
-            Assert.IsNull(browseBooksVM.SelectedBook);
+
+            if (mainWindowVM.MediaLibrary.Books.Count > 0)
+                Assert.IsNotNull(browseBooksVM.SelectedBook);
+            else
+                Assert.IsNull(browseBooksVM.SelectedBook);
 
             mainWindowVM.MediaLibrary.Books.Add(new Models.Book());
             privObj.Invoke("ReloadBooks");

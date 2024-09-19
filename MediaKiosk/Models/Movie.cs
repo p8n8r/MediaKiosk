@@ -15,15 +15,19 @@ namespace MediaKiosk.Models
         public string Category { get; set; }
         public int ReleaseYear { get; set; }
 
-        public override object Clone()
+        public object Clone()
         {
-            Movie movie = (Movie)base.Clone();
-
-            movie.Rating = this.Rating;
-            movie.Category = this.Category;
-            movie.ReleaseYear = this.ReleaseYear;
-
-            return movie;
+            return new Movie()
+            {
+                Title = this.Title,
+                Stock = this.Stock,
+                Price = this.Price,
+                ArtWork = this.ArtWork,
+                ArtWorkBytes = this.ArtWorkBytes,
+                Rating = this.Rating,
+                Category = this.Category,
+                ReleaseYear = this.ReleaseYear
+            };
         }
     }
 

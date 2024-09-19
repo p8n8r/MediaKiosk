@@ -29,10 +29,14 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             BrowsePageViewModel browsePageViewModel = mainWindow.browsePage.DataContext as BrowsePageViewModel;
             BrowseMoviesPageViewModel browseMoviesVM = browsePageViewModel.browseMoviesPage.DataContext as BrowseMoviesPageViewModel;
             PrivateObject privObj = new PrivateObject(browseMoviesVM);
-            privObj.Invoke("ReloadMovies");
+            privObj.Invoke("ReloadMovies"); //Sets first movie as SelectedMovie if available
 
             Assert.IsNotNull(browseMoviesVM.Movies);
-            Assert.IsNull(browseMoviesVM.SelectedMovie);
+
+            if (mainWindowVM.MediaLibrary.Movies.Count > 0)
+                Assert.IsNotNull(browseMoviesVM.SelectedMovie);
+            else
+                Assert.IsNull(browseMoviesVM.SelectedMovie);
 
             mainWindowVM.MediaLibrary.Movies.Add(new Models.Movie());
             privObj.Invoke("ReloadMovies");

@@ -105,22 +105,16 @@ namespace MediaKiosk.ViewModels.Browse.Tests
                 {
                     Book browseBook = browseBooksPageVM.Books.Single(browseBooksPageVM.SelectedBook, bookComparer);
                     Book libraryBook = mainWindowVM.MediaLibrary.Books.Single(browseBooksPageVM.SelectedBook, bookComparer);
-                    Book userPurchasedBook = user.Purchases.Books.Single(browseBooksPageVM.SelectedBook, bookComparer);
-
+                    
                     Assert.AreEqual(browseBook.Stock, libraryBook.Stock);
                     Assert.AreEqual(browseBook.Stock, browseStock - 1);
                     Assert.AreEqual(libraryBook.Stock, browseStock - 1);
-                    Assert.AreEqual(userPurchasedBook.Stock, userPurchasedStock + 1);
                 }
 
                 if (userPurchasedStock <= 0)
-                {
-                    Assert.IsTrue(user.Purchases.Books.Count == countUserPurchasedBooks + 1);
-                }
+                    Assert.AreEqual(user.Purchases.Books.Count, countUserPurchasedBooks + 1);
                 else
-                {
-                    Assert.IsTrue(purchasedBook.Stock == userPurchasedStock + 1);
-                }
+                    Assert.AreEqual(purchasedBook.Stock, userPurchasedStock + 1);
             }
         }
 
