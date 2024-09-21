@@ -273,10 +273,47 @@ namespace MediaKiosk.ViewModels.Browse.Tests
         //    Assert.Fail();
         //}
 
-        //[TestMethod()]
-        //public void HasMadeSelectionTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        [DataRow(MediaType.Books, 0, false)]
+        [DataRow(MediaType.Books, 1, true)]
+        [DataRow(MediaType.Albums, 0, false)]
+        [DataRow(MediaType.Albums, 1, true)]
+        [DataRow(MediaType.Movies, 0, false)]
+        [DataRow(MediaType.Movies, 1, true)]
+        public void HasMadeSelectionTest(MediaType mediaType, int stock, bool shouldHaveSelection)
+        {
+            //Arrange
+            IDisplayDialog fakeDisplayDialog = new FakeDisplayDialog();
+            MainWindow mainWindow = new MainWindow(fakeDisplayDialog);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePageViewModel browsePageVM = mainWindow.browsePage.DataContext as BrowsePageViewModel;
+            BrowseBooksPage browseBooksPage = browsePageVM.browseBooksPage;
+            BrowseAlbumsPage browseAlbumsPage = browsePageVM.browseAlbumsPage;
+            BrowseMoviesPage browseMoviesPage = browsePageVM.browseMoviesPage;
+            BrowseBooksPageViewModel browseBooksPageVM = browseBooksPage.DataContext as BrowseBooksPageViewModel;
+            BrowseAlbumsPageViewModel browseAlbumsPageVM = browseAlbumsPage.DataContext as BrowseAlbumsPageViewModel;
+            BrowseMoviesPageViewModel browseMoviesPageVM = browseMoviesPage.DataContext as BrowseMoviesPageViewModel;
+
+            //Create private objects
+            PrivateObject privBrowsePageVM = new PrivateObject(browsePageVM);
+            privBrowsePageVM.SetField("mediaType", mediaType);
+
+            switch (mediaType)
+            {
+                case MediaType.Books:
+                    browseBooksPageVM.SelectedBook = new Book() { Stock = stock };
+                    break;
+                case MediaType.Albums:
+                    browseAlbumsPageVM.SelectedAlbum = new Album() { Stock = stock };
+                    break;
+                case MediaType.Movies:
+                    browseMoviesPageVM.SelectedMovie = new Movie() { Stock = stock };
+                    break;
+            }
+
+            bool hasSelection = (bool)privBrowsePageVM.Invoke("HasMadeSelection");
+
+            Assert.AreEqual(shouldHaveSelection, hasSelection);
+        }
     }
 }
