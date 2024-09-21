@@ -34,16 +34,16 @@ namespace MediaKiosk.Models
             this.Username = username;
             this.Password = password;
 
-            UpdatePasswordData(password);
+            UpdatePasswordData();
 
             this.Purchases = new MediaLibrary();
             this.Rentals = new MediaLibrary();
         }
 
-        public void UpdatePasswordData(string password)
+        private void UpdatePasswordData()
         { 
             //Convert password to bytes
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(this.Password);
 
             //Create encrypted password data
             this.PasswordData = ProtectedData.Protect(passwordBytes, null,

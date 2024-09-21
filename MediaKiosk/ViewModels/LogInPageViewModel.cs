@@ -18,7 +18,7 @@ namespace MediaKiosk.ViewModels
         private MainWindowViewModel mainWindowViewModel;
         private List<User> Users;
         private string username;
-        private UserComparer userComparer;
+        private readonly UserComparer userComparer = new UserComparer();
         private readonly IDisplayDialog displayDialog;
         public RelayCommand loginCmd => new RelayCommand(pw => LogIn(pw));
         public RelayCommand registerCmd => new RelayCommand(pw => Register(pw));
@@ -35,7 +35,6 @@ namespace MediaKiosk.ViewModels
             this.displayDialog = this.mainWindowViewModel.displayDialog;
 
             this.Users = mainWindowViewModel.Users;
-            this.userComparer = new UserComparer();
 
             //Temporary code to speed up development
             this.Username = "peyton";
@@ -74,7 +73,7 @@ namespace MediaKiosk.ViewModels
             { 
                 User user = new User(this.Username, (passwordBox as PasswordBox).Password);
 
-                if (!this.Users.Any(u => u.Username == user.Username))
+                if (!this.Users.Any(user, this.userComparer))
                 {
                     this.Users.Add(user);
                     this.mainWindowViewModel.HasLoggedIn = true;

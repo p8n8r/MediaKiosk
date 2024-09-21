@@ -69,6 +69,7 @@
     <Compile Include="ViewModels\Browse\BrowseBooksPageViewModelTests.cs" />
     <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModelTests.cs" />
     <Compile Include="ViewModels\Browse\BrowsePageViewModelTests.cs" />
+    <Compile Include="ViewModels\LogInPageViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

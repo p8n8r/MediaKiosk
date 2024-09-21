@@ -35,9 +35,11 @@ namespace MediaKiosk.Models.Tests
         [TestMethod()]
         public void UpdatePasswordDataTest()
         {
-            User user = new User();
-            user.UpdatePasswordData("pass");
-            Assert.AreNotEqual(user.PasswordData, new byte[] { 0 } ); //PasswordData not empty
+            User user = new User() { Password = "password" };
+            PrivateObject privUser = new PrivateObject(user);
+            privUser.Invoke("UpdatePasswordData");
+            Assert.AreNotEqual(user.PasswordData, new byte[] { 0 }); //PasswordData not empty
+            Assert.AreNotEqual(user.PasswordData, Encoding.UTF8.GetBytes(user.Password)); //PasswordData is encrypted
         }
     }
 }
