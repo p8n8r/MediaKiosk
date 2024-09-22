@@ -45,8 +45,8 @@ namespace MediaKiosk.ViewModels
             this.mainWindow = mainWindow;
             this.displayDialog = displayDialog;
 
-            ImportUsers();
-            ImportMediaLibrary();
+            ImportUsers(USERS_FILE);
+            ImportMediaLibrary(MEDIA_LIBRARY_FILE);
         }
 
         private void NavigateToWelcomePage()
@@ -122,18 +122,18 @@ namespace MediaKiosk.ViewModels
             return data;
         }
 
-        private void ExportMediaLibrary()
+        private void ExportMediaLibrary(string filePath)
         {
             if (this.MediaLibrary == null) //No data found?
                 this.MediaLibrary = new MediaLibrary(); //Create empty libray
 
-            ExportAsXmlFile(this.MediaLibrary, typeof(MediaLibrary), MEDIA_LIBRARY_FILE);
+            ExportAsXmlFile(this.MediaLibrary, typeof(MediaLibrary), filePath);
         }
 
-        private void ImportMediaLibrary()
+        private void ImportMediaLibrary(string filePath)
         {
-            if (File.Exists(MEDIA_LIBRARY_FILE))
-                this.MediaLibrary = ImportXmlFile(typeof(MediaLibrary), MEDIA_LIBRARY_FILE) as MediaLibrary;
+            if (File.Exists(filePath))
+                this.MediaLibrary = ImportXmlFile(typeof(MediaLibrary), filePath) as MediaLibrary;
 
             if (this.MediaLibrary == null) //No data found?
                 this.MediaLibrary = new MediaLibrary(); //Create empty library
@@ -148,18 +148,18 @@ namespace MediaKiosk.ViewModels
                 movie.ArtWork = Utility.ConvertBytesToBitmapImage(movie.ArtWorkBytes);
         }
 
-        private void ExportUsers()
+        private void ExportUsers(string filePath)
         {
             if (this.Users == null) //No data found?
                 this.Users = new List<User>(); //Create empty users
 
-            ExportAsXmlFile(this.Users, typeof(List<User>), USERS_FILE);
+            ExportAsXmlFile(this.Users, typeof(List<User>), filePath);
         }
 
-        private void ImportUsers()
+        private void ImportUsers(string filePath)
         {
-            if (File.Exists(USERS_FILE))
-                this.Users = ImportXmlFile(typeof(List<User>), USERS_FILE) as List<User>;
+            if (File.Exists(filePath))
+                this.Users = ImportXmlFile(typeof(List<User>), filePath) as List<User>;
 
             if (this.Users != null) //Data found?
             {
@@ -202,68 +202,8 @@ namespace MediaKiosk.ViewModels
 
         private void OnClose()
         {
-            ExportUsers();
-            ExportMediaLibrary();
+            ExportUsers(USERS_FILE);
+            ExportMediaLibrary(MEDIA_LIBRARY_FILE);
         }
-
-        //private void ReloadBooks(string filePath)
-        //{
-        //    if (File.Exists(filePath))
-        //    {
-        //        try
-        //        {
-        //            StreamReader reader = new StreamReader(filePath);
-        //            string[] values;
-        //            bool hasFoundHeaders = false;
-        //            List<Book> books = new List<Book>();
-
-        //            while (!reader.EndOfStream)
-        //            {
-        //                values = reader.ReadLine().Split(',');
-
-        //                if (values.Length == BOOK_NUM_COLUMNS_CSV)
-        //                {
-        //                    if (!hasFoundHeaders)
-        //                    {
-        //                        hasFoundHeaders = true;
-        //                        continue;
-        //                    }
-
-        //                    books.Add(new Book()
-        //                    {
-        //                        Title = values[BOOK_TITLE_COL],
-        //                        Author = values[BOOK_AUTHORS_COL],
-        //                        Category = values[BOOK_CATEGORY_COL],
-        //                        PublicationDate = DateTime.Parse(values[PUBLICATION_DATE_COLUMN]),
-        //                        Price = decimal.Parse(values[PRICE_COLUMN])
-        //                    });
-        //                }
-        //            }
-
-        //            if (books.Count > 0)
-        //            {
-        //                this.Books.Clear();
-        //                books.ForEach(b => this.Books.Add(b)); //Copy new books over
-        //            }
-        //        }
-        //        catch (FileNotFoundException e)
-        //        {
-        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-        //        }
-        //        catch (DirectoryNotFoundException e)
-        //        {
-        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-        //        }
-        //        catch (IOException e)
-        //        {
-        //            this.mainWindowViewModel.ShowErrorMessageBox(e.Message);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        string message = $"{filePath} does not exist.";
-        //        this.mainWindowViewModel.ShowErrorMessageBox(message);
-        //    }
-        //}
     }
 }
