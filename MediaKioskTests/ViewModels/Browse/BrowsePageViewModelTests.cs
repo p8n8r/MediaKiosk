@@ -89,6 +89,7 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             privBrowseBooksPageVM.Invoke("ReloadBooks"); //Selects first book 
             privBrowsePageVM.SetField("mediaType", MediaType.Books);
 
+            //Purchase all the books
             while (browseBooksPageVM.Books.Count > 0)
             {
                 int countBrowseBooks = browseBooksPageVM.Books.Count;
@@ -159,6 +160,7 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             privBrowseAlbumsPageVM.Invoke("ReloadAlbums"); //Selects first album 
             privBrowsePageVM.SetField("mediaType", MediaType.Albums);
 
+            //Purchase all the albums
             while (browseAlbumsPageVM.Albums.Count > 0)
             {
                 int countBrowseAlbums = browseAlbumsPageVM.Albums.Count;
@@ -229,6 +231,7 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             privBrowseMoviesPageVM.Invoke("ReloadMovies"); //Selects first movie 
             privBrowsePageVM.SetField("mediaType", MediaType.Movies);
 
+            //Purchase all the movies
             while (browseMoviesPageVM.Movies.Count > 0)
             {
                 int countBrowseMovies = browseMoviesPageVM.Movies.Count;

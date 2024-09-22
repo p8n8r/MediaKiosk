@@ -101,14 +101,18 @@ namespace MediaKiosk.ViewModels.Returns
                     this.mainWindowViewModel.MediaLibrary.Books.Add(book);
                 }
 
-                //Check returns
+                //Check user's returns
                 if (this.mainWindowViewModel.CurrentUser.Rentals.Books.Any(book, bookComparer))
                 {
                     Book bookSame = this.mainWindowViewModel.CurrentUser.Rentals.Books.Single(book, bookComparer);
                     bookSame.Stock--;
 
                     if (bookSame.Stock <= Types.EMPTY_STOCK)
-                        this.mainWindowViewModel.CurrentUser.Rentals.Books.Remove(book);
+                        this.mainWindowViewModel.CurrentUser.Rentals.Books.Remove(bookSame);
+
+                    //Remove displayed returns if necessary
+                    if (bookSame.Stock <= Types.EMPTY_STOCK)
+                        this.RentedMedia.Remove(bookSame);
                 }
             }
             else if (media.GetType() == typeof(Album))
@@ -134,7 +138,11 @@ namespace MediaKiosk.ViewModels.Returns
                     albumSame.Stock--;
 
                     if (albumSame.Stock <= Types.EMPTY_STOCK)
-                        this.mainWindowViewModel.CurrentUser.Rentals.Albums.Remove(album);
+                        this.mainWindowViewModel.CurrentUser.Rentals.Albums.Remove(albumSame);
+
+                    //Remove displayed returns if necessary
+                    if (albumSame.Stock <= Types.EMPTY_STOCK)
+                        this.RentedMedia.Remove(albumSame);
                 }
             }
             else if (media.GetType() == typeof(Movie))
@@ -160,13 +168,13 @@ namespace MediaKiosk.ViewModels.Returns
                     movieSame.Stock--;
 
                     if (movieSame.Stock <= Types.EMPTY_STOCK)
-                        this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movie);
+                        this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movieSame);
+
+                    //Remove displayed returns if necessary
+                    if (movieSame.Stock <= Types.EMPTY_STOCK)
+                        this.RentedMedia.Remove(movieSame);
                 }
             }
-
-            //Remove media from pending returns
-            if (media.Stock <= Types.EMPTY_STOCK)
-                this.RentedMedia.Remove(media);
 
             //Force refresh of media in returns page,
             //so Media subclasses can remain plain old CLR objects (pocos).

@@ -55,13 +55,9 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
             DonatePageViewModel donatePageVM = mainWindow.donatePage.DataContext as DonatePageViewModel;
             BookDonationPageViewModel bookDonationPageVM = donatePageVM.bookDonationPage.DataContext as BookDonationPageViewModel;
-            LogInPage logInPage = mainWindow.loginPage;
-            LogInPageViewModel loginPageVM = logInPage.DataContext as LogInPageViewModel;
-            BookComparer bookComparer = new BookComparer();
 
             //Create private objects
             PrivateObject privMainWindowVM = new PrivateObject(mainWindowVM);
-            PrivateObject privLoginPageVM = new PrivateObject(loginPageVM);
             PrivateObject privDonatePageVM = new PrivateObject(donatePageVM);
 
             //Set media details
@@ -123,13 +119,9 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
             DonatePageViewModel donatePageVM = mainWindow.donatePage.DataContext as DonatePageViewModel;
             AlbumDonationPageViewModel albumDonationPageVM = donatePageVM.albumDonationPage.DataContext as AlbumDonationPageViewModel;
-            LogInPage logInPage = mainWindow.loginPage;
-            LogInPageViewModel loginPageVM = logInPage.DataContext as LogInPageViewModel;
-            AlbumComparer albumComparer = new AlbumComparer();
 
             //Create private objects
             PrivateObject privMainWindowVM = new PrivateObject(mainWindowVM);
-            PrivateObject privLoginPageVM = new PrivateObject(loginPageVM);
             PrivateObject privDonatePageVM = new PrivateObject(donatePageVM);
 
             //Set media details
@@ -191,13 +183,9 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
             DonatePageViewModel donatePageVM = mainWindow.donatePage.DataContext as DonatePageViewModel;
             MovieDonationPageViewModel movieDonationPageVM = donatePageVM.movieDonationPage.DataContext as MovieDonationPageViewModel;
-            LogInPage logInPage = mainWindow.loginPage;
-            LogInPageViewModel loginPageVM = logInPage.DataContext as LogInPageViewModel;
-            MovieComparer movieComparer = new MovieComparer();
 
             //Create private objects
             PrivateObject privMainWindowVM = new PrivateObject(mainWindowVM);
-            PrivateObject privLoginPageVM = new PrivateObject(loginPageVM);
             PrivateObject privDonatePageVM = new PrivateObject(donatePageVM);
 
             //Set media details

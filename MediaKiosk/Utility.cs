@@ -89,10 +89,5 @@ namespace MediaKiosk
         {
             return enumerable.Any(v => comparer.Equals(v, value));
         }
-
-        public static int Count<T>(this IEnumerable<T> enumerable, T value, IEqualityComparer<T> comparer)
-        {
-            return enumerable.Count(v => comparer.Equals(v, value));
-        }
     }
 }
