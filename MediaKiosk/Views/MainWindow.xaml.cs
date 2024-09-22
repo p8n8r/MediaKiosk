@@ -49,8 +49,8 @@ namespace MediaKiosk.Views
             this.DataContext = this.mainWindowViewModel;
 
             //Construct pages and viewmodels
+            this.welcomePage = new WelcomePage();
             this.loginPage = new LogInPage(mainWindowViewModel);
-            this.welcomePage = new WelcomePage(mainWindowViewModel);
             this.browsePage = new BrowsePage(mainWindowViewModel); 
             this.returnsPage = new ReturnsPage(mainWindowViewModel);
             this.donatePage = new DonatePage(mainWindowViewModel); 

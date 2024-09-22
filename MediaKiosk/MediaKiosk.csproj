@@ -84,7 +84,6 @@
     <Compile Include="ViewModels\Browse\BrowsePageViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonatePageViewModel.cs" />
     <Compile Include="ViewModels\LogInPageViewModel.cs" />
-    <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\Donate\AlbumDonationPage.xaml.cs">
       <DependentUpon>AlbumDonationPage.xaml</DependentUpon>

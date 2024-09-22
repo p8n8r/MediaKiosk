@@ -21,11 +21,9 @@ namespace MediaKiosk.Views
     /// </summary>
     public partial class WelcomePage : Page
     {
-        public WelcomePage(MainWindowViewModel mainWindowViewModel)
+        public WelcomePage()
         {
             InitializeComponent();
-
-            this.DataContext = new WelcomePageViewModel(mainWindowViewModel);
         }
     }
 }
