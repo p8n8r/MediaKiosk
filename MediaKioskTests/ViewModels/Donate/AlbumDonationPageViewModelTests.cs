@@ -41,12 +41,12 @@ namespace MediaKiosk.ViewModels.Donate.Tests
         //}
 
         [TestMethod()] //.\Datasets\Users.xml simulates an existing file
-        [DataRow("title", "artist", "genre", "2000", @".\Datasets\Users.xml", true)]
-        [DataRow("", "artist", "genre", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "", "genre", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "artist", "", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "artist", "genre", "xxx", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "artist", "genre", "2000", "BadFile.xml", false)]
+        [DataRow("title", "artist", "genre", "2000", @".\Resources\sample.png", true)]
+        [DataRow("", "artist", "genre", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "", "genre", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "artist", "", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "artist", "genre", "xxx", @".\Resources\sample.png", false)]
+        [DataRow("title", "artist", "genre", "2000", "BadFile.png", false)]
         public void HasValidAlbumPropertiesTest(string title, string artist, string genre,
             string releaseYear, string albumArtFilePath, bool shouldBeValid)
         {

@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\Browse\BrowsePageViewModelTests.cs" />
     <Compile Include="ViewModels\Donate\AlbumDonationPageViewModelTests.cs" />
     <Compile Include="ViewModels\Donate\BookDonationPageViewModelTests.cs" />
+    <Compile Include="ViewModels\Donate\DonatePageViewModelTests.cs" />
     <Compile Include="ViewModels\Donate\MovieDonationPageViewModelTests.cs" />
     <Compile Include="ViewModels\LogInPageViewModelTests.cs" />
   </ItemGroup>
@@ -88,6 +89,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Datasets\Users.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sample.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

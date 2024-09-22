@@ -41,12 +41,12 @@ namespace MediaKiosk.ViewModels.Donate.Tests
         //}
 
         [TestMethod()] //.\Datasets\Users.xml simulates an existing file
-        [DataRow("title", "rating", "genre", "2000", @".\Datasets\Users.xml", true)]
-        [DataRow("", "rating", "genre", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "", "genre", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "rating", "", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "rating", "genre", "xxx", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "rating", "genre", "2000", "BadFile.xml", false)]
+        [DataRow("title", "rating", "genre", "2000", @".\Resources\sample.png", true)]
+        [DataRow("", "rating", "genre", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "", "genre", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "rating", "", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "rating", "genre", "xxx", @".\Resources\sample.png", false)]
+        [DataRow("title", "rating", "genre", "2000", "BadFile.png", false)]
         public void HasValidMoviePropertiesTest(string title, string rating, string genre,
             string releaseYear, string promoArtFilePath, bool shouldBeValid)
         {

@@ -83,9 +83,9 @@ namespace MediaKiosk.ViewModels.Donate
             }
         }
 
-        public void Donate()
+        private void Donate()
         {
-            if (!IsMediaAcceptable()) //Showsinvalid controls
+            if (!IsMediaAcceptable()) //Shows invalid controls
                 return;
 
             //All properties of selected media type should be valid now
@@ -93,7 +93,7 @@ namespace MediaKiosk.ViewModels.Donate
             {
                 case MediaType.Books:
                     BitmapImage coverArt = new BitmapImage(
-                        new Uri(this.bookDonationPageViewModel.CoverArtFilePath)); 
+                        new Uri(this.bookDonationPageViewModel.CoverArtFilePath, UriKind.RelativeOrAbsolute)); 
 
                     Book book = new Book()
                     {
@@ -123,7 +123,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                 case MediaType.Albums:
                     BitmapImage albumArtwork = new BitmapImage(
-                        new Uri(this.albumDonationPageViewModel.AlbumArtFilePath)); 
+                        new Uri(this.albumDonationPageViewModel.AlbumArtFilePath, UriKind.RelativeOrAbsolute)); 
 
                     Album album = new Album()
                     {
@@ -153,7 +153,7 @@ namespace MediaKiosk.ViewModels.Donate
 
                 case MediaType.Movies:
                     BitmapImage promoArtwork = new BitmapImage(
-                        new Uri(this.movieDonationPageViewModel.PromoArtFilePath)); 
+                        new Uri(this.movieDonationPageViewModel.PromoArtFilePath, UriKind.RelativeOrAbsolute)); 
 
                     Movie movie = new Movie()
                     {
@@ -186,7 +186,7 @@ namespace MediaKiosk.ViewModels.Donate
             displayDialog.ShowBasicMessageBox(THANKS_MESSAGES[random.Next(THANKS_MESSAGES.Count())]);
         }
 
-        public bool IsMediaAcceptable()
+        private bool IsMediaAcceptable()
         {
             switch (this.mediaType)
             {

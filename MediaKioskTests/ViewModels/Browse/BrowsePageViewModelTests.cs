@@ -26,6 +26,7 @@ namespace MediaKiosk.ViewModels.Browse.Tests
 
             Assert.IsNotNull(mainWindowVM);
             Assert.IsNotNull(browsePageVM);
+            Assert.IsNotNull(mainWindow.displayDialog);
             Assert.IsNotNull(browsePageVM.browseBooksPage);
             Assert.IsNotNull(browsePageVM.browseAlbumsPage);
             Assert.IsNotNull(browsePageVM.browseMoviesPage);

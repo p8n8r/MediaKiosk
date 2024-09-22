@@ -42,11 +42,11 @@ namespace MediaKiosk.ViewModels.Donate.Tests
         //}
 
         [TestMethod()] //.\Datasets\Users.xml simulates an existing file
-        [DataRow("title", "author", "category", "2000", @".\Datasets\Users.xml", true)]
-        [DataRow("", "author", "category", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "", "category", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "author", "", "2000", @".\Datasets\Users.xml", false)]
-        [DataRow("title", "author", "category", "xxx", @".\Datasets\Users.xml", false)]
+        [DataRow("title", "author", "category", "2000", @".\Resources\sample.png", true)]
+        [DataRow("", "author", "category", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "", "category", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "author", "", "2000", @".\Resources\sample.png", false)]
+        [DataRow("title", "author", "category", "xxx", @".\Resources\sample.png", false)]
         [DataRow("title", "author", "category", "2000", "BadFile.xml", false)]
         public void HasValidBookPropertiesTest(string title, string author, string category, 
             string publicationYear, string coverArtFilePath, bool shouldBeValid)
