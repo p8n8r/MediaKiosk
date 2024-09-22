@@ -84,20 +84,12 @@ namespace MediaKiosk.ViewModels.Returns
         {
             Media media = mediaObj as Media;
 
-            //Remove media from pending returns
-            media.Stock--;
-            if (media.Stock <= 0)
-                this.RentedMedia.Remove(media);
-
-            //Force refresh of media in browse page,
-            //so Media subclasses can remain plain old CLR objects (pocos).
-            CollectionViewSource.GetDefaultView(this.RentedMedia).Refresh();
-
             //Add media to library
             if (media.GetType() == typeof(Book))
             {
                 Book book = media as Book;
 
+                //Check library
                 if (this.mainWindowViewModel.MediaLibrary.Books.Contains(book, bookComparer))
                 {
                     Book bookSame = this.mainWindowViewModel.MediaLibrary.Books.Single(book, bookComparer);
@@ -109,12 +101,21 @@ namespace MediaKiosk.ViewModels.Returns
                     this.mainWindowViewModel.MediaLibrary.Books.Add(book);
                 }
 
-                this.mainWindowViewModel.CurrentUser.Rentals.Books.Remove(book);
+                //Check returns
+                if (this.mainWindowViewModel.CurrentUser.Rentals.Books.Any(book, bookComparer))
+                {
+                    Book bookSame = this.mainWindowViewModel.CurrentUser.Rentals.Books.Single(book, bookComparer);
+                    bookSame.Stock--;
+
+                    if (bookSame.Stock <= Types.EMPTY_STOCK)
+                        this.mainWindowViewModel.CurrentUser.Rentals.Books.Remove(book);
+                }
             }
             else if (media.GetType() == typeof(Album))
             {
                 Album album = media as Album;
 
+                //Check library
                 if (this.mainWindowViewModel.MediaLibrary.Albums.Contains(album, albumComparer))
                 {
                     Album albumSame = this.mainWindowViewModel.MediaLibrary.Albums.Single(album, albumComparer);
@@ -126,12 +127,21 @@ namespace MediaKiosk.ViewModels.Returns
                     this.mainWindowViewModel.MediaLibrary.Albums.Add(album);
                 }
 
-                this.mainWindowViewModel.CurrentUser.Rentals.Albums.Remove(album);
+                //Check returns
+                if (this.mainWindowViewModel.CurrentUser.Rentals.Albums.Any(album, albumComparer))
+                {
+                    Album albumSame = this.mainWindowViewModel.CurrentUser.Rentals.Albums.Single(album, albumComparer);
+                    albumSame.Stock--;
+
+                    if (albumSame.Stock <= Types.EMPTY_STOCK)
+                        this.mainWindowViewModel.CurrentUser.Rentals.Albums.Remove(album);
+                }
             }
             else if (media.GetType() == typeof(Movie))
             {
                 Movie movie = media as Movie;
 
+                //Check library
                 if (this.mainWindowViewModel.MediaLibrary.Movies.Contains(movie, movieComparer))
                 {
                     Movie movieSame = this.mainWindowViewModel.MediaLibrary.Movies.Single(movie, movieComparer);
@@ -143,8 +153,24 @@ namespace MediaKiosk.ViewModels.Returns
                     this.mainWindowViewModel.MediaLibrary.Movies.Add(movie);
                 }
 
-                this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movie);
+                //Check returns
+                if (this.mainWindowViewModel.CurrentUser.Rentals.Movies.Any(movie, movieComparer))
+                {
+                    Movie movieSame = this.mainWindowViewModel.CurrentUser.Rentals.Movies.Single(movie, movieComparer);
+                    movieSame.Stock--;
+
+                    if (movieSame.Stock <= Types.EMPTY_STOCK)
+                        this.mainWindowViewModel.CurrentUser.Rentals.Movies.Remove(movie);
+                }
             }
+
+            //Remove media from pending returns
+            if (media.Stock <= Types.EMPTY_STOCK)
+                this.RentedMedia.Remove(media);
+
+            //Force refresh of media in returns page,
+            //so Media subclasses can remain plain old CLR objects (pocos).
+            CollectionViewSource.GetDefaultView(this.RentedMedia).Refresh();
 
             displayDialog.ShowBasicMessageBox(THANKS_FOR_RETURN[random.Next(THANKS_FOR_RETURN.Count())]);
         }

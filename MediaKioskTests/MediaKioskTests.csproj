@@ -74,6 +74,7 @@
     <Compile Include="ViewModels\Donate\DonatePageViewModelTests.cs" />
     <Compile Include="ViewModels\Donate\MovieDonationPageViewModelTests.cs" />
     <Compile Include="ViewModels\LogInPageViewModelTests.cs" />
+    <Compile Include="ViewModels\Returns\ReturnsPageViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

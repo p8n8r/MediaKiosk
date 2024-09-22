@@ -26,13 +26,15 @@ namespace MediaKiosk.ViewModels.Donate.Tests
 
             Assert.IsNotNull(mainWindowVM);
             Assert.IsNotNull(donatePageVM);
-            Assert.IsNotNull(mainWindow.displayDialog);
             Assert.IsNotNull(donatePageVM.bookDonationPage);
             Assert.IsNotNull(donatePageVM.albumDonationPage);
             Assert.IsNotNull(donatePageVM.movieDonationPage);
             Assert.IsNotNull(donatePageVM.bookDonationPage.DataContext as BookDonationPageViewModel);
             Assert.IsNotNull(donatePageVM.albumDonationPage.DataContext as AlbumDonationPageViewModel);
             Assert.IsNotNull(donatePageVM.movieDonationPage.DataContext as MovieDonationPageViewModel);
+
+            PrivateObject privDonatePageVM = new PrivateObject(donatePageVM);
+            Assert.IsNotNull(privDonatePageVM.GetField("displayDialog"));
         }
 
         //[TestMethod()]

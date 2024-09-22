@@ -27,7 +27,6 @@ namespace MediaKiosk.ViewModels.Browse
             "Thanks! Don't forget to return that.",
             "Thank you! Please remember to return your media.",
         };
-        private const int EMPTY = 0;
         private readonly IDisplayDialog displayDialog;
 
         private MainWindow mainWindow;
@@ -282,11 +281,11 @@ namespace MediaKiosk.ViewModels.Browse
             switch (this.mediaType)
             {
                 case MediaType.Books:
-                    return this.browseBooksPageViewModel.SelectedBook?.Stock > EMPTY;
+                    return this.browseBooksPageViewModel.SelectedBook?.Stock > Types.EMPTY_STOCK;
                 case MediaType.Albums:
-                    return this.browseAlbumsPageViewModel.SelectedAlbum?.Stock > EMPTY;
+                    return this.browseAlbumsPageViewModel.SelectedAlbum?.Stock > Types.EMPTY_STOCK;
                 case MediaType.Movies:
-                    return this.browseMoviesPageViewModel.SelectedMovie?.Stock > EMPTY;
+                    return this.browseMoviesPageViewModel.SelectedMovie?.Stock > Types.EMPTY_STOCK;
                 default:
                     return false; //Should never happen
             }
