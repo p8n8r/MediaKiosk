@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace MediaKiosk.ViewModels.Donate
         private string title, artist, genre, releaseYear, albumArtFilePath;
         private Brush titleBorderBrush, artistBorderBrush, genreBorderBrush,
             releaseYearBorderBrush, albumArtFilePathBorderBrush;
+        private readonly IDisplayImageFileDialog displayImageFileDialog;
 
         public string Title
         {
@@ -76,6 +78,7 @@ namespace MediaKiosk.ViewModels.Donate
 
         public AlbumDonationPageViewModel()
         {
+            this.displayImageFileDialog = new DisplayImageFileDialog();
             InitializeBorders();
         }
 
@@ -96,16 +99,13 @@ namespace MediaKiosk.ViewModels.Donate
 
         private void BrowseForImage()
         {
-            //Create file browser dialog
-            OpenFileDialog dlg = Utility.CreateImageFileDialog();
-
             //Select image in dialog
-            bool? result = dlg.ShowDialog();
+            bool? result = this.displayImageFileDialog.OpenImageBrowser();
 
             if (result == true)
             {
                 //Save image file path
-                this.AlbumArtFilePath = dlg.FileName;
+                this.AlbumArtFilePath = this.displayImageFileDialog.FilePath;
 
                 //Reset border color
                 this.AlbumArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;

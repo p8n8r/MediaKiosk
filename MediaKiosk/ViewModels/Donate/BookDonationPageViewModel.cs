@@ -1,4 +1,5 @@
-﻿using MediaKiosk.Models;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace MediaKiosk.ViewModels.Donate
         private string title, author, category, publicationYear, coverArtFilePath;
         private Brush titleBorderBrush, authorBorderBrush, categoryBorderBrush,
             publicationYearBorderBrush, coverArtFilePathBorderBrush;
+        private readonly IDisplayImageFileDialog displayImageFileDialog;
 
         public string Title
         {
@@ -77,6 +79,7 @@ namespace MediaKiosk.ViewModels.Donate
 
         public BookDonationPageViewModel()
         {
+            this.displayImageFileDialog = new DisplayImageFileDialog();
             InitializeBorders();
         }
 
@@ -97,16 +100,13 @@ namespace MediaKiosk.ViewModels.Donate
 
         private void BrowseForImage()
         {
-            //Create file browser dialog
-            OpenFileDialog dlg = Utility.CreateImageFileDialog();
-
             //Select image in dialog
-            bool? result = dlg.ShowDialog();
+            bool? result = this.displayImageFileDialog.OpenImageBrowser();
 
             if (result == true)
             {
                 //Save image file path
-                this.CoverArtFilePath = dlg.FileName;
+                this.CoverArtFilePath = this.displayImageFileDialog.FilePath;
 
                 //Reset border color
                 this.CoverArtFilePathBorderBrush = Types.DEFAULT_BORDER_BRUSH;

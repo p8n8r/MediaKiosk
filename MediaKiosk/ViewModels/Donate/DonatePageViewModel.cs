@@ -50,8 +50,8 @@ namespace MediaKiosk.ViewModels.Donate
         {
             this.mainWindowViewModel = mainWindowViewModel;
             this.mainWindow = mainWindowViewModel.MainWindow;
-            this.displayDialog = this.mainWindowViewModel.displayDialog;
             this.MediaLibrary = this.mainWindowViewModel.MediaLibrary;
+            this.displayDialog = this.mainWindowViewModel.displayDialog;
 
             //Construct pages
             this.bookDonationPage = new BookDonationPage();

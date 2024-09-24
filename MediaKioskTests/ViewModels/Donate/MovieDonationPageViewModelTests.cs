@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using MediaKiosk.DisplayDialogs;
 
 namespace MediaKiosk.ViewModels.Donate.Tests
 {
@@ -34,11 +35,21 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             Assert.AreEqual(textBox.BorderBrush, Types.DEFAULT_BORDER_BRUSH);
         }
 
-        //[TestMethod()]
-        //public void BrowseForImageTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        public void BrowseForImageTest()
+        {
+            MovieDonationPageViewModel movieDonationPageVM = new MovieDonationPageViewModel();
+            PrivateObject privMovieDonationPageVM = new PrivateObject(movieDonationPageVM);
+
+            movieDonationPageVM.PromoArtFilePath = null;
+            movieDonationPageVM.PromoArtFilePathBorderBrush = null;
+
+            privMovieDonationPageVM.SetField("displayImageFileDialog", new FakeDisplayImageFileDialog());
+            privMovieDonationPageVM.Invoke("BrowseForImage");
+
+            Assert.IsNotNull(movieDonationPageVM.PromoArtFilePath);
+            Assert.IsNotNull(movieDonationPageVM.PromoArtFilePathBorderBrush);
+        }
 
         [TestMethod()] //.\Datasets\Users.xml simulates an existing file
         [DataRow("title", "rating", "genre", "2000", @".\Resources\sample.png", true)]

@@ -263,8 +263,7 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             decimal minPrice = (decimal)privDonatePAgeVM.GetStaticField("MIN_PRICE");
             decimal maxPrice = (decimal)privDonatePAgeVM.GetStaticField("MAX_PRICE");
 
-            Assert.IsTrue(price >= minPrice);
-            Assert.IsTrue(price <= maxPrice);
+            Assert.IsTrue(price >= minPrice && price < maxPrice);
         }
     }
 }
