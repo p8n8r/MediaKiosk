@@ -26,7 +26,7 @@ namespace MediaKiosk.ViewModels
 
         public bool CanExecute(object parameter = null)
         {
-            return canExecute == null || this.canExecute(parameter);
+            return this.canExecute == null || this.canExecute(parameter);
         }
 
         public void Execute(object parameter = null)
