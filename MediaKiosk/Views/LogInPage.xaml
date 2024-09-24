@@ -24,7 +24,7 @@
             <Label Content="Username:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Username}" Grid.Row="1" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
             <Label Content="Password:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <PasswordBox Password="peydey" Name="PasswordBox" Grid.Row="2" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
+            <PasswordBox Name="PasswordBox" Grid.Row="2" Grid.Column="1" Width="175" VerticalAlignment="Center"/>
             <Grid Grid.Row="3" Grid.Column="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>

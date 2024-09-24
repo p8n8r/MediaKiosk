@@ -32,31 +32,32 @@ namespace MediaKiosk.ViewModels.Browse.Tests
             Assert.IsNotNull(browsePageVM.browseMoviesPage);
         }
 
-        //[TestMethod()]
-        //public void SelectMediaTypeTest()
-        //{
-        //    MainWindow mainWindow = new MainWindow();
-        //    MainWindowViewModel mainWindowVM = new MainWindowViewModel(mainWindow);
-        //    BrowsePageViewModel browsePageVM = new BrowsePageViewModel(mainWindowVM);
-        //    BrowsePage browsePage = new BrowsePage(mainWindowVM);
+        [TestMethod()]
+        public void SelectMediaTypeTest()
+        {
+            IDisplayDialog fakeDisplayDialog = new FakeDisplayDialog();
+            MainWindow mainWindow = new MainWindow(fakeDisplayDialog);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            BrowsePage browsePage = mainWindow.browsePage;
+            BrowsePageViewModel browsePageVM = mainWindow.browsePage.DataContext as BrowsePageViewModel;
 
-        //    PrivateObject privBrowsePage = new PrivateObject(browsePage);
-        //    Frame frame = (Frame)privBrowsePage.GetFieldOrProperty("mediaTableFrame");
+            PrivateObject privBrowsePage = new PrivateObject(browsePage);
+            Frame frame = (Frame)privBrowsePage.GetFieldOrProperty("mediaTableFrame");
 
-        //    MediaType mediaTypeFound;
-        //    frame.NavigationService.Navigating += (sender, args) =>
-        //    {
-        //        ;
-        //    };
+            Type typePage = typeof(BrowseBooksPage);
+            frame.NavigationService.Navigating += (sender, args) =>
+            {
+                Assert.AreEqual(args.Content.GetType(), typePage);
+            };
 
-        //    PrivateObject privBrowsePageVM = new PrivateObject(browsePageVM);
-        //    privBrowsePageVM.Invoke("SelectMediaType", MediaType.Books);
-
-        //    //PrivateObject privBrowsePage = new PrivateObject(browsePage);
-        //    //Frame frame = (Frame)privBrowsePage.GetFieldOrProperty("mediaTableFrame");
-        //    //Assert.AreEqual(frame.Source, new Uri("BrowsePageViewModel.xaml"));
-        //    Assert.IsTrue(true);
-        //}
+            PrivateObject privBrowsePageVM = new PrivateObject(browsePageVM);
+            typePage = typeof(BrowseAlbumsPage);
+            privBrowsePageVM.Invoke("SelectMediaType", MediaType.Albums);
+            typePage = typeof(BrowseMoviesPage);
+            privBrowsePageVM.Invoke("SelectMediaType", MediaType.Movies);
+            typePage = typeof(BrowseBooksPage);
+            privBrowsePageVM.Invoke("SelectMediaType", MediaType.Books);
+        }
 
         [TestMethod()]
         public void BuyBooksTest()

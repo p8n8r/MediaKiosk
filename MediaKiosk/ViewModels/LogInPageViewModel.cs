@@ -35,10 +35,6 @@ namespace MediaKiosk.ViewModels
             this.displayDialog = this.mainWindowViewModel.displayDialog;
 
             this.Users = mainWindowViewModel.Users;
-
-            //Temporary code to speed up development
-            this.Username = "peyton";
-            //In xaml, remove Password="peydey"
         }
 
         private void LogIn(object passwordBox)

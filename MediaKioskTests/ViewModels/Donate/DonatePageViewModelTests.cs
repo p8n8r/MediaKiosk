@@ -11,6 +11,7 @@ using MediaKiosk.Models;
 using MediaKiosk.DisplayDialogs;
 using MediaKiosk.Views.Browse;
 using System.Windows.Controls;
+using MediaKiosk.Views.Donate;
 
 namespace MediaKiosk.ViewModels.Donate.Tests
 {
@@ -37,11 +38,32 @@ namespace MediaKiosk.ViewModels.Donate.Tests
             Assert.IsNotNull(privDonatePageVM.GetField("displayDialog"));
         }
 
-        //[TestMethod()]
-        //public void SelectMediaTypeTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        public void SelectMediaTypeTest()
+        {
+            IDisplayDialog fakeDisplayDialog = new FakeDisplayDialog();
+            MainWindow mainWindow = new MainWindow(fakeDisplayDialog);
+            MainWindowViewModel mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+            DonatePage donatePage = mainWindow.donatePage;
+            DonatePageViewModel donatePageVM = mainWindow.donatePage.DataContext as DonatePageViewModel;
+
+            PrivateObject privDonatePage = new PrivateObject(donatePage);
+            Frame frame = (Frame)privDonatePage.GetFieldOrProperty("mediaTableFrame");
+
+            Type typePage = typeof(BookDonationPage);
+            frame.NavigationService.Navigating += (sender, args) =>
+            {
+                Assert.AreEqual(args.Content.GetType(), typePage);
+            };
+
+            PrivateObject privDonatePageVM = new PrivateObject(donatePageVM);
+            typePage = typeof(AlbumDonationPage);
+            privDonatePageVM.Invoke("SelectMediaType", MediaType.Albums);
+            typePage = typeof(MovieDonationPage);
+            privDonatePageVM.Invoke("SelectMediaType", MediaType.Movies);
+            typePage = typeof(BookDonationPage);
+            privDonatePageVM.Invoke("SelectMediaType", MediaType.Books);
+        }
 
         [TestMethod()]
         [DataRow("NIV Bible", "God", "Spiritual", "1973", @".\Resources\sample.png", false)]
