@@ -1,2 +1,2 @@
 # MediaKiosk
- A self-serive kiosk for media
+ A self-serve kiosk for media

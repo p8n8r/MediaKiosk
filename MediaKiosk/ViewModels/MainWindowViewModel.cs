@@ -165,10 +165,7 @@ namespace MediaKiosk.ViewModels
             {
                 foreach (User user in this.Users)
                 {
-                    byte[] passwordBytes = ProtectedData.Unprotect(user.PasswordData, null,
-                        DataProtectionScope.LocalMachine);
-
-                    user.Password = Encoding.UTF8.GetString(passwordBytes);
+                    user.Password = Cryptography.DecryptString(user.EncryptedPassword);
                 }
             }
             else

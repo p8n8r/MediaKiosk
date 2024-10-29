@@ -67,6 +67,7 @@
     <Compile Include="DisplayImageFileDialog.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Cryptography.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\MediaLibrary.cs" />
     <Compile Include="Models\Movie.cs" />

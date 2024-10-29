@@ -2,8 +2,6 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,7 +17,7 @@ namespace MediaKiosk.Models
         public string Username {  get; set; }
         [XmlIgnore]
         public string Password { get; set; }
-        public byte[] PasswordData { get; set; }
+        public string EncryptedPassword { get; set; }
         public MediaLibrary Purchases { get; set; }
         public MediaLibrary Rentals { get; set; }
 
@@ -34,20 +32,15 @@ namespace MediaKiosk.Models
             this.Username = username;
             this.Password = password;
 
-            UpdatePasswordData();
+            UpdateEncryptedPassword();
 
             this.Purchases = new MediaLibrary();
             this.Rentals = new MediaLibrary();
         }
 
-        private void UpdatePasswordData()
+        private void UpdateEncryptedPassword()
         { 
-            //Convert password to bytes
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(this.Password);
-
-            //Create encrypted password data
-            this.PasswordData = ProtectedData.Protect(passwordBytes, null,
-                DataProtectionScope.LocalMachine);
+            this.EncryptedPassword = Cryptography.EncryptString(this.Password);
         }
     }
 
@@ -55,7 +48,7 @@ namespace MediaKiosk.Models
     {
         public bool Equals(User x, User y)
         {
-            //Only check username
+            //Only check username and password
             return x.Username == y.Username && x.Password == y.Password;
         }
 

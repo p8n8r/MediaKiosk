@@ -72,6 +72,7 @@ namespace MediaKiosk.ViewModels
                 if (!this.Users.Any(user, this.userComparer))
                 {
                     this.Users.Add(user);
+                    this.mainWindowViewModel.CurrentUser = user;
                     this.mainWindowViewModel.HasLoggedIn = true;
                     this.mainWindowViewModel.navigateToWelcomePageCmd.Execute();
                 }
