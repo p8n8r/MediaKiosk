@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Models\AlbumTests.cs" />
     <Compile Include="Models\BookTests.cs" />
+    <Compile Include="Models\CryptographyTests.cs" />
     <Compile Include="Models\MediaLibraryTests.cs" />
     <Compile Include="Models\MediaTests.cs" />
     <Compile Include="Models\MovieTests.cs" />

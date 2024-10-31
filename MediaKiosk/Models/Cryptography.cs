@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MediaKiosk.Models
 {
-    public class Cryptography
+    public static class Cryptography
     {
         private const int SIZE_IV = 16;
         private const string KEY = "uJ4ERcCWIjAqN2hTDDG38Q=="; //Hard-coded, for simplicity

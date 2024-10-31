@@ -59,16 +59,19 @@ namespace MediaKiosk.ViewModels.Tests
             //Act
             privLoginPageVM.Invoke("LogIn", passwordBox);
             bool hasLoggedIn = (bool)privMainWindowVM.GetProperty("HasLoggedIn");
+            User user = (User)privMainWindowVM.GetProperty("CurrentUser");
 
             //Assert
             if (shouldLogIn)
             {
                 Assert.IsTrue(hasLoggedIn);
+                Assert.AreNotEqual(user, User.INVALID_USER);
                 Assert.IsTrue(mainWindowVM.Users.Any(u => u.Username == username));
             }
             else
             {
                 Assert.IsFalse(hasLoggedIn);
+                Assert.AreEqual(user, User.INVALID_USER);
                 Assert.IsFalse(mainWindowVM.Users.Any(u => u.Username == username));
             }
         }
@@ -98,16 +101,19 @@ namespace MediaKiosk.ViewModels.Tests
             //Act
             privLoginPageVM.Invoke("Register", passwordBox);
             bool hasLoggedIn = (bool)privMainWindowVM.GetProperty("HasLoggedIn");
+            User user = (User)privMainWindowVM.GetProperty("CurrentUser");
 
             //Assert
             if (shouldRegister)
             {
                 Assert.IsTrue(hasLoggedIn);
+                Assert.AreNotEqual(user, User.INVALID_USER);
                 Assert.AreEqual(countUsersInitial + 1, mainWindowVM.Users.Count);
                 Assert.IsTrue(mainWindowVM.Users.Any(u => u.Username == username));
             }
             else
             {
+                Assert.AreEqual(user, User.INVALID_USER);
                 Assert.IsFalse(hasLoggedIn);
                 Assert.AreEqual(countUsersInitial, mainWindowVM.Users.Count);
             }
