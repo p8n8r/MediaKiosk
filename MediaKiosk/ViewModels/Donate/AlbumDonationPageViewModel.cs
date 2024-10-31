@@ -1,17 +1,9 @@
 ﻿using MediaKiosk.DisplayDialogs;
 using MediaKiosk.Models;
-using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using static MediaKiosk.Models.Album;
 
 namespace MediaKiosk.ViewModels.Donate
 {

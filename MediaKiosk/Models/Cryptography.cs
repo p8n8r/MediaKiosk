@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 /*
 * Credit for encryption/decrytion algorithm goes to 

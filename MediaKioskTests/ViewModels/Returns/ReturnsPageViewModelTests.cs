@@ -1,17 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MediaKiosk.ViewModels.Returns;
+﻿using MediaKiosk.DisplayDialogs;
+using MediaKiosk.Models;
+using MediaKiosk.Views;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediaKiosk.ViewModels.Donate;
-using MediaKiosk.Views;
-using MediaKiosk.Views.Donate;
-using MediaKiosk.Models;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
-using MediaKiosk.DisplayDialogs;
 
 namespace MediaKiosk.ViewModels.Returns.Tests
 {

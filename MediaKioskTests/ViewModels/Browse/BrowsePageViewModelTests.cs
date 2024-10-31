@@ -1,16 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MediaKiosk.ViewModels.Browse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediaKiosk.Views;
+﻿using MediaKiosk.DisplayDialogs;
 using MediaKiosk.Models;
+using MediaKiosk.Views;
 using MediaKiosk.Views.Browse;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
 using System.Windows.Controls;
-using MediaKiosk.DisplayDialogs;
-using System.Windows.Navigation;
 
 namespace MediaKiosk.ViewModels.Browse.Tests
 {

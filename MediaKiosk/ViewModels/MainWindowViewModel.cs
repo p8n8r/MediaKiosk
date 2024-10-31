@@ -4,14 +4,7 @@ using MediaKiosk.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace MediaKiosk.ViewModels

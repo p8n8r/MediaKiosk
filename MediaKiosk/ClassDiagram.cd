@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MediaKiosk.App" Collapsed="true">
+    <Position X="29.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Types" Collapsed="true">
+    <Position X="26.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Utility" Collapsed="true">
+    <Position X="31.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAEAAAAAAAQCABAAAAAAAAAQAAAAgAAA=</HashCode>
+      <FileName>Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.DisplayDialogs.DisplayDialog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DisplayDialog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.DisplayDialogs.FakeDisplayDialog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DisplayDialog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.DisplayDialogs.DisplayImageFileDialog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICAAAAAAAAAAAAAAAAAAAAQAAAAAABAEAAAAAA=</HashCode>
+      <FileName>DisplayImageFileDialog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.DisplayDialogs.FakeDisplayImageFileDialog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAEAAAAAA=</HashCode>
+      <FileName>DisplayImageFileDialog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Models.Album" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAMAAAAAAIAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Album.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MediaKiosk.Models.AlbumComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Album.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Models.Book" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAACBA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MediaKiosk.Models.BookComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Models.Cryptography" Collapsed="true">
+    <Position X="31.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACQAAAIAAAAAAAAAAAAAAAAAAAEQAAAAA=</HashCode>
+      <FileName>Models\Cryptography.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Models.Media" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAEAAAAAAAAAAgAAAAAAAAQAAAIAAAAA=</HashCode>
+      <FileName>Models\Media.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Models.MediaLibrary" Collapsed="true">
+    <Position X="35" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACACAAAAEAAAAgAAAAAAgAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\MediaLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Models.Movie" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAACBA=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MediaKiosk.Models.MovieComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Models.User" Collapsed="true">
+    <Position X="28" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAAAAAAQEAAAAAAQAAAAACAAgAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Models.UserComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Models.ViewModelBase" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MediaKiosk.Properties.Resources" Collapsed="true">
+    <Position X="31.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Properties.Settings" Collapsed="true">
+    <Position X="35" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Browse.BrowseAlbumsPageViewModel" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAAAAAAAAAAAEAAACBAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>ViewModels\Browse\BrowseAlbumsPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Browse.BrowseBooksPageViewModel" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAACAAAAAgIAAAACABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Browse\BrowseBooksPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Browse.BrowseMoviesPageViewModel" Collapsed="true">
+    <Position X="21.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAgAAEAIAABCAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Browse\BrowseMoviesPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Browse.BrowsePageViewModel" Collapsed="true">
+    <Position X="23.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASYYAACBAAIAAGCQBAAMAAIIBCAAAAAAAAQAAAAAGAg=</HashCode>
+      <FileName>ViewModels\Browse\BrowsePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Donate.AlbumDonationPageViewModel" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAIAQIAEAEACBIOAgIATAICKAAAACQABAJAAAQA=</HashCode>
+      <FileName>ViewModels\Donate\AlbumDonationPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Donate.BookDonationPageViewModel" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAACAAAUAAAAFACwICAAIAAABAAAACUCQQIgJgACAA=</HashCode>
+      <FileName>ViewModels\Donate\BookDonationPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Donate.DonatePageViewModel" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAYAICBAAAQMECABAAIAgYABBAIgAAABAQAACCEBAA=</HashCode>
+      <FileName>ViewModels\Donate\DonatePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Donate.MovieDonationPageViewModel" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAEAUIIAAFESAImAABAJAQACAAEAAQAIQJAACAA=</HashCode>
+      <FileName>ViewModels\Donate\MovieDonationPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.LogInPageViewModel" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAAAAAAEAAASAAAAGIAAABABAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\LogInPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.MainWindowViewModel" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAQoAAAEAAAgQGAEQIhgAACAAABQpIIABEQBA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.ViewModels.Returns.ReturnsPageViewModel" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FCAYQAAAAAAAAEAAQACAAAIABIAAAASAAAwAEAAAEEA=</HashCode>
+      <FileName>ViewModels\Returns\ReturnsPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaKiosk.Views.Browse.BrowseAlbumsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Browse\BrowseAlbumsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Browse.BrowseBooksPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Browse\BrowseBooksPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Browse.BrowseMoviesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Browse\BrowseMoviesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Browse.BrowsePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Browse\BrowsePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Donate.AlbumDonationPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Views\Donate\AlbumDonationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Donate.BookDonationPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Views\Donate\BookDonationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Donate.DonatePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Donate\DonatePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Donate.MovieDonationPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Views\Donate\MovieDonationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.LogInPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LogInPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAAAAAIAAEAAABAAQAAAAQAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.WelcomePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\WelcomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MediaKiosk.Views.Returns.ReturnsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Returns\ReturnsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="MediaKiosk.DisplayDialogs.IDisplayDialog" Collapsed="true">
+    <Position X="26.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DisplayDialog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MediaKiosk.DisplayDialogs.IDisplayImageFileDialog" Collapsed="true">
+    <Position X="28" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAEAAAAAA=</HashCode>
+      <FileName>DisplayImageFileDialog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MediaKiosk.Models.MediaType" Collapsed="true">
+    <Position X="26.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Media.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
