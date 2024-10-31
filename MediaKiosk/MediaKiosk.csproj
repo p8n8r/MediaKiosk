@@ -34,9 +34,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MediaKiosk.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +63,96 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="DisplayDialog.cs" />
+    <Compile Include="DisplayImageFileDialog.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Cryptography.cs" />
+    <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\MediaLibrary.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Types.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="ViewModels\Donate\AlbumDonationPageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\MovieDonationPageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\BookDonationPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowseAlbumsPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowseMoviesPageViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Returns\ReturnsPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Browse\BrowseBooksPageViewModel.cs" />
+    <Compile Include="ViewModels\Browse\BrowsePageViewModel.cs" />
+    <Compile Include="ViewModels\Donate\DonatePageViewModel.cs" />
+    <Compile Include="ViewModels\LogInPageViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\Donate\AlbumDonationPage.xaml.cs">
+      <DependentUpon>AlbumDonationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Donate\BookDonationPage.xaml.cs">
+      <DependentUpon>BookDonationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Browse\BrowseAlbumsPage.xaml.cs">
+      <DependentUpon>BrowseAlbumsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Browse\BrowseBooksPage.xaml.cs">
+      <DependentUpon>BrowseBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Browse\BrowseMoviesPage.xaml.cs">
+      <DependentUpon>BrowseMoviesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Browse\BrowsePage.xaml.cs">
+      <DependentUpon>BrowsePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Donate\DonatePage.xaml.cs">
+      <DependentUpon>DonatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Donate\MovieDonationPage.xaml.cs">
+      <DependentUpon>MovieDonationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Returns\ReturnsPage.xaml.cs">
+      <DependentUpon>ReturnsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Donate\AlbumDonationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Donate\BookDonationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Browse\BrowseAlbumsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Browse\BrowseBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Browse\BrowseMoviesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Browse\BrowsePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Donate\DonatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Donate\MovieDonationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +160,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Returns\ReturnsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +195,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +203,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Log Out Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Datasets\MediaLibrary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Datasets\Users.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

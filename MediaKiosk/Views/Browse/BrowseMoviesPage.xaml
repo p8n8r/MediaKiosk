@@ -1,0 +1,62 @@
+﻿<Page x:Class="MediaKiosk.Views.Browse.BrowseMoviesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MediaKiosk.Views.Browse"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="700"
+      Title="BrowseMoviesPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="browseMoviesDataGrid" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}"
+            CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Width="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="1*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="1*" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Rating" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Rating, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Category" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Category, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Release Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.ReleaseYear, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+
+            <Label Content="Price" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Price, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Stock" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedMovie.Stock, UpdateSourceTrigger=PropertyChanged}" Name="stockTextBox" Grid.Row="3" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="Promo Art" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Image Source="{Binding SelectedMovie.ArtWork}" Grid.Row="5" Grid.Column="1" Grid.RowSpan="3"/>
+        </Grid>
+    </Grid>
+</Page>

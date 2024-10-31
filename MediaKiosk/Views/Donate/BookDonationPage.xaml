@@ -1,0 +1,46 @@
+﻿<Page x:Class="MediaKiosk.Views.Donate.BookDonationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MediaKiosk.Views.Donate"
+      mc:Ignorable="d" 
+      d:DesignHeight="321" d:DesignWidth="400"
+      Title="BookDonationPage">
+
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Title" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding TitleBorderBrush, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
+        <Label Content="Author" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding AuthorBorderBrush, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
+        <Label Content="Category" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding CategoryBorderBrush, Mode=TwoWay}" Grid.Row="5" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
+        <Label Content="Publication Year" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding PublicationYear, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding PublicationYearBorderBrush, Mode=TwoWay}" Grid.Row="7" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
+        <Label Content="Cover Art" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="9" Grid.Column="0" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding CoverArtFilePath, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding CoverArtFilePathBorderBrush, Mode=TwoWay}" Grid.Column="0" Margin="5,0,5,0" VerticalAlignment="Center" GotFocus="Control_GotFocus"/>
+            <Button Command="{Binding browseCmd}" Content="Browse..." Grid.Column="1" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Username>peyton</Username>
+    <EncryptedPassword>N7yiytywoMt5ji1AvXpUKQ==</EncryptedPassword>
+    <Purchases>
+      <Books />
+      <Albums />
+      <Movies />
+    </Purchases>
+    <Rentals>
+      <Books />
+      <Albums />
+      <Movies />
+    </Rentals>
+  </User>
+</ArrayOfUser>

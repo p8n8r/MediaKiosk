@@ -1,0 +1,46 @@
+﻿<Page x:Class="MediaKiosk.Views.Donate.DonatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MediaKiosk.Views.Donate"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="DonatePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Select Type of Media" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <RadioButton Content="Books" Command="{Binding selectBooksCmd}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,5,0" IsChecked="True"/>
+                    <RadioButton Content="Albums" Command="{Binding selectAlbumsCmd}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,5,0"/>
+                    <RadioButton Content="Movies" Command="{Binding selectMoviesCmd}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,5,0"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Frame Name="mediaTableFrame" Source="BookDonationPage.xaml" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden" Width="400"/>
+
+        <Grid Grid.Row="2" Grid.Column="0">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Donate" Command="{Binding donateCmd}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Margin="0,0,5,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
